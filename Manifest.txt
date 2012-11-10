@@ -30,6 +30,7 @@ images/timeseries.svgz
 index.xml
 install.rb
 lib/SVG/Graph/Bar.rb
+lib/SVG/Graph/ErrBar.rb
 lib/SVG/Graph/BarBase.rb
 lib/SVG/Graph/BarHorizontal.rb
 lib/SVG/Graph/DataPoint.rb
