@@ -97,6 +97,7 @@ module SVG
       # [key_font_size] 10
       # [no_css] false
       # [add_popups] false
+      # [number_format] '%.2f' 
       def initialize( config )
         @config = config
         @data = nil
@@ -148,6 +149,7 @@ module SVG
           
           :no_css               =>false,
           :add_popups           =>false,
+          :number_format => '%.2f' 
         })
         set_defaults if self.respond_to? :set_defaults
         init_with config
@@ -343,6 +345,8 @@ module SVG
       attr_accessor :add_popups
       # Customize popup radius
       attr_accessor :popup_radius
+      # Number format values and Y axis representation like 1.2345667 represent as 1.23
+      attr_accessor :number_format
 
 
       protected
@@ -496,21 +500,29 @@ module SVG
       def x_label_offset( width )
         0
       end
+      
+      def numeric?(object)
+		true if Float(object) rescue false
+	  end
 
       def make_datapoint_text( x, y, value, style="" )
         if show_data_values
+		  textStr = value
+		  if( numeric?(value) )
+			textStr = @number_format % value
+		  end
           @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
             "class" => "dataPointLabel",
             "style" => "#{style} stroke: #fff; stroke-width: 2;"
-          }).text = value.to_s
+          }).text = textStr 
           text = @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
             "class" => "dataPointLabel"
           })
-          text.text = value.to_s
+          text.text = textStr
           text.attributes["style"] = style if style.length > 0
         end
       end
@@ -611,7 +623,11 @@ module SVG
               "y" => y.to_s,
               "class" => "yAxisLabels"
             })
-            text.text = label.to_s
+			textStr = label.to_s
+			if( numeric?(label) )
+				textStr = @number_format % label
+			end
+            text.text = textStr
             if rotate_y_labels
               text.attributes["transform"] = "translate( -#{font_size} 0 ) "+
                 "rotate( 90 #{x} #{y} ) "
