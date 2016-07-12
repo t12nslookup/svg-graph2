@@ -99,7 +99,7 @@ module SVG
       # [add_popups] false
       def initialize( config )
         @config = config
-        @data = nil
+        @data = []
         self.top_align = self.top_font = self.right_align = self.right_font = 0
 
         init_with({
@@ -164,7 +164,7 @@ module SVG
       #     :title => 'Sales 2002'
       #   })
       def add_data conf
-          @data = [] unless (defined? @data and !@data.nil?) 
+        @data = [] unless (defined? @data and !@data.nil?) 
 
         if conf[:data] and conf[:data].kind_of? Array
           @data << conf
