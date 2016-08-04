@@ -499,16 +499,17 @@ module SVG
         0
       end
       
+      # check if an object can be converted to float
       def numeric?(object)
-		true if Float(object) rescue false
-	  end
+        true if Float(object) rescue false
+      end
 
       def make_datapoint_text( x, y, value, style="" )
         if show_data_values
-		  textStr = value
-		  if( numeric?(value) )
-			textStr = @number_format % value
-		  end
+          textStr = value
+          if( numeric?(value) )
+            textStr = @number_format % value
+          end
           @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
@@ -621,10 +622,10 @@ module SVG
               "y" => y.to_s,
               "class" => "yAxisLabels"
             })
-			textStr = label.to_s
-			if( numeric?(label) )
-				textStr = @number_format % label
-			end
+            textStr = label.to_s
+            if( numeric?(label) )
+              textStr = @number_format % label
+            end
             text.text = textStr
             if rotate_y_labels
               text.attributes["transform"] = "translate( -#{font_size} 0 ) "+
@@ -753,11 +754,11 @@ module SVG
             x_offset = @border_left + 20
             y_offset = @border_top + @graph_height + 5
             if show_x_labels
-			  max_x_label_height_px = (not rotate_x_labels) ? 
-				x_label_font_size :
-				get_x_labels.max{|a,b| 
-				  a.to_s.length<=>b.to_s.length
-				}.to_s.length * x_label_font_size * 0.6
+              max_x_label_height_px = (not rotate_x_labels) ? 
+              x_label_font_size :
+              get_x_labels.max{|a,b| 
+                a.to_s.length<=>b.to_s.length
+              }.to_s.length * x_label_font_size * 0.6
                 x_label_font_size
               y_offset += max_x_label_height_px
               y_offset += max_x_label_height_px + 5 if stagger_x_labels
@@ -987,8 +988,8 @@ module SVG
 }
 /* End copy for external style sheet */
 EOL
-      end
+      end # get_style
 
-    end
-  end
-end
+    end # class Graph
+  end # module Graph
+end # module SVG

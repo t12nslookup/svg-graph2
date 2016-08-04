@@ -1,6 +1,6 @@
 module SVG
   module Graph
-    VERSION = '1.0.5'
+    VERSION = '1.1.0'
     autoload(:Bar, 'SVG/Graph/Bar')
     autoload(:ErrBar, 'SVG/Graph/ErrBar')
     autoload(:BarBase, 'SVG/Graph/BarBase')
