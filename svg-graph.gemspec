@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     "README.txt",
     "Rakefile",
     "lib/SVG/Graph/Bar.rb",
-     "lib/SVG/Graph/ErrBar.rb",
+    "lib/SVG/Graph/ErrBar.rb",
     "lib/SVG/Graph/BarBase.rb",
     "lib/SVG/Graph/BarHorizontal.rb",
     "lib/SVG/Graph/Graph.rb",
