@@ -1,0 +1,263 @@
+<?xml version='1.0'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 600 500' xmlns='http://www.w3.org/2000/svg' xmlns:a3='http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/' width='600' height='500' a3:scriptImplementation='Adobe'>
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<!-- Created with SVG::Graph -->
+<!-- SVG::Graph by Sean E. Russell -->
+<!-- Losely based on SVG::TT::Graph for Perl by Leo Lapworth & Stephan Morgan -->
+<!-- //////////////////////////////////////////////////////////////////-->
+<defs>
+<style type='text/css'>
+<![CDATA[/* Copy from here for external style sheet */
+.svgBackground{
+  fill:#ffffff;
+}
+.graphBackground{
+  fill:#f0f0f0;
+}
+
+/* graphs titles */
+.mainTitle{
+  text-anchor: middle;
+  fill: #000000;
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+.subTitle{
+  text-anchor: middle;
+  fill: #999999;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.axis{
+  stroke: #000000;
+  stroke-width: 1px;
+}
+
+.guideLines{
+  stroke: #666666;
+  stroke-width: 1px;
+  stroke-dasharray: 5 5;
+}
+
+.xAxisLabels{
+  text-anchor: middle;
+  fill: #000000;
+  font-size: 12px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.yAxisLabels{
+  text-anchor: end;
+  fill: #000000;
+  font-size: 12px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.xAxisTitle{
+  text-anchor: middle;
+  fill: #ff0000;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.yAxisTitle{
+  fill: #ff0000;
+  text-anchor: middle;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.dataPointLabel{
+  fill: #000000;
+  text-anchor:middle;
+  font-size: 10px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.staggerGuideLine{
+  fill: none;
+  stroke: #000000;
+  stroke-width: 0.5px;  
+}
+
+/* default fill styles for multiple datasets (probably only use a single dataset on this graph though) */
+.key1,.fill1{
+	fill: #ff0000;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 0.5px;	
+}
+.key2,.fill2{
+	fill: #0000ff;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key3,.fill3{
+	fill: #00ff00;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key4,.fill4{
+	fill: #ffcc00;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key5,.fill5{
+	fill: #00ccff;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key6,.fill6{
+	fill: #ff00ff;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key7,.fill7{
+	fill: #00ffff;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key8,.fill8{
+	fill: #ffff00;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key9,.fill9{
+	fill: #cc6666;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key10,.fill10{
+	fill: #663399;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key11,.fill11{
+	fill: #339900;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key12,.fill12{
+	fill: #9966FF;
+	fill-opacity: 0.5;
+	stroke: none;
+	stroke-width: 1px;	
+}
+
+
+.keyText{
+  fill: #000000;
+  text-anchor:start;
+  font-size: 10px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+/* End copy for external style sheet */
+]]>
+</style>
+</defs>
+<!-- include default stylesheet if none specified -->
+<!--SVG Background-->
+<rect x='0' y='0' class='svgBackground' width='600' height='500'/>
+<g transform='translate( 35.8 10 )'>
+<rect x='0' y='0' class='graphBackground' width='475.2' height='471'/>
+<path d='M 0 0 v471' class='axis' id='xAxis'/>
+<path d='M 0 471 h475.2' class='axis' id='yAxis'/>
+<text y='486' x='118.8' class='xAxisLabels' style='text-anchor: middle'>
+Jan
+</text>
+<text y='486' x='356.4' class='xAxisLabels' style='text-anchor: middle'>
+Feb
+</text>
+<text x='-3' y='475.0' class='yAxisLabels' style='text-anchor: end'>
+0.00
+</text>
+<text x='-3' y='430.3' class='yAxisLabels' style='text-anchor: end'>
+2.10
+</text>
+<path d='M0 426.3 h475.2' class='guideLines'/>
+<text x='-3' y='385.6' class='yAxisLabels' style='text-anchor: end'>
+4.20
+</text>
+<path d='M0 381.6 h475.2' class='guideLines'/>
+<text x='-3' y='340.9' class='yAxisLabels' style='text-anchor: end'>
+6.30
+</text>
+<path d='M0 336.9 h475.2' class='guideLines'/>
+<text x='-3' y='296.2' class='yAxisLabels' style='text-anchor: end'>
+8.40
+</text>
+<path d='M0 292.2 h475.2' class='guideLines'/>
+<text x='-3' y='251.5' class='yAxisLabels' style='text-anchor: end'>
+10.50
+</text>
+<path d='M0 247.5 h475.2' class='guideLines'/>
+<text x='-3' y='206.8' class='yAxisLabels' style='text-anchor: end'>
+12.60
+</text>
+<path d='M0 202.8 h475.2' class='guideLines'/>
+<text x='-3' y='162.1' class='yAxisLabels' style='text-anchor: end'>
+14.70
+</text>
+<path d='M0 158.1 h475.2' class='guideLines'/>
+<text x='-3' y='117.4' class='yAxisLabels' style='text-anchor: end'>
+16.80
+</text>
+<path d='M0 113.4 h475.2' class='guideLines'/>
+<text x='-3' y='72.7' class='yAxisLabels' style='text-anchor: end'>
+18.90
+</text>
+<path d='M0 68.7 h475.2' class='guideLines'/>
+<text x='-3' y='28.0' class='yAxisLabels' style='text-anchor: end'>
+21.00
+</text>
+<path d='M0 24.0 h475.2' class='guideLines'/>
+<rect x='10.0' y='258.142857142857' class='fill1' width='217.6' height='212.857142857143'/>
+<line x1='118.8' x2='118.8' style='stroke:rgb(0,0,0);stroke-width:1' y1='279.428571428571' y2='236.857142857143'/>
+<line x1='64.4' x2='173.2' style='stroke:rgb(0,0,0);stroke-width:1' y1='279.428571428571' y2='279.428571428571'/>
+<line x1='64.4' x2='173.2' style='stroke:rgb(0,0,0);stroke-width:1' y1='236.857142857143' y2='236.857142857143'/>
+<rect x='247.6' y='45.2857142857143' class='fill1' width='217.6' height='425.714285714286'/>
+<line x1='356.4' x2='356.4' style='stroke:rgb(0,0,0);stroke-width:1' y1='87.8571428571429' y2='2.71428571428577'/>
+<line x1='302.0' x2='410.8' style='stroke:rgb(0,0,0);stroke-width:1' y1='87.8571428571429' y2='87.8571428571429'/>
+<line x1='302.0' x2='410.8' style='stroke:rgb(0,0,0);stroke-width:1' y1='2.71428571428577' y2='2.71428571428577'/>
+<g>
+<text x='118.8' y='252.142857142857' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+10.00
+</text>
+<text x='118.8' y='252.142857142857' class='dataPointLabel'>
+10.00
+</text>
+<text x='356.4' y='39.2857142857143' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+20.00
+</text>
+<text x='356.4' y='39.2857142857143' class='dataPointLabel'>
+20.00
+</text>
+</g>
+</g>
+<g transform='translate(521.0 30)'>
+<rect x='0' y='0' class='key1' width='12' height='12'/>
+<text x='17' y='12' class='keyText'>
+Sales 2002
+</text>
+</g>
+</svg>

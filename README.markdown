@@ -12,3 +12,12 @@ I'm not sure that all the parts of the original SVG library work as expected und
 Usage
 -----
 Yet to be written. Look at the original [SVG::Graph web page](http://www.germane-software.com/software/SVG/SVG::Graph/) for the moment (I'm not introducing new methods nor changing APIs, for the moment).
+
+Build
+-----
+
+Ubuntu: 
+* Build gem:
+ *  gem build svg-graph.gemspec
+* Install:
+ *  sudo gem install svg-graph-1.0.2.gem
