@@ -1,7 +1,9 @@
-require 'SVG/Graph/Plot'
-TIME_PARSE_AVAIL = (RUBY_VERSION =~ /1\.9\./) ? true : false
+require_relative 'Plot'
+TIME_PARSE_AVAIL = (RUBY_VERSION =~ /1\.8\./) ? false : true
 if not TIME_PARSE_AVAIL then
   require 'parsedate'
+else
+  require 'date'
 end
 
 module SVG

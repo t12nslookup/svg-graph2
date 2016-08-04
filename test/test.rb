@@ -1,7 +1,7 @@
-require 'SVG/Graph/BarHorizontal'
-require 'SVG/Graph/Bar'
-require 'SVG/Graph/Line'
-require 'SVG/Graph/Pie'
+require_relative '../lib/SVG/Graph/BarHorizontal'
+require_relative '../lib/SVG/Graph/Bar'
+require_relative '../lib/SVG/Graph/Line'
+require_relative '../lib/SVG/Graph/Pie'
 
 def gen klass, args, title, fields, female_data, male_data
   args[ :width ] = 640

@@ -1,5 +1,4 @@
-$: << File.dirname(__FILE__) + '/../lib'
-require 'SVG/Graph/Plot'
+require_relative '../lib/SVG/Graph/Plot'
 
 
 title = "Plot"

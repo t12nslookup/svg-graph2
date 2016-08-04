@@ -1,4 +1,4 @@
-require 'SVG/Graph/Graph'
+require_relative 'Graph'
 
 module SVG
   module Graph

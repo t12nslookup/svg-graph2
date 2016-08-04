@@ -1,5 +1,5 @@
-require 'SVG/Graph/Graph'
-require 'SVG/Graph/DataPoint'
+require_relative 'Graph'
+require_relative 'DataPoint'
 
 module SVG
   module Graph

@@ -1,5 +1,5 @@
 require 'rexml/document'
-require 'SVG/Graph/BarBase'
+require_relative 'BarBase'
 
 module SVG
   module Graph

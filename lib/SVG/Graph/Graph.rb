@@ -1,8 +1,7 @@
 begin
   require 'zlib'
-  @@__have_zlib = true
 rescue
-  @@__have_zlib = false
+  # No Zlib.
 end
 
 require 'rexml/document'
@@ -143,7 +142,6 @@ module SVG
           :x_label_font_size    =>12,
           :y_label_font_size    =>12,
           :x_title_font_size    =>14,
-          :y_label_font_size    =>12,
           :y_title_font_size    =>14,
           :key_font_size        =>10,
           
@@ -211,7 +209,7 @@ module SVG
         @doc.write( data, 0 )
 
         if @config[:compress]
-          if @@__have_zlib
+          if defined?(Zlib)
             inp, out = IO.pipe
             gz = Zlib::GzipWriter.new( out )
             gz.write data
