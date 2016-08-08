@@ -1,10 +1,5 @@
+require 'date'
 require_relative 'Plot'
-TIME_PARSE_AVAIL = (RUBY_VERSION =~ /1\.8\./) ? false : true
-if not TIME_PARSE_AVAIL then
-  require 'parsedate'
-else
-  require 'date'
-end
 
 module SVG
   module Graph
@@ -134,20 +129,22 @@ module SVG
       #   graph.add_data( 
       #     :data => d1,
       #     :title => 'Meetings'
-      #     :template => "TODO"
+      #     :template => '%H:%M'
       #   )
       #   graph.add_data(
       #     :data => d2,
       #     :title => 'Plays'
-      #     :template => "TODO"
+      #     :template => '%d/%m/%y'
       #   )
       #
       # Note that the data must be in time,value pairs, and that the date format
-      # may be any date that is parseable by Date#strptime.
-      # By default the following template will be used:
-      # ""
-      # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html#method-c-strptime
+      # may be any date that is parseable by DateTime#parse, DateTime#strptime.
+      # The :template argument is optional. By default DateTime#parse will be used.
+      # Checkout the ruby doc for valit template notation:
+      # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html#method-i-strftime
+      # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/DateTime.html#method-c-parse
       # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/DateTime.html#method-c-strptime.
+      # 
       # 
       # Also note that, in this example, we're mixing scales; the data from d1
       # will probably not be discernable if both data sets are plotted on the same
@@ -162,7 +159,6 @@ module SVG
           "data points" unless data[:data].length % 3 == 0
         return if data[:data].length == 0
 
-
         y = []
         x_start = []
         x_end = []
@@ -171,13 +167,12 @@ module SVG
           if im3 == 0
             y << data[:data][i]
           else
-            if TIME_PARSE_AVAIL then
-              arr = DateTime.parse(data[:data][i])
-              t = arr.to_time
+            if data.has_key?(:template) && data[:template].kind_of?(String)
+              arr = DateTime.strptime(data[:data][i], data[:template])
             else
-              arr = ParseDate.parsedate( data[:data][i] )
-              t = Time.local( *arr[0,6].compact )
+              arr = DateTime.parse(data[:data][i])
             end
+            t = arr.to_time
             (im3 == 1 ? x_start : x_end) << t.to_i
           end
         }
@@ -189,13 +184,8 @@ module SVG
       protected
 
       def min_x_value=(value)
-        if TIME_PARSE_AVAIL then
-          arr = Time.parse(value)
-          t = arr.to_time
-        else
-          arr = ParseDate.parsedate( value )
-          t = Time.local( *arr[0,6].compact )
-        end
+        arr = Time.parse(value)
+        t = arr.to_time
         @min_x_value = t.to_i
       end
 

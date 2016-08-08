@@ -1,15 +1,16 @@
 module SVG
   module Graph
-    VERSION = '1.1.0'
-    autoload(:Bar, 'SVG/Graph/Bar')
-    autoload(:ErrBar, 'SVG/Graph/ErrBar')
-    autoload(:BarBase, 'SVG/Graph/BarBase')
-    autoload(:BarHorizontal, 'SVG/Graph/BarHorizontal')
-    autoload(:Line, 'SVG/Graph/Line')
-    autoload(:Pie, 'SVG/Graph/Pie')
-    autoload(:Plot, 'SVG/Graph/Plot')
-    autoload(:Schedule, 'SVG/Graph/Schedule')
-    autoload(:TimeSeries, 'SVG/Graph/TimeSeries')
-    autoload(:DataPoint, 'SVG/Graph/DataPoint')
+    VERSION = '2.0.0'
   end
 end
+
+require_relative 'SVG/Graph/Bar'
+require_relative 'SVG/Graph/ErrBar'
+require_relative 'SVG/Graph/BarBase'
+require_relative 'SVG/Graph/BarHorizontal'
+require_relative 'SVG/Graph/Line'
+require_relative 'SVG/Graph/Pie'
+require_relative 'SVG/Graph/Plot'
+require_relative 'SVG/Graph/Schedule'
+require_relative 'SVG/Graph/TimeSeries'
+require_relative 'SVG/Graph/DataPoint'

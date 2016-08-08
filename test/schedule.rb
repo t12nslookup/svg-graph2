@@ -36,7 +36,8 @@ graph = SVG::Graph::Schedule.new( {
 
 graph.add_data( 
   :data => data1,
-  :title => "Data"
+  :title => "Data",
+  :template => '%m/%d/%y'
   )
 
 #puts graph.burn

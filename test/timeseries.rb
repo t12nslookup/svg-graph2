@@ -7,7 +7,7 @@ title = "Plot"
 #  data1 << rand(20)
 #  data1 << rand(20)
 #}
-data1 = ["17/6/74", 11, "1/11/74", 7, "13/4/04 17:31", 11, "9/11/01", 9, "9/1/85", 2, "9/1/88", 1, "15/1/95", 13]
+data1 = ["17/6/74", 11, "1/11/74", 7, "13/4/04", 11, "9/11/01", 9, "9/1/85", 2, "9/1/88", 1, "15/1/95", 13]
 #data2 = []
 #(rand(10)+5).times{
 #  data2 << rand(20)
@@ -35,7 +35,7 @@ graph = SVG::Graph::TimeSeries.new( {
   :y_title_text_direction => :bt,
   :stagger_x_labels => true,
   :x_label_format => "%Y",
-  :min_x_value => "1/1/73",
+  :min_x_value => DateTime.strptime("1/1/73", '%m/%d/%y').to_time, # this must a Time object
   :timescale_divisions => "5 years",
   :add_popups => true,
   :popup_format => "%m/%d/%y",
@@ -44,15 +44,20 @@ graph = SVG::Graph::TimeSeries.new( {
 })
 graph.add_data( 
   :data => data1,
-  :title => "Ice Cream"
+  :title => "Ice Cream",
+  :template => '%d/%m/%y'
   )
 graph.add_data( 
   :data => data2,
-  :title => "Ice Cream Cones"
+  :title => "Ice Cream Cones",
+  :template => '%d/%m/%y'
 )
 graph.add_data( 
   :data => data3,
-  :title => "Sprinkles"
+  :title => "Sprinkles",
+  :template => '%d/%m/%y'
 )
-puts graph.burn
-
+#puts graph.burn
+File.open("timeseries.svg", "w") {|fout| 
+  fout.print( graph.burn )
+}

@@ -1,10 +1,5 @@
+require 'date'
 require_relative 'Plot'
-TIME_PARSE_AVAIL = (RUBY_VERSION =~ /1\.8\./) ? false : true
-if not TIME_PARSE_AVAIL then
-  require 'parsedate'
-else
-  require 'date'
-end
 
 module SVG
   module Graph
@@ -15,7 +10,7 @@ module SVG
     #   require 'SVG/Graph/TimeSeries'
     #   
     #   # Data sets are x,y pairs
-    #   projection = ["6/17/72", 11,    "1/11/72", 7,    "4/13/04 17:31", 11,
+    #   projection = ["6/17/72", 11,    "1/11/72", 7,    "4/13/04", 11,
     #                "9/11/01", 9,    "9/1/85", 2,    "9/1/88", 1,    "1/15/95", 13]
     #   actual = ["8/1/73", 18,    "3/1/77", 15,    "10/1/98", 4,
     #             "5/1/02", 14,    "3/1/95", 6,    "8/1/91", 12,    "12/1/87", 6,
@@ -32,8 +27,8 @@ module SVG
     #     :key => true,
     #     :scale_x_integers => true,
     #     :scale_y_integers => true,
-    #     :min_x_value => 0,
-    #     :min_y_value => 0,
+    #     :min_x_value => 0,  # Integer, Time, or parseable by DateTime#parse
+    #     :min_y_value => 0,  # Integer, Time, or parseable by DateTime#parse
     #     :show_data_values => true,
     #     :show_x_guidelines => true,
     #     :show_x_title => true,
@@ -46,13 +41,15 @@ module SVG
     #   })
     #   
     #   graph.add_data({
-    #           :data => projection,
+    #     :data => projection,
     #     :title => 'Projected',
+    #     :template => '%d/%m/%y'
     #   })
     #   
     #   graph.add_data({
-    #           :data => actual,
+    #     :data => actual,
     #     :title => 'Actual',
+    #     :template => '%d/%m/%y'
     #   })
     #   
     #   print graph.burn()
@@ -83,7 +80,7 @@ module SVG
     # and that the data in the datasets needn't be in order; they will be ordered
     # by the plot along the X-axis.
     # 
-    # The dates must be parseable by ParseDate, but otherwise can be
+    # The dates must be parseable by DateTime#parse or DateTime#strptime, but otherwise can be
     # any order of magnitude (seconds within the hour, or years)
     # 
     # = See also
@@ -140,31 +137,37 @@ module SVG
       #                                #                           ("14:20",6)  
       #   graph.add_data( 
       #     :data => d1,
-      #     :title => 'One'
+      #     :title => 'One',
+      #     :template => '%H:%M'
       #   )
       #   graph.add_data(
       #     :data => d2,
-      #     :title => 'Two'
+      #     :title => 'Two',
+      #     :template => '%H:%M'
       #   )
       #
       # Note that the data must be in time,value pairs. The time may be any date in
       # a format that is parseable by ParseDate, a Time object, or a number of seconds
       # after the unix epoch.
       def add_data data
+        @time_template = data[:template]
         data[:data].each_index do |i|
           data[:data][i] = parse_time(data[:data][i]).to_i if i % 2 == 0
         end
+        @time_template = nil # reset for the next data series
         super(data)
       end
 
 
       protected
 
+      
       def min_x_value=(value)
         t = parse_time(value)
         @min_x_value = t.to_i
       end
 
+      # value should be 
       def max_x_value=(value)
         t = parse_time(value)
         @max_x_value = t.to_i
@@ -192,12 +195,10 @@ module SVG
         when Time
           return time
         when String
-          if TIME_PARSE_AVAIL then
-            arr = DateTime.parse(time)
-            return arr.to_time
+          if @time_template.kind_of? String
+            return DateTime.strptime(time, @time_template).to_time
           else
-            arr = ParseDate.parsedate(time)
-            return Time.local( *arr[0,6].compact )
+            return DateTime.parse(time).to_time
           end
         when Integer
           return Time.at(time)
@@ -254,7 +255,8 @@ module SVG
         end
         min.step( max, scale_division ) {|v| rv << v}
         return rv
-      end
-    end
-  end
-end
+      end # get_x_values
+      
+    end # class TimeSeries
+  end # module Graph
+end # module SVG
