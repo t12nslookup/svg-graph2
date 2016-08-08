@@ -134,14 +134,21 @@ module SVG
       #   graph.add_data( 
       #     :data => d1,
       #     :title => 'Meetings'
+      #     :template => "TODO"
       #   )
       #   graph.add_data(
       #     :data => d2,
       #     :title => 'Plays'
+      #     :template => "TODO"
       #   )
       #
       # Note that the data must be in time,value pairs, and that the date format
-      # may be any date that is parseable by ParseDate.
+      # may be any date that is parseable by Date#strptime.
+      # By default the following template will be used:
+      # ""
+      # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html#method-c-strptime
+      # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/DateTime.html#method-c-strptime.
+      # 
       # Also note that, in this example, we're mixing scales; the data from d1
       # will probably not be discernable if both data sets are plotted on the same
       # graph, since d1 is too granular.

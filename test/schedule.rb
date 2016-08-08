@@ -39,5 +39,7 @@ graph.add_data(
   :title => "Data"
   )
 
-puts graph.burn
-
+#puts graph.burn
+File.open("schedule.svg", "w") {|fout| 
+  fout.print( graph.burn )
+}

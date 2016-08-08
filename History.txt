@@ -1,8 +1,12 @@
 === 1.1.0 / 2016-08-04
+* dropped support for ruby 1.8.7 [lumean]
 * Merge ErrBar graph from https://github.com/mondhs/svg-graph
 * Merge number formatting to have more readable floats from https://github.com/mondhs/svg-graph
-* fix warnings
-
+* fix warnings [lumean]
+* make TimeSeries and Schedule work with ruby >2.0 and the Date/DateTime stdlib [lumean]
+* dropped support for 'parsedate', instead TimeSeries and Schedule now accept a template to parse the date or time representation [lumean]
+* Add new locations for the labels (at the end of the axis instead of below / left from it) [lumean]
+* all ruby files in the test directory now run on ruby >2.0 and write output to files [lumean]
 
 === 1.0.5 / 2011-09-03
 * enabled all svg_graph tests[liehann]

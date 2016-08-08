@@ -46,5 +46,7 @@ graph.add_data(
   :data => data2,
   :title => "Dataset 2"
   )
-puts graph.burn
-
+#puts graph.burn
+File.open("plot.svg", "w") {|fout| 
+  fout.print( graph.burn )
+}
