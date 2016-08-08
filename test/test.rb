@@ -21,7 +21,8 @@ def gen klass, args, title, fields, female_data, male_data
       :data => male_data,
       :title => "Male"
     })
-  return graph.burn
+  #return graph.burn
+  return graph.burn_svg_only
 end
 
 File.open( "data.txt" ) { |fin|

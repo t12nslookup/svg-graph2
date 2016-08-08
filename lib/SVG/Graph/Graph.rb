@@ -222,6 +222,21 @@ module SVG
         
         return data
       end
+      
+      # Burns the graph but returns only the <svg> node as String without the 
+      # Doctype and XML Declaration. This allows easy integration into
+      # existing xml documents.
+      # 
+      # @return [String] the SVG node which represents the Graph
+      def burn_svg_only
+        # initialize all instance variables by burning the graph
+        burn
+        f = REXML::Formatters::Pretty.new(0)
+        f.compact = true
+        out = ''
+        f.write(@root, out)
+        return out
+      end
 
 
       #   Set the height of the graph box, this is the total height
