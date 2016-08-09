@@ -14,6 +14,7 @@ TODO
 * all ruby files in the test directory now run on ruby >2.0 and write output to files [lumean]
 * changed from autoload to static loading due to issues with unit-testing when the gem is not installed [lumean]
 * begin transition to minitest for tests
+* merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph
 
 === 1.0.5 / 2011-09-03
 * enabled all svg_graph tests[liehann]
