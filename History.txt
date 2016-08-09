@@ -13,6 +13,7 @@ TODO
 * dropped support for 'parsedate', instead TimeSeries and Schedule now accept a template to parse the date or time representation [lumean]
 * all ruby files in the test directory now run on ruby >2.0 and write output to files [lumean]
 * changed from autoload to static loading due to issues with unit-testing when the gem is not installed [lumean]
+* begin transition to minitest for tests
 
 === 1.0.5 / 2011-09-03
 * enabled all svg_graph tests[liehann]

@@ -14,6 +14,10 @@ Usage
 -----
 Yet to be written. Look at the original [SVG::Graph web page](http://www.germane-software.com/software/SVG/SVG::Graph/) for the moment.
 
+Contribute
+-----
+Pull requests are very welcome :-)
+
 Build
 -----
 
