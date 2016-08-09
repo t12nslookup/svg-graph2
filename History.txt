@@ -1,7 +1,7 @@
 TODO
 * fix axis titles positioning for timeseries and schedule graphs
 
-=== 2.0.0 / 2016-08-04
+=== 2.0.0 / 2016-08-09
 * dropped support for ruby 1.8.7 [lumean]
 * Merge ErrBar graph from https://github.com/mondhs/svg-graph
 * Merge number formatting to have more readable floats from https://github.com/mondhs/svg-graph
@@ -10,9 +10,9 @@ TODO
 * dropped support for 'parsedate', instead TimeSeries and Schedule now accept a template to parse the date or time representation [lumean]
 * all ruby files in the test directory now run on ruby >2.0 and write output to files [lumean]
 * changed from autoload to static loading due to issues with unit-testing when the gem is not installed [lumean]
-* begin transition to minitest for tests
-* merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph
-* fix wrong margins for labels after merge of number formatting
+* begin transition to minitest for tests [lumean]
+* merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph 
+* fix wrong margins for labels after merge of number formatting [lumean]
 * Add new option for locations for the axis titles (at the end of the axis instead of below / left from it) [lumean]
 * improved x-axis label location when x-axis marks are vertical and long [lumean]
 
