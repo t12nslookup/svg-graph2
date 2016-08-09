@@ -5,6 +5,7 @@ Description
 -----------
 This is an effort to revive the [SVG::Graph library](http://www.germane-software.com/software/SVG/SVG::Graph/) by Sean Russell.
 
+[Changelog](../master/History.txt)
 
 Warning
 -------

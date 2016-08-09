@@ -1,8 +1,5 @@
 TODO
-* Add new locations for the labels (at the end of the axis instead of below / left from it) [lumean]
-* improved x-axis label location when x-axis marks are vertical and long [lumean]
-* fix y-axis labels out of picture borders for bar graph
-
+* fix axis titles positioning for timeseries and schedule graphs
 
 === 2.0.0 / 2016-08-04
 * dropped support for ruby 1.8.7 [lumean]
@@ -15,6 +12,9 @@ TODO
 * changed from autoload to static loading due to issues with unit-testing when the gem is not installed [lumean]
 * begin transition to minitest for tests
 * merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph
+* fix wrong margins for labels after merge of number formatting
+* Add new option for locations for the axis titles (at the end of the axis instead of below / left from it) [lumean]
+* improved x-axis label location when x-axis marks are vertical and long [lumean]
 
 === 1.0.5 / 2011-09-03
 * enabled all svg_graph tests[liehann]

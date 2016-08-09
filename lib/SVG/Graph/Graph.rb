@@ -77,9 +77,11 @@ module SVG
       # [scale_integers] false
       # [show_x_title] false
       # [x_title] 'X Field names'
+      # [x_title_location] :middle | :end
       # [show_y_title] false
-      # [y_title_text_direction] :bt
+      # [y_title_text_direction] :bt | :tb
       # [y_title] 'Y Scale'
+      # [y_title_location] :middle | :end
       # [show_graph_title] false
       # [graph_title] 'Graph Title'
       # [show_graph_subtitle] false
@@ -104,12 +106,12 @@ module SVG
 
         init_with({
           :width                => 500,
-          :height                => 300,
+          :height               => 300,
           :show_x_guidelines    => false,
           :show_y_guidelines    => true,
           :show_data_values     => true,
 
-#          :min_scale_value      => 0,
+          :min_scale_value      => nil,
 
           :show_x_labels        => true,
           :stagger_x_labels     => false,
@@ -124,10 +126,12 @@ module SVG
 
           :show_x_title         => false,
           :x_title              => 'X Field names',
+          :x_title_location     => :middle,  # or :end
 
           :show_y_title         => false,
-          :y_title_text_direction => :bt,
+          :y_title_text_direction => :bt,  # other option is :tb
           :y_title              => 'Y Scale',
+          :y_title_location     => :middle,  # or :end
 
           :show_graph_title      => false,
           :graph_title          => 'Graph Title',
@@ -147,7 +151,7 @@ module SVG
           
           :no_css               =>false,
           :add_popups           =>false,
-          :number_format => '%.2f' 
+          :number_format        => '%.2f' 
         })
         set_defaults if self.respond_to? :set_defaults
         init_with config
@@ -256,7 +260,7 @@ module SVG
       attr_accessor :style_sheet
       #   (Bool) Show the value of each element of data on the graph
       attr_accessor :show_data_values
-      #   The point at which the Y axis starts, defaults to '0',
+      #   The point at which the Y axis starts, defaults to nil,
       #   if set to nil it will default to the minimum data value.
       attr_accessor :min_scale_value
       #   Whether to show labels on the X axis or not, defaults
@@ -305,6 +309,9 @@ module SVG
       attr_accessor :show_x_title
       #   What the title under X axis should be, e.g. 'Months'.
       attr_accessor :x_title
+      #   Where the x_title should be positioned, either in the :middle of the axis or
+      #   at the :end of the axis. Defaults to :middle
+      attr_accessor :x_title_location
       #   Whether to show the title under the Y axis labels,
       #   default is false, set to true to show.
       attr_accessor :show_y_title
@@ -314,6 +321,9 @@ module SVG
       attr_accessor :y_title_text_direction
       #   What the title under Y axis should be, e.g. 'Sales in thousands'.
       attr_accessor :y_title
+      #   Where the y_title should be positioned, either in the :middle of the axis or
+      #   at the :end of the axis. Defaults to :middle
+      attr_accessor :y_title_location
       #   Whether to show a title on the graph, defaults
       #   to false, set to true to show.
       attr_accessor :show_graph_title
@@ -324,41 +334,50 @@ module SVG
       attr_accessor :show_graph_subtitle
       #   What the subtitle on the graph should be.
       attr_accessor :graph_subtitle
-      #   Whether to show a key, defaults to false, set to
-      #   true if you want to show it.
+      #   Whether to show a key (legend), defaults to true, set to
+      #   false if you want to hide it.
       attr_accessor :key
       #   Where the key should be positioned, defaults to
       #   :right, set to :bottom if you want to move it.
       attr_accessor :key_position
-      # Set the font size (in points) of the data point labels
+      # Set the font size (in points) of the data point labels.
+      # Defaults to 12.
       attr_accessor :font_size
-      # Set the font size of the X axis labels
+      # Set the font size of the X axis labels.
+      # Defaults to 12.
       attr_accessor :x_label_font_size
-      # Set the font size of the X axis title
+      # Set the font size of the X axis title.
+      # Defaults to 14.
       attr_accessor :x_title_font_size
-      # Set the font size of the Y axis labels
+      # Set the font size of the Y axis labels.
+      # Defaults to 12.
       attr_accessor :y_label_font_size
-      # Set the font size of the Y axis title
+      # Set the font size of the Y axis title.
+      # Defaults to 14.
       attr_accessor :y_title_font_size
-      # Set the title font size
+      # Set the title font size.
+      # Defaults to 16.
       attr_accessor :title_font_size
-      # Set the subtitle font size
+      # Set the subtitle font size.
+      # Defaults to 14.
       attr_accessor :subtitle_font_size
-      # Set the key font size
+      # Set the key font size.
+      # Defaults to 10.
       attr_accessor :key_font_size
-      # Show guidelines for the X axis
+      # Show guidelines for the X axis, default is false
       attr_accessor :show_x_guidelines
-      # Show guidelines for the Y axis
+      # Show guidelines for the Y axis, default is true
       attr_accessor :show_y_guidelines
       # Do not use CSS if set to true.  Many SVG viewers do not support CSS, but
       # not using CSS can result in larger SVGs as well as making it impossible to
       # change colors after the chart is generated.  Defaults to false.
       attr_accessor :no_css
-      # Add popups for the data points on some graphs
+      # Add popups for the data points on some graphs, default is false.
       attr_accessor :add_popups
       # Customize popup radius
       attr_accessor :popup_radius
-      # Number format values and Y axis representation like 1.2345667 represent as 1.23
+      # Number format values and Y axis representation like 1.2345667 represent as 1.23,
+      # defaults to '%.2f'
       attr_accessor :number_format
 
 
@@ -385,15 +404,15 @@ module SVG
       # of the plot area.  Results in @border_left being set.
       def calculate_left_margin
         @border_left = 7
-        # Check for Y labels
-        max_y_label_height_px = @rotate_y_labels ? 
-          @y_label_font_size :
-          get_y_labels.max{|a,b| 
-            a.to_s.length<=>b.to_s.length
-          }.to_s.length * @y_label_font_size * 0.6
-        @border_left += max_y_label_height_px if @show_y_labels
-        @border_left += max_y_label_height_px + 10 if @stagger_y_labels
-        @border_left += y_title_font_size + 5 if @show_y_title
+        # Check size of Y labels
+        max_y_label_height_px = y_label_font_size
+        if !rotate_y_labels
+          max_y_label_height_px = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.6
+        end
+
+        @border_left += max_y_label_height_px if show_y_labels
+        @border_left += max_y_label_height_px + 10 if stagger_y_labels
+        @border_left += y_title_font_size + 5 if (show_y_title && (y_title_location ==:middle))
       end
 
 
@@ -414,6 +433,9 @@ module SVG
           @border_right += KEY_BOX_SIZE
           @border_right += 10    # Some padding around the box
         end
+        if (x_title_location == :end)
+          @border_right = [@border_right, x_title.length * x_title_font_size * 0.6].max 
+        end
       end
 
 
@@ -421,7 +443,7 @@ module SVG
       # of the plot area.  Results in @border_top being set.
       def calculate_top_margin
         @border_top = 5
-        @border_top += title_font_size if show_graph_title
+        @border_top += [title_font_size, y_title_font_size].max if (show_graph_title || (y_title_location ==:end))
         @border_top += 5
         @border_top += subtitle_font_size if show_graph_subtitle
       end
@@ -454,6 +476,18 @@ module SVG
 
       end
 
+      # returns the longest label from an array of labels as string
+      # each object in the array must support .to_s
+      def get_longest_label(arry)
+        longest_label = arry.max{|a,b| 
+              # respect number_format
+              a = @number_format % a if numeric?(a) 
+              b = @number_format % b if numeric?(b)
+              a.to_s.length <=> b.to_s.length
+            }
+        longest_label = @number_format % longest_label if numeric?(longest_label)
+        return longest_label
+      end
       
       # Override this (and call super) to change the margin to the bottom
       # of the plot area.  Results in @border_bottom being set.
@@ -464,15 +498,15 @@ module SVG
           @border_bottom += 10
         end
         if show_x_labels
-		  max_x_label_height_px = (not rotate_x_labels) ? 
-            x_label_font_size :
-            get_x_labels.max{|a,b| 
-              a.to_s.length<=>b.to_s.length
-            }.to_s.length * x_label_font_size * 0.6
+          max_x_label_height_px = x_label_font_size
+          if rotate_x_labels     
+            max_x_label_height_px = get_longest_label(get_x_labels).to_s.length * x_label_font_size * 0.6
+          end
+
           @border_bottom += max_x_label_height_px
           @border_bottom += max_x_label_height_px + 10 if stagger_x_labels
         end
-        @border_bottom += x_title_font_size + 5 if show_x_title
+        @border_bottom += x_title_font_size + 5 if (show_x_title && (x_title_location ==:middle))
       end
 
 
@@ -702,11 +736,16 @@ module SVG
 
         if show_x_title
           y = @graph_height + @border_top + x_title_font_size
-          if show_x_labels
-            y += x_label_font_size + 5 if stagger_x_labels
-            y += x_label_font_size + 5
+          if (x_title_location == :end)
+            y = y - x_title_font_size/2.0
+            x = width - x_title.length * x_title_font_size * 0.6/2.0
+          else
+            x = width / 2
+            if show_x_labels
+              y += x_label_font_size + 5 if stagger_x_labels
+              y += x_label_font_size + 5
+            end
           end
-          x = width / 2
 
           @root.add_element("text", {
             "x" => x.to_s,
@@ -717,21 +756,29 @@ module SVG
 
         if show_y_title
           x = y_title_font_size + (y_title_text_direction==:bt ? 3 : -3)
-          y = height / 2
-
+          if (y_title_location == :end)
+            x = y_title.length * y_title_font_size * 0.6/2.0 # positioning is not optimal but ok for now
+            y = @border_top - y_title_font_size/2.0
+          else
+            y = height / 2
+          end
           text = @root.add_element("text", {
             "x" => x.to_s,
             "y" => y.to_s,
             "class" => "yAxisTitle",
           })
           text.text = y_title.to_s
-          if y_title_text_direction == :bt
-            text.attributes["transform"] = "rotate( -90, #{x}, #{y} )"
-          else
-            text.attributes["transform"] = "rotate( 90, #{x}, #{y} )"
+          # only rotate text if it is at the middle left of the y-axis
+          # ignore the text_direction if y_title_location is set to :end
+          if (y_title_location != :end)
+            if y_title_text_direction == :bt
+              text.attributes["transform"] = "rotate( -90, #{x}, #{y} )"
+            else
+              text.attributes["transform"] = "rotate( 90, #{x}, #{y} )"
+            end
           end
         end
-      end
+      end # draw_titles
 
       def keys 
         i = 0
