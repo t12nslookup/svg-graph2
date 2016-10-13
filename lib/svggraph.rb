@@ -1,6 +1,6 @@
 module SVG
   module Graph
-    VERSION = '2.0.1'
+    VERSION = '2.0.2.beta'
   end
 end
 require_relative 'SVG/Graph/DataPoint'

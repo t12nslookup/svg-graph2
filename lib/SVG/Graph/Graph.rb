@@ -192,12 +192,15 @@ module SVG
       #
       # This method will croak unless at least one data set has
       # been added to the graph object.
-      #
+      # 
       #   print graph.burn
+      # 
       def burn
         raise "No data available" unless @data.size > 0
         
-        calculations if methods.include? 'calculations'
+        # undocumented and not used in any sublass
+        # to be removed
+        #calculations if methods.include? 'calculations'
 
         start_svg
         calculate_graph_dimensions
@@ -205,7 +208,7 @@ module SVG
         draw_graph
         draw_titles
         draw_legend
-        draw_data
+        draw_data  # this method needs to be implemented by child classes
         @graph.add_element( @foreground )
         style
 
@@ -382,7 +385,9 @@ module SVG
 
 
       protected
-
+      
+      # implementation of quicksort
+      # used for Schedule and Plot
       def sort( *arrys )
         sort_multiple( arrys )
       end
@@ -402,29 +407,37 @@ module SVG
 
       # Override this (and call super) to change the margin to the left
       # of the plot area.  Results in @border_left being set.
+      #
+      # By default it is 7 + max label height(font size or string length, depending on rotate) + title height
       def calculate_left_margin
         @border_left = 7
         # Check size of Y labels
-        max_y_label_height_px = y_label_font_size
-        if !rotate_y_labels
-          max_y_label_height_px = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.6
+        @border_left += max_y_label_width_px
+        if (show_y_title && (y_title_location ==:middle))
+          @border_left += y_title_font_size + 5 
         end
-
-        @border_left += max_y_label_height_px if show_y_labels
-        @border_left += max_y_label_height_px + 10 if stagger_y_labels
-        @border_left += y_title_font_size + 5 if (show_y_title && (y_title_location ==:middle))
       end
 
-
       # Calculates the width of the widest Y label.  This will be the
-      # character height if the Y labels are rotated
+      # character height if the Y labels are rotated. Returns 0 if labels
+      # are not shown
       def max_y_label_width_px
-        return font_size if rotate_y_labels
+        return 0 if !show_y_labels
+        if !rotate_y_labels
+          max_width = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.6
+        else
+          max_width = y_label_font_size
+        end
+        max_width += 10 if stagger_y_labels
+        return max_width
       end
 
 
       # Override this (and call super) to change the margin to the right
       # of the plot area.  Results in @border_right being set.
+      #
+      # By default it is 7 + width of the key if it is placed on the right
+      #   or the maximum of this value or the tilte length (if title is placed at :end)
       def calculate_right_margin
         @border_right = 7
         if key and key_position == :right
@@ -441,6 +454,8 @@ module SVG
 
       # Override this (and call super) to change the margin to the top
       # of the plot area.  Results in @border_top being set.
+      #
+      # This is 5 + the Title size + 5 + subTitle size
       def calculate_top_margin
         @border_top = 5
         @border_top += [title_font_size, y_title_font_size].max if (show_graph_title || (y_title_location ==:end))
@@ -448,32 +463,42 @@ module SVG
         @border_top += subtitle_font_size if show_graph_subtitle
       end
 
+      def add_datapoint_text_and_popup( x, y, label )
+        add_popup( x, y, label )
+        make_datapoint_text( x, y, label )
+      end
 
       # Adds pop-up point information to a graph.
-      def add_popup( x, y, label )
-        txt_width = label.length * font_size * 0.6 + 10
-        tx = (x+txt_width > width ? x-5 : x+5)
-        t = @foreground.add_element( "text", {
-          "x" => tx.to_s,
-          "y" => (y - font_size).to_s,
-          "visibility" => "hidden",
-        })
-        t.attributes["style"] = "fill: #000; "+
-          (x+txt_width > width ? "text-anchor: end;" : "text-anchor: start;")
-        t.text = label.to_s
-        t.attributes["id"] = t.object_id.to_s
-
-        @foreground.add_element( "circle", {
-          "cx" => x.to_s,
-          "cy" => y.to_s,
-          "r" => "#{@popup_radius}",
-          "style" => "opacity: 0",
-          "onmouseover" => 
-            "document.getElementById(#{t.object_id}).setAttribute('visibility', 'visible' )",
-          "onmouseout" => 
-            "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
-        })
-
+      def add_popup( x, y, label, style="" )
+        if add_popups
+          if( numeric?(label) )
+            label = @number_format % label
+          end
+          txt_width = label.length * font_size * 0.6 + 10
+          tx = (x+txt_width > width ? x-5 : x+5)
+          t = @foreground.add_element( "text", {
+            "x" => tx.to_s,
+            "y" => (y - font_size).to_s,
+            "class" => "dataPointLabel",
+            "visibility" => "hidden",
+          })
+          t.attributes["style"] = "stroke-width: 2; fill: #000; #{style}"+
+            (x+txt_width > width ? "text-anchor: end;" : "text-anchor: start;")
+          t.text = label.to_s
+          t.attributes["id"] = t.object_id.to_s
+          
+          # add a circle to catch the mouseover
+          @foreground.add_element( "circle", {
+            "cx" => x.to_s,
+            "cy" => y.to_s,
+            "r" => "#{popup_radius}",
+            "style" => "opacity: 0",
+            "onmouseover" => 
+              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'visible' )",
+            "onmouseout" => 
+              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
+          })
+        end # add_popups
       end
 
       # returns the longest label from an array of labels as string
@@ -491,22 +516,32 @@ module SVG
       
       # Override this (and call super) to change the margin to the bottom
       # of the plot area.  Results in @border_bottom being set.
+      #
+      # 7 + max label height(font size or string length, depending on rotate) + title height
       def calculate_bottom_margin
         @border_bottom = 7
         if key and key_position == :bottom
           @border_bottom += @data.size * (font_size + 5)
           @border_bottom += 10
         end
-        if show_x_labels
-          max_x_label_height_px = x_label_font_size
-          if rotate_x_labels     
-            max_x_label_height_px = get_longest_label(get_x_labels).to_s.length * x_label_font_size * 0.6
-          end
-
-          @border_bottom += max_x_label_height_px
-          @border_bottom += max_x_label_height_px + 10 if stagger_x_labels
+        @border_bottom += max_x_label_height_px
+        if (show_x_title && (x_title_location ==:middle))
+          @border_bottom += x_title_font_size + 5
         end
-        @border_bottom += x_title_font_size + 5 if (show_x_title && (x_title_location ==:middle))
+      end
+      
+      # returns the maximum height of the labels respect the rotation or 0 if
+      # the labels are not shown
+      def max_x_label_height_px
+        return 0 if !show_x_labels
+        
+        if rotate_x_labels     
+          max_height = get_longest_label(get_x_labels).to_s.length * x_label_font_size * 0.6
+        else
+          max_height = x_label_font_size
+        end
+        max_height += 10 if stagger_x_labels
+        return max_height
       end
 
 
@@ -559,12 +594,14 @@ module SVG
           if( numeric?(value) )
             textStr = @number_format % value
           end
+          # white background for better readability
           @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
             "class" => "dataPointLabel",
             "style" => "#{style} stroke: #fff; stroke-width: 2;"
           }).text = textStr 
+          # actual label
           text = @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
@@ -574,7 +611,7 @@ module SVG
           text.attributes["style"] = style if style.length > 0
         end
       end
-
+      
 
       # Draws the X axis labels
       def draw_x_labels
@@ -735,16 +772,12 @@ module SVG
         end
 
         if show_x_title
-          y = @graph_height + @border_top + x_title_font_size
           if (x_title_location == :end)
-            y = y - x_title_font_size/2.0
-            x = width - x_title.length * x_title_font_size * 0.6/2.0
+            y = @graph_height + @border_top + x_title_font_size/2.0
+            x = @border_left + @graph_width + x_title.length * x_title_font_size * 0.6/2.0
           else
-            x = width / 2
-            if show_x_labels
-              y += x_label_font_size + 5 if stagger_x_labels
-              y += x_label_font_size + 5
-            end
+            y = @graph_height + @border_top + x_title_font_size + max_x_label_height_px
+            x = @border_left + @graph_width / 2
           end
 
           @root.add_element("text", {
@@ -755,12 +788,12 @@ module SVG
         end
 
         if show_y_title
-          x = y_title_font_size + (y_title_text_direction==:bt ? 3 : -3)
           if (y_title_location == :end)
             x = y_title.length * y_title_font_size * 0.6/2.0 # positioning is not optimal but ok for now
             y = @border_top - y_title_font_size/2.0
           else
-            y = height / 2
+            x = y_title_font_size + (y_title_text_direction==:bt ? 3 : -3)
+            y = @border_top + @graph_height / 2
           end
           text = @root.add_element("text", {
             "x" => x.to_s,
@@ -898,10 +931,17 @@ module SVG
 
 
       # Override and place code to add defs here
+      # @param defs [REXML::Element]
       def add_defs defs
       end
 
-
+      # Creates the XML document and adds the root svg element with 
+      # the width, height and viewBox attributes already set.
+      # The element is stored as @root. 
+      #
+      # In addition a rectangle background of the same size as the 
+      # svg is added.
+      #
       def start_svg
         # Base document
         @doc = Document.new
@@ -946,7 +986,7 @@ module SVG
         })
       end
 
-
+      #
       def calculate_graph_dimensions
         calculate_left_margin
         calculate_right_margin

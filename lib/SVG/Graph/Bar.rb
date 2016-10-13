@@ -137,7 +137,8 @@ module SVG
               "class" => "fill#{dataset_count+1}"
             })
 
-            make_datapoint_text(left + bar_width/2.0, top - 6, value.to_s)
+            make_datapoint_text(left + bar_width/2.0, top - font_size/2, value.to_s)
+            add_popup(left + bar_width/2.0, top , value.to_s)
             dataset_count += 1
           end
           field_count += 1
