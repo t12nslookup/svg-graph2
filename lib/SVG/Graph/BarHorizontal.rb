@@ -79,16 +79,17 @@ module SVG
         top_pad = range == 0 ? 10 : range / 20.0
         scale_range = (maxvalue + top_pad) - minvalue
 
-        scale_division = scale_divisions || (scale_range / 10.0)
+        @x_scale_division = scale_divisions || (scale_range / 10.0)
 
         if scale_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          @x_scale_division = @x_scale_division < 1 ? 1 : @x_scale_division.round
         end
 
         rv = []
-        maxvalue = maxvalue%scale_division == 0 ? 
-          maxvalue : maxvalue + scale_division
-        minvalue.step( maxvalue, scale_division ) {|v| rv << v}
+        if maxvalue%@x_scale_division != 0
+          maxvalue = maxvalue + @x_scale_division
+        end
+        minvalue.step( maxvalue, @x_scale_division ) {|v| rv << v}
         return rv
       end
 
@@ -117,7 +118,7 @@ module SVG
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
-            value = dataset[:data][i]
+            value = dataset[:data][i]/@x_scale_division
             
             top = @graph_height - (fieldheight * field_count)
             top += (bar_height * dataset_count) if stack == :side
@@ -138,9 +139,9 @@ module SVG
             })
 
             make_datapoint_text( 
-              left+length+5, top+y_mod, value, "text-anchor: start; "
+              left+length+5, top+y_mod, dataset[:data][i].to_s, "text-anchor: start; "
               )
-            add_popup(left + bar_width/2.0, top , value.to_s)
+            add_popup(left+length, top+y_mod , dataset[:data][i].to_s)
             dataset_count += 1
           end
           field_count += 1

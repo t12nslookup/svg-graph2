@@ -78,16 +78,17 @@ module SVG
         top_pad = range == 0 ? 10 : range / 20.0
         scale_range = (maxvalue + top_pad) - minvalue
 
-        scale_division = scale_divisions || (scale_range / 10.0)
+        @y_scale_division = scale_divisions || (scale_range / 10.0)
 
         if scale_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          @y_scale_division = @y_scale_division < 1 ? 1 : @y_scale_division.round
         end
 
         rv = []
-        maxvalue = maxvalue%scale_division == 0 ? 
-          maxvalue : maxvalue + scale_division
-        minvalue.step( maxvalue, scale_division ) {|v| rv << v}
+        if maxvalue%@y_scale_division != 0
+          maxvalue = maxvalue + @y_scale_division
+        end
+        minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end
 
@@ -121,7 +122,7 @@ module SVG
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
           
-            value = dataset[:data][i]
+            value = dataset[:data][i]/@y_scale_division
             
             left = (fieldwidth * field_count)
             
@@ -138,8 +139,8 @@ module SVG
               "class" => "fill#{dataset_count+1}"
             })
 
-            make_datapoint_text(left + bar_width/2.0, top - font_size/2, value.to_s)
-            add_popup(left + bar_width/2.0, top , value.to_s)
+            make_datapoint_text(left + bar_width/2.0, top - font_size/2, dataset[:data][i].to_s)
+            add_popup(left + bar_width/2.0, top , dataset[:data][i].to_s)
             dataset_count += 1
           end
           field_count += 1

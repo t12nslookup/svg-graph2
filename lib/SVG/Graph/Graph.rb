@@ -599,7 +599,7 @@ module SVG
             textStr = @number_format % value
           end
           # change anchor is label overlaps axis
-          if x < textStr.length * font_size * 0.6
+          if x < textStr.length/2 * font_size * 0.6
             style << "text-anchor: start;"
           end
           # white background for better readability
@@ -636,6 +636,10 @@ module SVG
             end
 
             if step == 0 then
+              label = label.to_s
+              if( numeric?(label) )
+                label = @number_format % label
+              end
               text = @graph.add_element( "text" )
               text.attributes["class"] = "xAxisLabels"
               text.text = label.to_s
