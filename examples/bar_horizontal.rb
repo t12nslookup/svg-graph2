@@ -15,6 +15,7 @@ options = {
   :scale_divisions => 1,
   :x_title_location  => :end,
   :show_y_title      => true,
+  :rotate_y_labels   => false,
   :y_title           => 'Age in years',
   :y_title_location  => :end,
   :add_popups        => true,
@@ -28,7 +29,7 @@ g = SVG::Graph::BarHorizontal.new(options)
 
 g.add_data( {
     :data => female_data,
-    :title => "Female very very long legend which should be line shortened"
+    :title => "Female"
   })
 g.add_data( {
     :data => male_data,

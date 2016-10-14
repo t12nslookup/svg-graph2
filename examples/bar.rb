@@ -28,7 +28,7 @@ g = SVG::Graph::Bar.new(options)
 
 g.add_data( {
     :data => female_data,
-    :title => "Female very very long legend which should be line shortened"
+    :title => "Female"
   })
 g.add_data( {
     :data => male_data,

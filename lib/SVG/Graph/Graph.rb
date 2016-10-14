@@ -282,7 +282,7 @@ module SVG
       #   Default it false, to turn on set to true.
       attr_accessor :rotate_x_labels
       #   This turns the Y axis labels by 90 degrees.
-      #   Default it false, to turn on set to true.
+      #   Default it true, to turn on set to false.
       attr_accessor :rotate_y_labels
       #   How many "steps" to use between displayed X axis labels,
       #   a step of one means display every label, a step of two results
