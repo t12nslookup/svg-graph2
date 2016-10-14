@@ -67,7 +67,7 @@ module SVG
           :show_x_guidelines  => true,
           :show_y_guidelines  => false
         )
-        self.right_align = self.right_font = 1
+        # self.right_align = self.right_font = 1
       end
   
       protected
@@ -103,9 +103,10 @@ module SVG
       def draw_data
         minvalue = min_value
         fieldheight = field_height
-
-        unit_size = (@graph_width.to_f - font_size*2*right_font ) /
-                        (get_x_labels.max - get_x_labels.min )
+        # number of steps in px between x-labels
+        # unit_size = (@graph_width.to_f - font_size*2*right_font ) /
+        #                 (get_x_labels.max - get_x_labels.min )
+        unit_size = field_width
         bargap = bar_gap ? (fieldheight < 10 ? fieldheight / 2 : 10) : 0
 
         bar_height = fieldheight - bargap
@@ -139,6 +140,7 @@ module SVG
             make_datapoint_text( 
               left+length+5, top+y_mod, value, "text-anchor: start; "
               )
+            add_popup(left + bar_width/2.0, top , value.to_s)
             dataset_count += 1
           end
           field_count += 1

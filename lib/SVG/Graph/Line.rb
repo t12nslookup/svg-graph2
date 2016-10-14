@@ -45,7 +45,10 @@ module SVG
     # http://www.germane-software/repositories/public/SVG/test/single.rb
     # 
     # = Notes
-    # 
+    # Only number of fileds datapoints will be drawn, additional data values
+    # are ignored. Nil values in data are  skipped and
+    # interpolated as straight line to the next datapoint.
+    #
     # The default stylesheet handles upto 10 data sets, if you
     # use more you must create your own stylesheet and add the
     # additional settings for the extra data sets. You will know
@@ -78,65 +81,64 @@ module SVG
       # Fill in the area under the plot if true
       attr_accessor :area_fill
 
-        # The constructor takes a hash reference, fields (the names for each
-        # field on the X axis) MUST be set, all other values are defaulted to 
-        # those shown above - with the exception of style_sheet which defaults
-        # to using the internal style sheet.
-        def initialize config
-            raise "fields was not supplied or is empty" unless config[:fields] &&
-            config[:fields].kind_of?(Array) &&
-            config[:fields].length > 0
-            super
-        end
+      # The constructor takes a hash reference, :fields (the names for each
+      # field on the X axis) MUST be set, all other values are defaulted to 
+      # those shown above - with the exception of style_sheet which defaults
+      # to using the internal style sheet.
+      def initialize config
+          raise "fields was not supplied or is empty" unless config[:fields] &&
+          config[:fields].kind_of?(Array) &&
+          config[:fields].length > 0
+          super
+      end
 
       # In addition to the defaults set in Graph::initialize, sets
       # [show_data_points] true
       # [show_data_values] true
       # [stacked] false
       # [area_fill] false
-        def set_defaults
+      def set_defaults
         init_with(
-        :show_data_points   => true,
-        :show_data_values   => true,
-        :stacked            => false,
-        :area_fill          => false
+          :show_data_points   => true,
+          :show_data_values   => true,
+          :stacked            => false,
+          :area_fill          => false
         )
-        
-
-        self.top_align = self.top_font = self.right_align = self.right_font = 1
-        end
+      # self.top_align = self.top_font = self.right_align = self.right_font = 1
+      end
 
       protected
 
-        def max_value
-            max = 0
-            
-            if (stacked == true) then
-              sums = Array.new(@config[:fields].length).fill(0)
-            
-              @data.each do |data|
-                sums.each_index do |i|
-                  sums[i] += data[:data][i].to_f
-                end
-              end
-              
-              max = sums.max
-            else
-              max = @data.collect{|x| x[:data].max}.max
+      def max_value
+        max = 0
+        if stacked
+          sums = Array.new(@config[:fields].length).fill(0)
+        
+          @data.each do |data|
+            sums.each_index do |i|
+              sums[i] += data[:data][i].to_f
             end
-            
-            return max
+          end
+          max = sums.max
+        else
+          # compact removes nil values when computing the max
+          max = @data.collect{ |x|
+            x[:data].compact.max
+          }.max
         end
+        
+        return max
+      end
 
       def min_value
         min = 0
-        
-        if (min_scale_value.nil? == false) then
+        # compact removes nil values
+        if (!min_scale_value.nil?) then
           min = min_scale_value
         elsif (stacked == true) then
-          min = @data[-1][:data].min
+          min = @data[-1][:data].compact.min
         else
-          min = @data.collect{|x| x[:data].min}.min
+          min = @data.collect{|x| x[:data].compact.min}.min
         end
 
         return min
@@ -155,58 +157,75 @@ module SVG
       def get_y_labels
         maxvalue = max_value
         minvalue = min_value
+        #
         range = maxvalue - minvalue
-        top_pad = range == 0 ? 10 : range / 20.0
+        if range == 0
+          top_pad = 10
+        else
+          top_pad = range / 20.0
+        end
         scale_range = (maxvalue + top_pad) - minvalue
 
-        scale_division = scale_divisions || (scale_range / 10.0)
+        @y_scale_division = scale_divisions || (scale_range / 10.0)
 
         if scale_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          # only use integers if there will be at least 3 labels and division is > 0.5
+          if maxvalue/@y_scale_division >= 3 && @y_scale_division > 0.5
+            @y_scale_division = @y_scale_division.round
+          end
         end
 
         rv = []
-        maxvalue = maxvalue%scale_division == 0 ? 
-          maxvalue : maxvalue + scale_division
-        minvalue.step( maxvalue, scale_division ) {|v| rv << v}
+        # make sure we have at least one label higher than the max_value
+        if maxvalue%@y_scale_division != 0
+          maxvalue = maxvalue + @y_scale_division
+        end 
+        minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end
 
       def calc_coords(field, value, width = field_width, height = field_height)
         coords = {:x => 0, :y => 0}
         coords[:x] = width * field
-        coords[:y] = @graph_height - value * height
+        coords[:y] = @graph_height - value/@y_scale_division * height
       
         return coords
       end
 
       def draw_data
         minvalue = min_value
-        fieldheight = (@graph_height.to_f - font_size*2*top_font) / 
-                         (get_y_labels.max - get_y_labels.min)
+        #fieldheight = (@graph_height.to_f - font_size*2*top_font) / 
+        #                 (get_y_labels.max - get_y_labels.min)
+        fieldheight = field_height
         fieldwidth = field_width
         line = @data.length
 
         prev_sum = Array.new(@config[:fields].length).fill(0)
-        cum_sum = Array.new(@config[:fields].length).fill(-minvalue)
+        cum_sum = Array.new(@config[:fields].length).fill(nil)
 
         for data in @data.reverse
           lpath = ""
           apath = ""
-
-          if not stacked then cum_sum.fill(-minvalue) end
           
-          data[:data].each_index do |i|
-            cum_sum[i] += data[:data][i]
-            
+          # reset cum_sum if we are not in a stacked graph
+          if not stacked then cum_sum.fill(nil) end
+          
+          # only consider as many datapoints as we have fields
+          @config[:fields].each_index do |i|
+            next if data[:data][i].nil?
+            if cum_sum[i].nil? #first time init
+              cum_sum[i] = data[:data][i] - minvalue
+            else # in case of stacked
+              cum_sum[i] += data[:data][i]
+            end
             c = calc_coords(i, cum_sum[i], fieldwidth, fieldheight)
-            
             lpath << "#{c[:x]} #{c[:y]} "
           end
         
           if area_fill
             if stacked then
               (prev_sum.length - 1).downto 0 do |i|
+                next if prev_sum[i].nil?
                 c = calc_coords(i, prev_sum[i], fieldwidth, fieldheight)
                 
                 apath << "#{c[:x]} #{c[:y]} "
@@ -229,21 +248,27 @@ module SVG
             "class" => "line#{line}"
           })
           
-          if show_data_points || show_data_values
+          if show_data_points || show_data_values || add_popups
             cum_sum.each_index do |i|
+              # skip datapoint if nil
+              next if cum_sum[i].nil?
+              c = calc_coords(i, cum_sum[i], fieldwidth, fieldheight)
               if show_data_points
                 @graph.add_element( "circle", {
-                  "cx" => (fieldwidth * i).to_s,
-                  "cy" => (@graph_height - cum_sum[i] * fieldheight).to_s,
+                  # "cx" => (fieldwidth * i).to_s,
+                  # "cy" => (@graph_height - cum_sum[i] * fieldheight).to_s,
+                  "cx" => c[:x].to_s,
+                  "cy" => c[:y].to_s,
                   "r" => "2.5",
                   "class" => "dataPoint#{line}"
                 })
               end
-              make_datapoint_text( 
-                fieldwidth * i, 
-                @graph_height - cum_sum[i] * fieldheight - 6,
-                cum_sum[i] + minvalue
-              )
+              #x = fieldwidth * i
+              #y = @graph_height - cum_sum[i] * fieldheight
+              #make_datapoint_text( x, y - font_size/2, cum_sum[i] + minvalue)
+              #add_popup(x, y, cum_sum[i] + minvalue)
+              make_datapoint_text( c[:x], c[:y] - font_size/2, cum_sum[i] + minvalue)
+              add_popup(c[:x], c[:y], cum_sum[i] + minvalue)
             end
           end
 

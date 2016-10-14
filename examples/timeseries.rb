@@ -1,4 +1,4 @@
-require_relative '../lib/SVG/Graph/TimeSeries'
+require 'SVG/Graph/TimeSeries'
 
 
 title = "Plot"

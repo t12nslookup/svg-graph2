@@ -61,7 +61,7 @@ module SVG
       # See Graph::initialize and BarBase::set_defaults
       def set_defaults 
         super
-        self.top_align = self.top_font = 1
+        # self.top_align = self.top_font = 1
       end
 
       protected
@@ -99,8 +99,9 @@ module SVG
         minvalue = min_value
         fieldwidth = field_width
 
-        unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
-                          (get_y_labels.max - get_y_labels.min)
+        # unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
+        #                   (get_y_labels.max - get_y_labels.min)
+        unit_size = field_height
         bargap = bar_gap ? (fieldwidth < 10 ? fieldwidth / 2 : 10) : 0
 
         bar_width = fieldwidth - bargap

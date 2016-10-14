@@ -1,5 +1,4 @@
-# require 'SVG/Graph/Bar'
-require_relative '../lib/svggraph'
+require 'SVG/Graph/Bar'
 
 x_axis = ['1-10', '10-30', '30-50', '50-70', 'older']
 
@@ -12,7 +11,7 @@ options = {
   :show_graph_title  => true,
   :show_x_title      => true,
   :x_title           => 'Age in years',
-  :rotate_x_labels   => true,
+  :rotate_x_labels   => false,
   :x_title_location  => :end,
   :show_y_title      => true,
   :y_title           => 'kg/year',
@@ -37,4 +36,4 @@ g.add_data( {
 
 # graph.burn            # this returns a full valid xml document containing the graph  
 # graph.burn_svg_only   # this only returns the <svg>...</svg> node
-File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
+File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md

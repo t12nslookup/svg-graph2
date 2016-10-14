@@ -1,32 +1,33 @@
-require_relative '../lib/SVG/Graph/Plot'
+require 'SVG/Graph/Line'
 
 
-title = "Plot"
+title = "Line"
 #data1 = []
 #(rand(10)+5).times{
 #  data1 << rand(20)
 #  data1 << rand(20)
 #}
-data1 = [6.1, 11.2, 0.3, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19.44, 0.555, 3.6666, 13.77777, 7.888888, 9.9999999]
+data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19.44, 0.555, 3.6666, 13.77777, 7.888888, 9.9999999]
 #data2 = []
 #(rand(10)+5).times{
 #  data2 << rand(20)
 #  data2 << rand(20)
 #}
-data2 = [0, 18, 8, 15, 9, 4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 4, 17, 2, 12]
+data2 = [4, 18, 3, 7, 8, 15, 13, 2, 9, 4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 4, 17, 2, 12]
 
+field = %w{jan feb mar apr may jun jul aug}
 
-graph = SVG::Graph::Plot.new( {
+graph = SVG::Graph::Line.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
   :show_graph_title => true,
-  :no_css => true,
   :key => true,
-  :scale_x_integers => true,
-  :scale_y_integers => false,
-  :min_x_value => 0,
-  :min_y_value => 0,
+  :stacked => false,
+  :fields => field,
+  :area_fill => true,
+  :scale_integers => true,
+  :min_scale_value => 0,
   :show_data_labels => true,
   :show_x_guidelines => true,
   :show_x_title => true,
@@ -47,6 +48,6 @@ graph.add_data(
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open("plot.svg", "w") {|fout| 
+File.open("line.svg", "w") {|fout| 
   fout.print( graph.burn )
 }

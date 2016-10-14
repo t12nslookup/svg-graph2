@@ -102,7 +102,7 @@ module SVG
                   :show_lines        => true,
                   :round_popups      => true
                  )
-                 self.top_align = self.right_align = self.top_font = self.right_font = 1
+                 # self.top_align = self.right_align = self.top_font = self.right_font = 1
       end
 
       # Determines the scaling for the X axis divisions.
@@ -143,32 +143,41 @@ module SVG
 
 
       # Adds data to the plot.  The data must be in X,Y pairs; EG
-      #   [ 1, 2 ]    # A data set with 1 point: (1,2)
-      #   [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6)  
-      def add_data(data)
-	      
-        @data = [] unless @data
-
-        raise "No data provided by #{conf.inspect}" unless data[:data] and
-        data[:data].kind_of? Array
+      #   data_set1 = [ 1, 2 ]    # A data set with 1 point: (1,2)
+      #   data_set2 = [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6) 
+      #   
+      #   graph.add_data({
+      #     :data => data_set1,
+      #     :title => 'single point'
+      #   })   
+      #   graph.add_data({
+      #     :data => data_set2,
+      #     :title => 'two points'
+      #   })         
+      def add_data(conf)
+	      @data ||= []
+        # remove nil values
+        conf[:data] = conf[:data].compact
+        raise "No data provided by #{conf.inspect}" unless conf[:data] and
+          conf[:data].kind_of? Array
         raise "Data supplied must be x,y pairs!  "+
           "The data provided contained an odd set of "+
-          "data points" unless data[:data].length % 2 == 0
-        return if data[:data].length == 0
+          "data points" unless conf[:data].length % 2 == 0
+        return if conf[:data].length == 0
 
-        data[:description] ||= Array.new(data[:data].size/2)
-        if data[:description].size != data[:data].size/2
-          raise "Description for popups does not have same size as provided data: #{data[:description].size} vs #{data[:data].size/2}"
+        conf[:description] ||= Array.new(conf[:data].size/2)
+        if conf[:description].size != conf[:data].size/2
+          raise "Description for popups does not have same size as provided data: #{conf[:description].size} vs #{conf[:data].size/2}"
         end
 
         x = []
         y = []
-        data[:data].each_index {|i|
-          (i%2 == 0 ? x : y) << data[:data][i]
+        conf[:data].each_index {|i|
+          (i%2 == 0 ? x : y) << conf[:data][i]
         }
-        sort( x, y, data[:description] )
-        data[:data] = [x,y]
-        @data << data
+        sort( x, y, conf[:description] )
+        conf[:data] = [x,y]
+        @data << conf
       end
 
       protected
@@ -231,11 +240,13 @@ module SVG
       alias :get_x_labels :get_x_values
 
       def field_width
+        # exclude values which are outside max_x_range
         values = get_x_values
         max = max_x_range
         dx = (max - values[-1]).to_f / (values[-1] - values[-2])
-        (@graph_width.to_f - font_size*2*right_font) /
-          (values.length + dx - right_align)
+        #(@graph_width.to_f - font_size*2*right_font) /
+        #  (values.length + dx - right_align)
+        @graph_width.to_f / values.length
       end
 
 
@@ -283,6 +294,7 @@ module SVG
       alias :get_y_labels :get_y_values
 
       def field_height
+        # exclude values which are outside max_x_range
         values = get_y_values
         max = max_y_range
         if values.length == 1
@@ -290,8 +302,9 @@ module SVG
         else
           dx = (max - values[-1]).to_f / (values[-1] - values[-2])
         end
-        (@graph_height.to_f - font_size*2*top_font) /
-          (values.length + dx - top_align)
+        #(@graph_height.to_f - font_size*2*top_font) /
+        #  (values.length + dx - top_align)
+        @graph_height.to_f / values.length
       end
 
       def draw_data
@@ -330,7 +343,7 @@ module SVG
             })
           end
 
-          if show_data_points || show_data_values
+          if show_data_points || show_data_values || add_popups
             x_points.each_index { |idx|
               x = (x_points[idx] -  x_min) * x_step
               y = @graph_height - (y_points[idx] -  y_min) * y_step
@@ -338,9 +351,9 @@ module SVG
                 DataPoint.new(x, y, line).shape(data[:description][idx]).each{|s|
                   @graph.add_element( *s )
                 }
-                add_popup(x, y, format( x_points[idx], y_points[idx], data[:description][idx])) if add_popups
               end
-              make_datapoint_text( x, y-6, y_points[idx] ) if show_data_values
+              make_datapoint_text( x, y-6, y_points[idx] )
+              add_popup(x, y, format( x_points[idx], y_points[idx], data[:description][idx]))
             }
           end
           line += 1

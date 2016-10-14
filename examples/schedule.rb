@@ -1,4 +1,4 @@
-require_relative '../lib/SVG/Graph/Schedule'
+require 'SVG/Graph/Schedule'
 
 
 title = "Billy's Schedule"

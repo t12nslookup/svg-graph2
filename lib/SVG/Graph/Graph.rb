@@ -102,7 +102,8 @@ module SVG
       def initialize( config )
         @config = config
         @data = []
-        self.top_align = self.top_font = self.right_align = self.right_font = 0
+        #self.top_align = self.top_font = 0
+        #self.right_align = self.right_font = 0
 
         init_with({
           :width                => 500,
@@ -401,8 +402,10 @@ module SVG
         @popup_radius ||= 10
       end
 
-      attr_accessor :top_align, :top_font, :right_align, :right_font
+      # unknown why needed
+      # attr_accessor :top_align, :top_font, :right_align, :right_font
 
+      # size of the square box in the legend which indicates the colors
       KEY_BOX_SIZE = 12
 
       # Override this (and call super) to change the margin to the left
@@ -426,7 +429,7 @@ module SVG
         if !rotate_y_labels
           max_width = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.6
         else
-          max_width = y_label_font_size
+          max_width = y_label_font_size + 3
         end
         max_width += 10 if stagger_y_labels
         return max_width
@@ -468,7 +471,7 @@ module SVG
         make_datapoint_text( x, y, label )
       end
 
-      # Adds pop-up point information to a graph.
+      # Adds pop-up point information to a graph only if the config option is set.
       def add_popup( x, y, label, style="" )
         if add_popups
           if( numeric?(label) )
@@ -538,7 +541,7 @@ module SVG
         if rotate_x_labels     
           max_height = get_longest_label(get_x_labels).to_s.length * x_label_font_size * 0.6
         else
-          max_height = x_label_font_size
+          max_height = x_label_font_size + 3
         end
         max_height += 10 if stagger_x_labels
         return max_height
@@ -588,11 +591,16 @@ module SVG
         true if Float(object) rescue false
       end
 
+      # adds the datapoint text to the graph only if the config option is set
       def make_datapoint_text( x, y, value, style="" )
         if show_data_values
           textStr = value
           if( numeric?(value) )
             textStr = @number_format % value
+          end
+          # change anchor is label overlaps axis
+          if x < textStr.length * font_size * 0.6
+            style << "text-anchor: start;"
           end
           # white background for better readability
           @foreground.add_element( "text", {
@@ -669,20 +677,39 @@ module SVG
         0
       end
 
-
+      # override this method in child class
+      # must return the array of labels for the x-axis
+      def get_x_labels
+      end
+      
+      # override this method in child class
+      # must return the array of labels for the y-axis
+      # this method defines @y_scale_division
+      def get_y_labels
+      end
+      
+      # space in px between x-labels
       def field_width
-        (@graph_width.to_f - font_size*2*right_font) /
-           (get_x_labels.length - right_align)
+        #(@graph_width.to_f - font_size*2*right_font) /
+        #   (get_x_labels.length - right_align)
+        @graph_width.to_f / get_x_labels.length
       end
 
-
+      # space in px between the y-labels
       def field_height
-        (@graph_height.to_f - font_size*2*top_font) /
-           (get_y_labels.length - top_align)
+        #(@graph_height.to_f - font_size*2*top_font) /
+        #   (get_y_labels.length - top_align)
+        @graph_height.to_f / get_y_labels.length
       end
 
 
-      # Draws the Y axis labels
+      # Draws the Y axis labels, the Y-Axis (@graph_height) is divided equally into #get_y_labels.lenght sections
+      # So the y coordinate for an arbitrary value is calculated as follows: 
+      #   y = @graph_height equals the min_value
+      #   #normalize value of a single scale_division: 
+      #   count = value /(@y_scale_division) 
+      #   y = @graph_height - count * field_height  
+      # 
       def draw_y_labels
         stagger = y_label_font_size + 5
         if show_y_labels
@@ -849,12 +876,12 @@ module SVG
             x_offset = @border_left + 20
             y_offset = @border_top + @graph_height + 5
             if show_x_labels
-              max_x_label_height_px = (not rotate_x_labels) ? 
-              x_label_font_size :
-              get_x_labels.max{|a,b| 
-                a.to_s.length<=>b.to_s.length
-              }.to_s.length * x_label_font_size * 0.6
-                x_label_font_size
+              # max_x_label_height_px = (not rotate_x_labels) ? 
+              # x_label_font_size :
+              # get_x_labels.max{|a,b| 
+              #   a.to_s.length<=>b.to_s.length
+              # }.to_s.length * x_label_font_size * 0.6
+              #   x_label_font_size
               y_offset += max_x_label_height_px
               y_offset += max_x_label_height_px + 5 if stagger_x_labels
             end

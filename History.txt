@@ -2,8 +2,10 @@ TODO
 * fix axis titles positioning for timeseries and schedule graphs
 
 === 2.0.2 work in progress
-* fix axis titles positioning
-* fix popups for values
+* fix axis-title positioning
+* fix/add support for popups of values line, plot, bar graph
+* Line and Plot graph support nil values (or pairs of nil for plot) for non-present datapoints
+* changed text anchor of first datapoint label to avoid overlap with axis
 
 === 2.0.1 / 2016-08-09
 * dropped support for ruby 1.8.7 [lumean]

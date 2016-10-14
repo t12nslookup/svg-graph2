@@ -69,7 +69,7 @@ module SVG
       # See Graph::initialize and BarBase::set_defaults
       def set_defaults 
         super
-        self.top_align = self.top_font = 1
+        # self.top_align = self.top_font = 1
       end
 
       protected

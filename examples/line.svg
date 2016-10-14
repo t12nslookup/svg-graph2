@@ -1,0 +1,571 @@
+<?xml version='1.0'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width='640' height='480' viewBox='0 0 640 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:a3='http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/' a3:scriptImplementation='Adobe'>
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+<!-- Created with SVG::Graph -->
+<!-- SVG::Graph by Sean E. Russell -->
+<!-- Losely based on SVG::TT::Graph for Perl by Leo Lapworth & Stephan Morgan -->
+<!-- //////////////////////////////////////////////////////////////////-->
+<defs>
+<style type='text/css'>
+<![CDATA[/* Copy from here for external style sheet */
+.svgBackground{
+  fill:#ffffff;
+}
+.graphBackground{
+  fill:#f0f0f0;
+}
+
+/* graphs titles */
+.mainTitle{
+  text-anchor: middle;
+  fill: #000000;
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+.subTitle{
+  text-anchor: middle;
+  fill: #999999;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.axis{
+  stroke: #000000;
+  stroke-width: 1px;
+}
+
+.guideLines{
+  stroke: #666666;
+  stroke-width: 1px;
+  stroke-dasharray: 5 5;
+}
+
+.xAxisLabels{
+  text-anchor: middle;
+  fill: #000000;
+  font-size: 12px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.yAxisLabels{
+  text-anchor: end;
+  fill: #000000;
+  font-size: 12px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.xAxisTitle{
+  text-anchor: middle;
+  fill: #ff0000;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.yAxisTitle{
+  fill: #ff0000;
+  text-anchor: middle;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.dataPointLabel{
+  fill: #000000;
+  text-anchor:middle;
+  font-size: 10px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.staggerGuideLine{
+  fill: none;
+  stroke: #000000;
+  stroke-width: 0.5px;  
+}
+
+/* default line styles */
+.line1{
+	fill: none;
+	stroke: #ff0000;
+	stroke-width: 1px;	
+}
+.line2{
+	fill: none;
+	stroke: #0000ff;
+	stroke-width: 1px;	
+}
+.line3{
+	fill: none;
+	stroke: #00ff00;
+	stroke-width: 1px;	
+}
+.line4{
+	fill: none;
+	stroke: #ffcc00;
+	stroke-width: 1px;	
+}
+.line5{
+	fill: none;
+	stroke: #00ccff;
+	stroke-width: 1px;	
+}
+.line6{
+	fill: none;
+	stroke: #ff00ff;
+	stroke-width: 1px;	
+}
+.line7{
+	fill: none;
+	stroke: #00ffff;
+	stroke-width: 1px;	
+}
+.line8{
+	fill: none;
+	stroke: #ffff00;
+	stroke-width: 1px;	
+}
+.line9{
+	fill: none;
+	stroke: #ccc6666;
+	stroke-width: 1px;	
+}
+.line10{
+	fill: none;
+	stroke: #663399;
+	stroke-width: 1px;	
+}
+.line11{
+	fill: none;
+	stroke: #339900;
+	stroke-width: 1px;	
+}
+.line12{
+	fill: none;
+	stroke: #9966FF;
+	stroke-width: 1px;	
+}
+/* default fill styles */
+.fill1{
+	fill: #cc0000;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill2{
+	fill: #0000cc;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill3{
+	fill: #00cc00;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill4{
+	fill: #ffcc00;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill5{
+	fill: #00ccff;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill6{
+	fill: #ff00ff;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill7{
+	fill: #00ffff;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill8{
+	fill: #ffff00;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill9{
+	fill: #cc6666;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill10{
+	fill: #663399;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill11{
+	fill: #339900;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+.fill12{
+	fill: #9966FF;
+	fill-opacity: 0.2;
+	stroke: none;
+}
+/* default line styles */
+.key1,.dataPoint1{
+	fill: #ff0000;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key2,.dataPoint2{
+	fill: #0000ff;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key3,.dataPoint3{
+	fill: #00ff00;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key4,.dataPoint4{
+	fill: #ffcc00;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key5,.dataPoint5{
+	fill: #00ccff;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key6,.dataPoint6{
+	fill: #ff00ff;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key7,.dataPoint7{
+	fill: #00ffff;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key8,.dataPoint8{
+	fill: #ffff00;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key9,.dataPoint9{
+	fill: #cc6666;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key10,.dataPoint10{
+	fill: #663399;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key11,.dataPoint11{
+	fill: #339900;
+	stroke: none;
+	stroke-width: 1px;	
+}
+.key12,.dataPoint12{
+	fill: #9966FF;
+	stroke: none;
+	stroke-width: 1px;	
+}
+
+
+.keyText{
+  fill: #000000;
+  text-anchor:start;
+  font-size: 10px;
+  font-family: "Arial", sans-serif;
+  font-weight: normal;
+}
+/* End copy for external style sheet */
+]]>
+</style>
+</defs>
+<!-- include default stylesheet if none specified -->
+<!--SVG Background-->
+<rect width='640' height='480' x='0' y='0' class='svgBackground'/>
+<g transform='translate( 62.0 26 )'>
+<rect x='0' y='0' width='495.0' height='413' class='graphBackground'/>
+<path d='M 0 0 v413' class='axis' id='xAxis'/>
+<path d='M 0 413 h495.0' class='axis' id='yAxis'/>
+<text class='xAxisLabels' x='0.0' y='428' style='text-anchor: middle'>
+jan
+</text>
+<text class='xAxisLabels' x='61.875' y='428' style='text-anchor: middle'>
+feb
+</text>
+<path d='M61.875 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='123.75' y='428' style='text-anchor: middle'>
+mar
+</text>
+<path d='M123.75 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='185.625' y='428' style='text-anchor: middle'>
+apr
+</text>
+<path d='M185.625 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='247.5' y='428' style='text-anchor: middle'>
+may
+</text>
+<path d='M247.5 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='309.375' y='428' style='text-anchor: middle'>
+jun
+</text>
+<path d='M309.375 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='371.25' y='428' style='text-anchor: middle'>
+jul
+</text>
+<path d='M371.25 0 v413' class='guideLines'/>
+<text class='xAxisLabels' x='433.125' y='428' style='text-anchor: middle'>
+aug
+</text>
+<path d='M433.125 0 v413' class='guideLines'/>
+<text x='-3' y='417.0' class='yAxisLabels' style='text-anchor: end'>
+0.00
+</text>
+<text x='-3' y='379.45454545454544' class='yAxisLabels' style='text-anchor: end'>
+2.00
+</text>
+<path d='M0 375.45454545454544 h495.0' class='guideLines'/>
+<text x='-3' y='341.9090909090909' class='yAxisLabels' style='text-anchor: end'>
+4.00
+</text>
+<path d='M0 337.9090909090909 h495.0' class='guideLines'/>
+<text x='-3' y='304.3636363636364' class='yAxisLabels' style='text-anchor: end'>
+6.00
+</text>
+<path d='M0 300.3636363636364 h495.0' class='guideLines'/>
+<text x='-3' y='266.8181818181818' class='yAxisLabels' style='text-anchor: end'>
+8.00
+</text>
+<path d='M0 262.8181818181818 h495.0' class='guideLines'/>
+<text x='-3' y='229.27272727272725' class='yAxisLabels' style='text-anchor: end'>
+10.00
+</text>
+<path d='M0 225.27272727272725 h495.0' class='guideLines'/>
+<text x='-3' y='191.72727272727272' class='yAxisLabels' style='text-anchor: end'>
+12.00
+</text>
+<path d='M0 187.72727272727272 h495.0' class='guideLines'/>
+<text x='-3' y='154.1818181818182' class='yAxisLabels' style='text-anchor: end'>
+14.00
+</text>
+<path d='M0 150.1818181818182 h495.0' class='guideLines'/>
+<text x='-3' y='116.63636363636363' class='yAxisLabels' style='text-anchor: end'>
+16.00
+</text>
+<path d='M0 112.63636363636363 h495.0' class='guideLines'/>
+<text x='-3' y='79.09090909090907' class='yAxisLabels' style='text-anchor: end'>
+18.00
+</text>
+<path d='M0 75.09090909090907 h495.0' class='guideLines'/>
+<text x='-3' y='41.545454545454504' class='yAxisLabels' style='text-anchor: end'>
+20.00
+</text>
+<path d='M0 37.545454545454504 h495.0' class='guideLines'/>
+<path d='M0.0 413.0 L0.0 337.9090909090909 61.875 75.09090909090907 123.75 375.45454545454544 185.625 300.3636363636364 247.5 262.8181818181818 309.375 150.1818181818182 371.25 187.72727272727272 433.125 375.45454545454544 V413Z' class='fill2'/>
+<path d='M0 413 L0.0 337.9090909090909 61.875 75.09090909090907 123.75 375.45454545454544 185.625 300.3636363636364 247.5 262.8181818181818 309.375 150.1818181818182 371.25 187.72727272727272 433.125 375.45454545454544 ' class='line2'/>
+<circle cx='0.0' cy='337.9090909090909' r='2.5' class='dataPoint2'/>
+<circle cx='61.875' cy='75.09090909090907' r='2.5' class='dataPoint2'/>
+<circle cx='123.75' cy='375.45454545454544' r='2.5' class='dataPoint2'/>
+<circle cx='185.625' cy='300.3636363636364' r='2.5' class='dataPoint2'/>
+<circle cx='247.5' cy='262.8181818181818' r='2.5' class='dataPoint2'/>
+<circle cx='309.375' cy='150.1818181818182' r='2.5' class='dataPoint2'/>
+<circle cx='371.25' cy='187.72727272727272' r='2.5' class='dataPoint2'/>
+<circle cx='433.125' cy='375.45454545454544' r='2.5' class='dataPoint2'/>
+<path d='M0.0 413.0 L0.0 375.45454545454544 61.875 202.74545454545455 123.75 371.7 185.625 311.6272727272727 247.5 65.70454545454544 309.375 270.32727272727277 371.25 381.0863636363636 433.125 191.48181818181817 V413Z' class='fill1'/>
+<path d='M0 413 L0.0 375.45454545454544 61.875 202.74545454545455 123.75 371.7 185.625 311.6272727272727 247.5 65.70454545454544 309.375 270.32727272727277 371.25 381.0863636363636 433.125 191.48181818181817 ' class='line1'/>
+<circle cx='0.0' cy='375.45454545454544' r='2.5' class='dataPoint1'/>
+<circle cx='61.875' cy='202.74545454545455' r='2.5' class='dataPoint1'/>
+<circle cx='123.75' cy='371.7' r='2.5' class='dataPoint1'/>
+<circle cx='185.625' cy='311.6272727272727' r='2.5' class='dataPoint1'/>
+<circle cx='247.5' cy='65.70454545454544' r='2.5' class='dataPoint1'/>
+<circle cx='309.375' cy='270.32727272727277' r='2.5' class='dataPoint1'/>
+<circle cx='371.25' cy='381.0863636363636' r='2.5' class='dataPoint1'/>
+<circle cx='433.125' cy='191.48181818181817' r='2.5' class='dataPoint1'/>
+<g>
+<text x='0.0' y='331.9090909090909' class='dataPointLabel' style='text-anchor: start; stroke: #fff; stroke-width: 2;'>
+4.00
+</text>
+<text x='0.0' y='331.9090909090909' class='dataPointLabel' style='text-anchor: start;'>
+4.00
+</text>
+<text x='5.0' y='325.9090909090909' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25984164'>
+4.00
+</text>
+<circle cx='0.0' cy='337.9090909090909' r='10' style='opacity: 0' onmouseover='document.getElementById(25984164).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25984164).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='61.875' y='69.09090909090907' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+18.00
+</text>
+<text x='61.875' y='69.09090909090907' class='dataPointLabel'>
+18.00
+</text>
+<text x='66.875' y='63.090909090909065' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='23512464'>
+18.00
+</text>
+<circle cx='61.875' cy='75.09090909090907' r='10' style='opacity: 0' onmouseover='document.getElementById(23512464).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23512464).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='123.75' y='369.45454545454544' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+3.00
+</text>
+<text x='123.75' y='369.45454545454544' class='dataPointLabel'>
+3.00
+</text>
+<text x='128.75' y='363.45454545454544' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='20014500'>
+3.00
+</text>
+<circle cx='123.75' cy='375.45454545454544' r='10' style='opacity: 0' onmouseover='document.getElementById(20014500).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(20014500).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='185.625' y='294.3636363636364' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+7.00
+</text>
+<text x='185.625' y='294.3636363636364' class='dataPointLabel'>
+7.00
+</text>
+<text x='190.625' y='288.3636363636364' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25977408'>
+7.00
+</text>
+<circle cx='185.625' cy='300.3636363636364' r='10' style='opacity: 0' onmouseover='document.getElementById(25977408).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25977408).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='247.5' y='256.8181818181818' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+8.00
+</text>
+<text x='247.5' y='256.8181818181818' class='dataPointLabel'>
+8.00
+</text>
+<text x='252.5' y='250.8181818181818' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25945440'>
+8.00
+</text>
+<circle cx='247.5' cy='262.8181818181818' r='10' style='opacity: 0' onmouseover='document.getElementById(25945440).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25945440).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='309.375' y='144.1818181818182' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+15.00
+</text>
+<text x='309.375' y='144.1818181818182' class='dataPointLabel'>
+15.00
+</text>
+<text x='314.375' y='138.1818181818182' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25905552'>
+15.00
+</text>
+<circle cx='309.375' cy='150.1818181818182' r='10' style='opacity: 0' onmouseover='document.getElementById(25905552).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25905552).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='371.25' y='181.72727272727272' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+13.00
+</text>
+<text x='371.25' y='181.72727272727272' class='dataPointLabel'>
+13.00
+</text>
+<text x='376.25' y='175.72727272727272' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25865784'>
+13.00
+</text>
+<circle cx='371.25' cy='187.72727272727272' r='10' style='opacity: 0' onmouseover='document.getElementById(25865784).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25865784).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='433.125' y='369.45454545454544' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+2.00
+</text>
+<text x='433.125' y='369.45454545454544' class='dataPointLabel'>
+2.00
+</text>
+<text x='438.125' y='363.45454545454544' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25834464'>
+2.00
+</text>
+<circle cx='433.125' cy='375.45454545454544' r='10' style='opacity: 0' onmouseover='document.getElementById(25834464).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25834464).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='0.0' y='369.45454545454544' class='dataPointLabel' style='text-anchor: start; stroke: #fff; stroke-width: 2;'>
+3.00
+</text>
+<text x='0.0' y='369.45454545454544' class='dataPointLabel' style='text-anchor: start;'>
+3.00
+</text>
+<text x='5.0' y='363.45454545454544' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25781460'>
+3.00
+</text>
+<circle cx='0.0' cy='375.45454545454544' r='10' style='opacity: 0' onmouseover='document.getElementById(25781460).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25781460).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='61.875' y='196.74545454545455' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+11.20
+</text>
+<text x='61.875' y='196.74545454545455' class='dataPointLabel'>
+11.20
+</text>
+<text x='66.875' y='190.74545454545455' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25741392'>
+11.20
+</text>
+<circle cx='61.875' cy='202.74545454545455' r='10' style='opacity: 0' onmouseover='document.getElementById(25741392).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25741392).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='123.75' y='365.7' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+2.20
+</text>
+<text x='123.75' y='365.7' class='dataPointLabel'>
+2.20
+</text>
+<text x='128.75' y='359.7' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25602516'>
+2.20
+</text>
+<circle cx='123.75' cy='371.7' r='10' style='opacity: 0' onmouseover='document.getElementById(25602516).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25602516).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='185.625' y='305.6272727272727' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+5.40
+</text>
+<text x='185.625' y='305.6272727272727' class='dataPointLabel'>
+5.40
+</text>
+<text x='190.625' y='299.6272727272727' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25431372'>
+5.40
+</text>
+<circle cx='185.625' cy='311.6272727272727' r='10' style='opacity: 0' onmouseover='document.getElementById(25431372).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25431372).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='247.5' y='59.70454545454544' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+18.50
+</text>
+<text x='247.5' y='59.70454545454544' class='dataPointLabel'>
+18.50
+</text>
+<text x='252.5' y='53.70454545454544' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25401084'>
+18.50
+</text>
+<circle cx='247.5' cy='65.70454545454544' r='10' style='opacity: 0' onmouseover='document.getElementById(25401084).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25401084).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='309.375' y='264.32727272727277' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+7.60
+</text>
+<text x='309.375' y='264.32727272727277' class='dataPointLabel'>
+7.60
+</text>
+<text x='314.375' y='258.32727272727277' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25338504'>
+7.60
+</text>
+<circle cx='309.375' cy='270.32727272727277' r='10' style='opacity: 0' onmouseover='document.getElementById(25338504).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25338504).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='371.25' y='375.0863636363636' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+1.70
+</text>
+<text x='371.25' y='375.0863636363636' class='dataPointLabel'>
+1.70
+</text>
+<text x='376.25' y='369.0863636363636' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25299528'>
+1.70
+</text>
+<circle cx='371.25' cy='381.0863636363636' r='10' style='opacity: 0' onmouseover='document.getElementById(25299528).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25299528).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='433.125' y='185.48181818181817' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+11.80
+</text>
+<text x='433.125' y='185.48181818181817' class='dataPointLabel'>
+11.80
+</text>
+<text x='438.125' y='179.48181818181817' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25244568'>
+11.80
+</text>
+<circle cx='433.125' cy='191.48181818181817' r='10' style='opacity: 0' onmouseover='document.getElementById(25244568).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25244568).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+</g>
+</g>
+<text x='320' y='16' class='mainTitle'>
+Line
+</text>
+<text x='309.5' y='468' class='xAxisTitle'>
+Time
+</text>
+<text x='17' y='232' class='yAxisTitle' transform='rotate( -90, 17, 232 )'>
+Ice Cream Cones
+</text>
+<g transform='translate(567.0 46)'>
+<rect x='0' y='0' width='12' height='12' class='key1'/>
+<text x='17' y='12' class='keyText'>
+Dataset 1
+</text>
+<rect x='0' y='17' width='12' height='12' class='key2'/>
+<text x='17' y='29' class='keyText'>
+Dataset 2
+</text>
+</g>
+</svg>
