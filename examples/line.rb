@@ -1,6 +1,5 @@
 require 'SVG/Graph/Line'
 
-
 title = "Line"
 #data1 = []
 #(rand(10)+5).times{
@@ -26,7 +25,7 @@ graph = SVG::Graph::Line.new( {
   :stacked => false,
   :fields => field,
   :area_fill => true,
-  :scale_integers => true,
+  :scale_integers => false,
   :min_scale_value => 0,
   :show_data_labels => true,
   :show_x_guidelines => true,

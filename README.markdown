@@ -74,9 +74,13 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### BarHorizontal
 
+![example bar_horizontal graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/bar_horizontal.svg)
+
 ### ErrBar
 
 ### Line
+
+![example line graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/line.svg)
 
 ### Pie
 
