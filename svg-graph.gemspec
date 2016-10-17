@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   #s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Sean Russell}, %q{Claudio Bustos}, %q{Liehann Loots}, %q{Piergiuliano Bossi}, %q{Manuel Widmer}]
-  s.date = %q{2016-08-08}
+  s.date = Time.now.strftime("%Y-%m-%d")
   s.description = %q{Gem version of SVG:::Graph. SVG:::Graph is a pure Ruby library for generating charts, 
 which are a type of graph where the values of one axis are not scalar. SVG::Graph has a verry similar API to 
 the Perl library SVG::TT::Graph, and the resulting charts also look the same. This isn't surprising, 
