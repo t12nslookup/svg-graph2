@@ -1,6 +1,6 @@
 require 'SVG/Graph/Pie'
 
-title = "Line"
+title = "Pie"
 #data1 = []
 #(rand(10)+5).times{
 #  data1 << rand(20)
@@ -14,25 +14,21 @@ data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 3, 2.2,]
 #}
 data2 = [4, 18, 3, 7, 8, 13, 19, 1,]
 
-field = %w{jan feb mar apr may jun julasdfasdfasdfasdfasdf_asdfasdf aug}
+field = %w{jan feb mar apr may jun julasdfasasdfasdfsdfddddddddddddddddddddddfasdfasdfasdf_asdfasdf aug}
 
 graph = SVG::Graph::Pie.new( {
   :width => 640,
-  :height => 480,
+  :height => 300,
   :graph_title => title,
   :show_graph_title => true,
   :key => true,
+  :key_position => :right, #:bottom, # or :right
   :fields => field,
-  :show_data_labels => true,
+  :show_data_labels => false,
   :show_actual_values => true,
-  :show_x_title => true,
-  :x_title => "Time",
-  :show_y_title => true,
-  :y_title => "Ice Cream Cones",
-  :y_title_text_direction => :bt,
-  :show_lines => false,
-  :add_popups => true,
-  :round_popups => false
+  :show_shadow => true,
+  :expanded => false,
+  :expand_greatest => true
 })
 graph.add_data( 
   :data => data1,
