@@ -1,5 +1,9 @@
 TODO
 * fix axis titles positioning for timeseries and schedule graphs
+* fix scale_integer
+* fix pie graph key overlapping the graph
+
+* pie graph nil values
 
 === 2.0.2 work in progress
 * fix axis-title positioning

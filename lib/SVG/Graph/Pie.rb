@@ -108,10 +108,17 @@ module SVG
       # is the same as:
       #
       #   graph.add_data( { :data => [3,5,8,13] } )
+      #
+      # nil values in the array will be replaced by 0
+      #   
+      #   graph.add_data( { :data => [3,nil,nil,2] } ) is equivalent to graph.add_data( { :data => [3,0,0,2] } )
+      #
       def add_data arg
         arg[:data].each_index {|idx|
           @data[idx] = 0 unless @data[idx]
-          @data[idx] += arg[:data][idx]
+          if !arg[:data][idx].nil?
+            @data[idx] += arg[:data][idx]
+          end
         }
       end
 
@@ -160,10 +167,12 @@ module SVG
       def draw_graph
       end
 
+      # We don't have axis labels
       def get_y_labels
         [""]
       end
 
+      # We don't have axis labels
       def get_x_labels
         [""]
       end
@@ -195,7 +204,8 @@ module SVG
         diameter -= 10 if show_shadow
         radius = diameter / 2.0
 
-        xoff = (width - diameter) / 2
+        #xoff = (width - diameter) / 2
+        xoff = (@graph_width - diameter) / 2
         yoff = (height - @border_bottom - diameter)
         yoff -= 10 if show_shadow
         @graph.attributes['transform'] = "translate( #{xoff} #{yoff} )"

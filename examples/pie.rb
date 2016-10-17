@@ -1,4 +1,4 @@
-require 'SVG/Graph/Line'
+require 'SVG/Graph/Pie'
 
 title = "Line"
 #data1 = []
@@ -6,30 +6,25 @@ title = "Line"
 #  data1 << rand(20)
 #  data1 << rand(20)
 #}
-data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19.44, 0.555, 3.6666, 13.77777, 7.888888, 9.9999999]
+data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 3, 2.2,]
 #data2 = []
 #(rand(10)+5).times{
 #  data2 << rand(20)
 #  data2 << rand(20)
 #}
-data2 = [4, 18, 3, 7, 8, 15, 13, 2, 9, 4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 4, 17, 2, 12]
+data2 = [4, 18, 3, 7, 8, 13, 19, 1,]
 
-field = %w{jan feb mar apr may jun jul aug}
+field = %w{jan feb mar apr may jun julasdfasdfasdfasdfasdf_asdfasdf aug}
 
-graph = SVG::Graph::Line.new( {
+graph = SVG::Graph::Pie.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
   :show_graph_title => true,
   :key => true,
-  :stacked => false,
   :fields => field,
-  :area_fill => true,
-  :scale_integers => false,
-  :min_scale_value => 0,
   :show_data_labels => true,
-  :show_actual_values => false,
-  :show_x_guidelines => true,
+  :show_actual_values => true,
   :show_x_title => true,
   :x_title => "Time",
   :show_y_title => true,
@@ -48,6 +43,6 @@ graph.add_data(
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open("line.svg", "w") {|fout| 
+File.open("pie.svg", "w") {|fout| 
   fout.print( graph.burn )
 }
