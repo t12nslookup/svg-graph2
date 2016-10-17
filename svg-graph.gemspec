@@ -50,7 +50,7 @@ the Perl original at all.
     "test/test_svg_graph.rb"
   ]
   s.homepage = %q{http://www.germane-software.com/software/SVG/SVG::Graph/}
-  s.licenses = [%q{GPL}]
+  s.licenses = [%q{GPL-2.0}]
   s.require_paths = [%q{lib}]
   #s.rubyforge_project = %q{ruby-statsample}
   #s.rubygems_version = %q{1.8.6}

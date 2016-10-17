@@ -8,7 +8,7 @@ TODO
 * fix axis-title positioning
 * fix/add support for popups of values line, plot, bar graph
 * Line,Plot,Pie graph support nil values (or pairs of nil for plot) for non-present datapoints
-* changed text anchor of first datapoint label to avoid overlap with axis
+* Line: changed text anchor of first datapoint label to avoid overlap with axis
 * fix pie graph key overlapping the graph
 *
 
