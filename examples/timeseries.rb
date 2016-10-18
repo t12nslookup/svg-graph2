@@ -1,7 +1,6 @@
 require 'SVG/Graph/TimeSeries'
 
-
-title = "Plot"
+title = "TimeSeries"
 #data1 = []
 #(rand(10)+5).times{
 #  data1 << rand(20)
@@ -34,7 +33,7 @@ graph = SVG::Graph::TimeSeries.new( {
   :y_title => "Units",
   :y_title_text_direction => :bt,
   :stagger_x_labels => true,
-  :x_label_format => "%Y",
+  :x_label_format => "%Y-%m",
   :min_x_value => DateTime.strptime("1/1/73", '%m/%d/%y').to_time, # this must a Time object
   :timescale_divisions => "5 years",
   :add_popups => true,

@@ -193,6 +193,11 @@ module SVG
         }
         sort( x, y, conf[:description] )
         conf[:data] = [x,y]
+        # at the end data looks like:
+        # [
+        #   [all x values],
+        #   [all y values]
+        # ]
         @data << conf
       end
 
@@ -248,9 +253,9 @@ module SVG
       end
 
       def get_x_values
-        min_value, max_value, scale_division = x_range
+        min_value, max_value, @x_scale_division = x_range
         rv = []
-        min_value.step( max_value, scale_division ) {|v| rv << v}
+        min_value.step( max_value, @x_scale_division ) {|v| rv << v}
         return rv
       end
       alias :get_x_labels :get_x_values
@@ -296,14 +301,14 @@ module SVG
       end
 
       def get_y_values
-        min_value, max_value, scale_division = y_range
+        min_value, max_value, @y_scale_division = y_range
         if max_value != min_value
-          while (max_value - min_value) < scale_division
-            scale_division /= 10.0
+          while (max_value - min_value) < @y_scale_division
+            @y_scale_division /= 10.0
           end
         end
         rv = []
-        min_value.step( max_value, scale_division ) {|v| rv << v}
+        min_value.step( max_value, @y_scale_division ) {|v| rv << v}
         rv << rv[0] + 1 if rv.length == 1
         return rv
       end
@@ -322,14 +327,25 @@ module SVG
         #  (values.length + dx - top_align)
         @graph_height.to_f / values.length
       end
+      
+      def calc_coords(x, y)
+        coords = {:x => 0, :y => 0}
+        # scale the coordinates, use float division / multiplication
+        # otherwise the point will be place inaccurate
+        coords[:x] = x/@x_scale_division.to_f * field_width 
+        coords[:y] = @graph_height - y/@y_scale_division.to_f * field_height
+        return coords
+      end
 
       def draw_data
         line = 1
         
         x_min, x_max = x_range
         y_min, y_max = y_range
-        x_step = (@graph_width.to_f - font_size*2) / (x_max-x_min)
-        y_step = (@graph_height.to_f -  font_size*2) / (y_max-y_min)
+        #x_step = (@graph_width.to_f - font_size*2) / (x_max-x_min)
+        #y_step = (@graph_height.to_f -  font_size*2) / (y_max-y_min)
+        #x_step = field_width
+        #y_step = field_height
 
         for data in @data
           x_points = data[:data][X]
@@ -339,10 +355,9 @@ module SVG
           x_start = 0
           y_start = 0
           x_points.each_index { |idx|
-            x = (x_points[idx] -  x_min) * x_step
-            y = @graph_height - (y_points[idx] -  y_min) * y_step
-            x_start, y_start = x,y if idx == 0
-            lpath << "#{x} #{y} "
+            c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
+            x_start, y_start = c[:x],c[:y] if idx == 0
+            lpath << "#{c[:x]} #{c[:y]} "
           }
 
           if area_fill
@@ -361,15 +376,14 @@ module SVG
 
           if show_data_points || show_data_values || add_popups
             x_points.each_index { |idx|
-              x = (x_points[idx] -  x_min) * x_step
-              y = @graph_height - (y_points[idx] -  y_min) * y_step
+              c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
               if show_data_points
-                DataPoint.new(x, y, line).shape(data[:description][idx]).each{|s|
+                DataPoint.new(c[:x], c[:y], line).shape(data[:description][idx]).each{|s|
                   @graph.add_element( *s )
                 }
               end
-              make_datapoint_text( x, y-6, y_points[idx] )
-              add_popup(x, y, format( x_points[idx], y_points[idx], data[:description][idx]))
+              make_datapoint_text( c[:x], c[:y]-6, y_points[idx] )
+              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]))
             }
           end
           line += 1
@@ -379,8 +393,8 @@ module SVG
       # returns the formatted string which is added as popup information
       def format x, y, desc
         info = []
-        info << (round_popups ? (x * 100).to_i / 100 : x)
-        info << (round_popups ? (y * 100).to_i / 100 : y)
+        info << (round_popups ? x.round : @number_format % x )
+        info << (round_popups ? y.round : @number_format % y )
         info << desc
         "(#{info.compact.join(', ')})"
       end

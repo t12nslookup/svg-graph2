@@ -1,6 +1,5 @@
 require 'SVG/Graph/Schedule'
 
-
 title = "Billy's Schedule"
 data1 = [
   "History 107", "5/19/04", "6/30/04",

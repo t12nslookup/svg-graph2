@@ -187,7 +187,8 @@ module SVG
       def calc_coords(field, value, width = field_width, height = field_height)
         coords = {:x => 0, :y => 0}
         coords[:x] = width * field
-        coords[:y] = @graph_height - value/@y_scale_division * height
+        # make sure we do float division, otherwise coords get messed up
+        coords[:y] = @graph_height - value/@y_scale_division.to_f * height
       
         return coords
       end
@@ -199,8 +200,9 @@ module SVG
         fieldheight = field_height
         fieldwidth = field_width
         line = @data.length
-
+        # always zero for filling areas
         prev_sum = Array.new(@config[:fields].length).fill(0)
+        # cumulated sum (used for stacked graphs)
         cum_sum = Array.new(@config[:fields].length).fill(nil)
 
         for data in @data.reverse

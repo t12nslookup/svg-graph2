@@ -109,7 +109,7 @@ module SVG
         init_with(
           #:max_time_span     => '',
           :x_label_format     => '%Y-%m-%d %H:%M:%S',
-          :popup_format       => '%Y-%m-%d %H:%M:%S'
+          :popup_format       => '%Y-%m-%d %H:%M:%S',
         )
       end
 

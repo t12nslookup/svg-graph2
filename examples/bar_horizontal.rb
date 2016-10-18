@@ -22,18 +22,18 @@ options = {
   :no_css            => true
 }
 
-male_data   = [2, 4, 6, 4, 2]
-female_data = [1, 5, 4, 5, 2.7]
+data1   = [2, 4, 6.7, 4, 2.8]
+data2 = [1, 5, 4, 5, 2.7]
 
 g = SVG::Graph::BarHorizontal.new(options)
 
 g.add_data( {
-    :data => female_data,
-    :title => "Female"
+    :data => data1,
+    :title => "Dataset1"
   })
 g.add_data( {
-    :data => male_data,
-    :title => "Male"
+    :data => data2,
+    :title => "Dataset2"
   })
 
 # graph.burn            # this returns a full valid xml document containing the graph  

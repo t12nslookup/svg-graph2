@@ -1,9 +1,9 @@
-TODO
-* fix axis titles positioning for staggered axis (prevent overlap)
-* refactor various constant pixel offsets in Graph class to use constants or be dynamic
-* fix scale_integer
+TODO / Backlog
+* fix TimeSeries example
+* check ErrBar
 * add unit tests for all types of graph
-
+* refactor various constant pixel offsets in Graph class to use constants or be dynamic
+* add support to specify time format which is used to parse data for timeseries and schedules
 
 === 2.0.2 work in progress
 * fix axis-title positioning
@@ -11,7 +11,7 @@ TODO
 * Line,Plot,Pie graph support nil values (or pairs of nil for plot) for non-present datapoints
 * Line: changed text anchor of first datapoint label to avoid overlap with axis
 * fix pie graph key overlapping the graph
-*
+* fix axis titles positioning for staggered axis (prevent overlap)
 
 === 2.0.1 / 2016-08-09
 * dropped support for ruby 1.8.7 [lumean]

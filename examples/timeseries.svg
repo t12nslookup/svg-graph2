@@ -10,322 +10,322 @@
 <!--SVG Background-->
 <rect width='640' height='480' x='0' y='0' class='svgBackground' style='fill:#ffffff;'/>
 <g transform='translate( 62.0 26 )'>
-<rect x='0' y='0' width='459.0' height='406' class='graphBackground' style='fill:#f0f0f0;'/>
-<path d='M 0 0 v406' class='axis' id='xAxis' style='stroke: #000000; stroke-width: 1px;'/>
-<path d='M 0 406 h459.0' class='axis' id='yAxis' style='stroke: #000000; stroke-width: 1px;'/>
-<text class='xAxisLabels' x='0.0' y='421' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1973
+<rect x='0' y='0' width='459.0' height='396' class='graphBackground' style='fill:#f0f0f0;'/>
+<path d='M 0 0 v396' class='axis' id='xAxis' style='stroke: #000000; stroke-width: 1px;'/>
+<path d='M 0 396 h459.0' class='axis' id='yAxis' style='stroke: #000000; stroke-width: 1px;'/>
+<text class='xAxisLabels' x='0.0' y='411' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1973-01
 </text>
-<text class='xAxisLabels' x='65.57142857142857' y='438' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1978
+<text class='xAxisLabels' x='65.57142857142857' y='428' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1978-01
 </text>
-<path d='M65.57142857142857 406 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
-<path d='M65.57142857142857 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='131.14285714285714' y='421' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1983
+<path d='M65.57142857142857 396 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
+<path d='M65.57142857142857 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='131.14285714285714' y='411' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1983-01
 </text>
-<path d='M131.14285714285714 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='196.71428571428572' y='438' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1988
+<path d='M131.14285714285714 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='196.71428571428572' y='428' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1988-01
 </text>
-<path d='M196.71428571428572 406 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
-<path d='M196.71428571428572 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='262.2857142857143' y='421' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1993
+<path d='M196.71428571428572 396 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
+<path d='M196.71428571428572 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='262.2857142857143' y='411' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1993-01
 </text>
-<path d='M262.2857142857143 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='327.85714285714283' y='438' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-1998
+<path d='M262.2857142857143 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='327.85714285714283' y='428' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+1998-01
 </text>
-<path d='M327.85714285714283 406 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
-<path d='M327.85714285714283 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='393.42857142857144' y='421' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
-2003
+<path d='M327.85714285714283 396 v17' class='staggerGuideLine' style='fill: none; stroke: #000000; stroke-width: 0.5px;'/>
+<path d='M327.85714285714283 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='393.42857142857144' y='411' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: middle'>
+2003-01
 </text>
-<path d='M393.42857142857144 0 v406' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='410.0' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M393.42857142857144 0 v396' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='400.0' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 0.00
 </text>
-<text x='-3' y='369.4' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<text x='-3' y='360.4' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 2.00
 </text>
-<path d='M0 365.4 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='328.8' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 356.4 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='320.8' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 4.00
 </text>
-<path d='M0 324.8 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='288.2' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 316.8 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='281.2' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 6.00
 </text>
-<path d='M0 284.2 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='247.6' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 277.2 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='241.6' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 8.00
 </text>
-<path d='M0 243.6 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='207.0' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 237.6 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='202.0' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 10.00
 </text>
-<path d='M0 203.0 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='166.39999999999998' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 198.0 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='162.39999999999998' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 12.00
 </text>
-<path d='M0 162.39999999999998 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='125.80000000000001' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 158.39999999999998 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='122.80000000000001' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 14.00
 </text>
-<path d='M0 121.80000000000001 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='85.19999999999999' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 118.80000000000001 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='83.19999999999999' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 16.00
 </text>
-<path d='M0 81.19999999999999 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text x='-3' y='44.599999999999966' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
+<path d='M0 79.19999999999999 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text x='-3' y='43.599999999999966' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 18.00
 </text>
-<path d='M0 40.599999999999966 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<path d='M20.255579868708974 172.55555555555557 L20.255579868708974 172.55555555555557 25.471772428884027 257.44444444444446 167.18468271334794 363.55555555555554 208.8761487964989 384.77777777777777 306.46083150984686 130.11111111111114 401.2660831509847 215.0 435.0 172.55555555555557 ' class='line1' style='fill: none; stroke: #ff0000; stroke-width: 1px;'/>
-<circle cx='20.255579868708974' cy='172.55555555555557' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='25.471772428884027' cy='257.44444444444446' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='167.18468271334794' cy='363.55555555555554' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='208.8761487964989' cy='384.77777777777777' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='306.46083150984686' cy='130.11111111111114' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='401.2660831509847' cy='215.0' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<circle cx='435.0' cy='172.55555555555557' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
-<path d='M0.2665207877461707 24.0 L0.2665207877461707 24.0 52.885339168490155 87.66666666666669 108.9308533916849 321.1111111111111 141.40831509846828 108.88888888888891 187.364113785558 278.6666666666667 232.21575492341358 151.33333333333334 266.90153172866525 278.6666666666667 321.8809628008753 45.22222222222223 366.6945295404814 151.33333333333334 408.11947483588625 257.44444444444446 ' class='line2' style='fill: none; stroke: #0000ff; stroke-width: 1px;'/>
-<circle cx='0.2665207877461707' cy='24.0' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='52.885339168490155' cy='87.66666666666669' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='108.9308533916849' cy='321.1111111111111' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='141.40831509846828' cy='108.88888888888891' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='187.364113785558' cy='278.6666666666667' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='232.21575492341358' cy='151.33333333333334' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='266.90153172866525' cy='278.6666666666667' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='321.8809628008753' cy='45.22222222222223' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='366.6945295404814' cy='151.33333333333334' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<circle cx='408.11947483588625' cy='257.44444444444446' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
-<path d='M69.5238512035011 299.8888888888889 L69.5238512035011 299.8888888888889 139.0477024070022 130.11111111111114 278.13347921225386 193.77777777777777 417.18118161925605 299.8888888888889 ' class='line3' style='fill: none; stroke: #00ff00; stroke-width: 1px;'/>
-<circle cx='69.5238512035011' cy='299.8888888888889' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
-<circle cx='139.0477024070022' cy='130.11111111111114' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
-<circle cx='278.13347921225386' cy='193.77777777777777' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
-<circle cx='417.18118161925605' cy='299.8888888888889' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
+<path d='M0 39.599999999999966 h459.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<path d='MInfinity 178.2 LInfinity 178.2 Infinity 257.4 Infinity 356.4 Infinity 376.2 Infinity 138.59999999999997 Infinity 217.79999999999998 Infinity 178.2 ' class='line1' style='fill: none; stroke: #ff0000; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='178.2' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='257.4' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='356.4' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='376.2' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='138.59999999999997' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='217.79999999999998' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='178.2' r='2.5' class='dataPoint1' style='fill: #ff0000; stroke: none; stroke-width: 1px;'/>
+<path d='MInfinity 39.599999999999966 LInfinity 39.599999999999966 Infinity 99.0 Infinity 316.8 Infinity 118.80000000000001 Infinity 277.2 Infinity 158.39999999999998 Infinity 277.2 Infinity 59.39999999999998 Infinity 158.39999999999998 Infinity 257.4 ' class='line2' style='fill: none; stroke: #0000ff; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='39.599999999999966' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='99.0' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='316.8' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='118.80000000000001' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='277.2' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='158.39999999999998' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='277.2' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='59.39999999999998' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='158.39999999999998' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='257.4' r='2.5' class='dataPoint2' style='fill: #0000ff; stroke: none; stroke-width: 1px;'/>
+<path d='MInfinity 297.0 LInfinity 297.0 Infinity 138.59999999999997 Infinity 198.0 Infinity 297.0 ' class='line3' style='fill: none; stroke: #00ff00; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='297.0' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='138.59999999999997' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='198.0' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
+<circle cx='Infinity' cy='297.0' r='2.5' class='dataPoint3' style='fill: #00ff00; stroke: none; stroke-width: 1px;'/>
 <g>
-<text x='25.255579868708974' y='160.55555555555557' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25578972'>
+<text x='Infinity' y='172.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+11.00
+</text>
+<text x='Infinity' y='172.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+11.00
+</text>
+<text x='Infinity' y='166.2' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25373364'>
 06/17/74, 11
 </text>
-<circle cx='20.255579868708974' cy='172.55555555555557' r='10' style='opacity: 0' onmouseover='document.getElementById(25578972).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25578972).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='20.255579868708974' y='166.55555555555557' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-11.00
+<circle cx='Infinity' cy='178.2' r='10' style='opacity: 0' onmouseover='document.getElementById(25373364).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25373364).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='251.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+7.00
 </text>
-<text x='20.255579868708974' y='166.55555555555557' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-11.00
+<text x='Infinity' y='251.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+7.00
 </text>
-<text x='30.471772428884027' y='245.44444444444446' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25425024'>
+<text x='Infinity' y='245.39999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25275756'>
 11/01/74, 7
 </text>
-<circle cx='25.471772428884027' cy='257.44444444444446' r='10' style='opacity: 0' onmouseover='document.getElementById(25425024).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25425024).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='25.471772428884027' y='251.44444444444446' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-7.00
+<circle cx='Infinity' cy='257.4' r='10' style='opacity: 0' onmouseover='document.getElementById(25275756).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25275756).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='350.4' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+2.00
 </text>
-<text x='25.471772428884027' y='251.44444444444446' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-7.00
+<text x='Infinity' y='350.4' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+2.00
 </text>
-<text x='172.18468271334794' y='351.55555555555554' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='24704436'>
+<text x='Infinity' y='344.4' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25243392'>
 01/09/85, 2
 </text>
-<circle cx='167.18468271334794' cy='363.55555555555554' r='10' style='opacity: 0' onmouseover='document.getElementById(24704436).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24704436).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='167.18468271334794' y='357.55555555555554' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-2.00
+<circle cx='Infinity' cy='356.4' r='10' style='opacity: 0' onmouseover='document.getElementById(25243392).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25243392).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='370.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+1.00
 </text>
-<text x='167.18468271334794' y='357.55555555555554' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-2.00
+<text x='Infinity' y='370.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+1.00
 </text>
-<text x='213.8761487964989' y='372.77777777777777' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='24555204'>
+<text x='Infinity' y='364.2' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25170396'>
 01/09/88, 1
 </text>
-<circle cx='208.8761487964989' cy='384.77777777777777' r='10' style='opacity: 0' onmouseover='document.getElementById(24555204).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24555204).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='208.8761487964989' y='378.77777777777777' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-1.00
+<circle cx='Infinity' cy='376.2' r='10' style='opacity: 0' onmouseover='document.getElementById(25170396).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25170396).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='132.59999999999997' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+13.00
 </text>
-<text x='208.8761487964989' y='378.77777777777777' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-1.00
+<text x='Infinity' y='132.59999999999997' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+13.00
 </text>
-<text x='311.46083150984686' y='118.11111111111114' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='24436800'>
+<text x='Infinity' y='126.59999999999997' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25130124'>
 01/15/95, 13
 </text>
-<circle cx='306.46083150984686' cy='130.11111111111114' r='10' style='opacity: 0' onmouseover='document.getElementById(24436800).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24436800).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='306.46083150984686' y='124.11111111111114' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-13.00
+<circle cx='Infinity' cy='138.59999999999997' r='10' style='opacity: 0' onmouseover='document.getElementById(25130124).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25130124).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='211.79999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+9.00
 </text>
-<text x='306.46083150984686' y='124.11111111111114' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-13.00
+<text x='Infinity' y='211.79999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+9.00
 </text>
-<text x='406.2660831509847' y='203.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='24085044'>
+<text x='Infinity' y='205.79999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24998820'>
 11/09/01, 9
 </text>
-<circle cx='401.2660831509847' cy='215.0' r='10' style='opacity: 0' onmouseover='document.getElementById(24085044).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24085044).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='401.2660831509847' y='209.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-9.00
+<circle cx='Infinity' cy='217.79999999999998' r='10' style='opacity: 0' onmouseover='document.getElementById(24998820).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24998820).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='172.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+11.00
 </text>
-<text x='401.2660831509847' y='209.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-9.00
+<text x='Infinity' y='172.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+11.00
 </text>
-<text x='440.0' y='160.55555555555557' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='23858544'>
+<text x='Infinity' y='166.2' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24924384'>
 04/13/04, 11
 </text>
-<circle cx='435.0' cy='172.55555555555557' r='10' style='opacity: 0' onmouseover='document.getElementById(23858544).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23858544).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='435.0' y='166.55555555555557' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-11.00
+<circle cx='Infinity' cy='178.2' r='10' style='opacity: 0' onmouseover='document.getElementById(24924384).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24924384).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='33.599999999999966' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+18.00
 </text>
-<text x='435.0' y='166.55555555555557' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-11.00
+<text x='Infinity' y='33.599999999999966' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+18.00
 </text>
-<text x='5.26652078774617' y='12.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='20390088'>
+<text x='Infinity' y='27.599999999999966' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24327144'>
 01/08/73, 18
 </text>
-<circle cx='0.2665207877461707' cy='24.0' r='10' style='opacity: 0' onmouseover='document.getElementById(20390088).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(20390088).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='0.2665207877461707' y='18.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-18.00
+<circle cx='Infinity' cy='39.599999999999966' r='10' style='opacity: 0' onmouseover='document.getElementById(24327144).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24327144).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='93.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+15.00
 </text>
-<text x='0.2665207877461707' y='18.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-18.00
+<text x='Infinity' y='93.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+15.00
 </text>
-<text x='57.885339168490155' y='75.66666666666669' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='26405916'>
+<text x='Infinity' y='87.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24224244'>
 10/21/76, 15
 </text>
-<circle cx='52.885339168490155' cy='87.66666666666669' r='10' style='opacity: 0' onmouseover='document.getElementById(26405916).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26405916).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='52.885339168490155' y='81.66666666666669' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-15.00
+<circle cx='Infinity' cy='99.0' r='10' style='opacity: 0' onmouseover='document.getElementById(24224244).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24224244).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='310.8' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+4.00
 </text>
-<text x='52.885339168490155' y='81.66666666666669' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-15.00
+<text x='Infinity' y='310.8' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+4.00
 </text>
-<text x='113.9308533916849' y='309.1111111111111' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='26338716'>
+<text x='Infinity' y='304.8' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24151104'>
 11/01/80, 4
 </text>
-<circle cx='108.9308533916849' cy='321.1111111111111' r='10' style='opacity: 0' onmouseover='document.getElementById(26338716).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26338716).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='108.9308533916849' y='315.1111111111111' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-4.00
+<circle cx='Infinity' cy='316.8' r='10' style='opacity: 0' onmouseover='document.getElementById(24151104).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24151104).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='112.80000000000001' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+14.00
 </text>
-<text x='108.9308533916849' y='315.1111111111111' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-4.00
+<text x='Infinity' y='112.80000000000001' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+14.00
 </text>
-<text x='146.40831509846828' y='96.88888888888891' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='26296752'>
+<text x='Infinity' y='106.80000000000001' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='24080832'>
 03/04/83, 14
 </text>
-<circle cx='141.40831509846828' cy='108.88888888888891' r='10' style='opacity: 0' onmouseover='document.getElementById(26296752).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26296752).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='141.40831509846828' y='102.88888888888891' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-14.00
+<circle cx='Infinity' cy='118.80000000000001' r='10' style='opacity: 0' onmouseover='document.getElementById(24080832).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24080832).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='271.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+6.00
 </text>
-<text x='141.40831509846828' y='102.88888888888891' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-14.00
+<text x='Infinity' y='271.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+6.00
 </text>
-<text x='192.364113785558' y='266.6666666666667' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='26098824'>
+<text x='Infinity' y='265.2' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23929416'>
 06/23/86, 6
 </text>
-<circle cx='187.364113785558' cy='278.6666666666667' r='10' style='opacity: 0' onmouseover='document.getElementById(26098824).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26098824).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='187.364113785558' y='272.6666666666667' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-6.00
+<circle cx='Infinity' cy='277.2' r='10' style='opacity: 0' onmouseover='document.getElementById(23929416).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23929416).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='152.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+12.00
 </text>
-<text x='187.364113785558' y='272.6666666666667' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-6.00
+<text x='Infinity' y='152.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+12.00
 </text>
-<text x='237.21575492341358' y='139.33333333333334' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='26006628'>
+<text x='Infinity' y='146.39999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23766456'>
 09/13/89, 12
 </text>
-<circle cx='232.21575492341358' cy='151.33333333333334' r='10' style='opacity: 0' onmouseover='document.getElementById(26006628).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26006628).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='232.21575492341358' y='145.33333333333334' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-12.00
+<circle cx='Infinity' cy='158.39999999999998' r='10' style='opacity: 0' onmouseover='document.getElementById(23766456).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23766456).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='271.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+6.00
 </text>
-<text x='232.21575492341358' y='145.33333333333334' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-12.00
+<text x='Infinity' y='271.2' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+6.00
 </text>
-<text x='271.90153172866525' y='266.6666666666667' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25926768'>
+<text x='Infinity' y='265.2' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23715504'>
 03/12/92, 6
 </text>
-<circle cx='266.90153172866525' cy='278.6666666666667' r='10' style='opacity: 0' onmouseover='document.getElementById(25926768).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25926768).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='266.90153172866525' y='272.6666666666667' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-6.00
+<circle cx='Infinity' cy='277.2' r='10' style='opacity: 0' onmouseover='document.getElementById(23715504).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23715504).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='53.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+17.00
 </text>
-<text x='266.90153172866525' y='272.6666666666667' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-6.00
+<text x='Infinity' y='53.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+17.00
 </text>
-<text x='326.8809628008753' y='33.22222222222223' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25877748'>
+<text x='Infinity' y='47.39999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23654748'>
 02/24/96, 17
 </text>
-<circle cx='321.8809628008753' cy='45.22222222222223' r='10' style='opacity: 0' onmouseover='document.getElementById(25877748).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25877748).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='321.8809628008753' y='39.22222222222223' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-17.00
+<circle cx='Infinity' cy='59.39999999999998' r='10' style='opacity: 0' onmouseover='document.getElementById(23654748).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23654748).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='152.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+12.00
 </text>
-<text x='321.8809628008753' y='39.22222222222223' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-17.00
+<text x='Infinity' y='152.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+12.00
 </text>
-<text x='371.6945295404814' y='139.33333333333334' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25855452'>
+<text x='Infinity' y='146.39999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23570088'>
 05/16/99, 12
 </text>
-<circle cx='366.6945295404814' cy='151.33333333333334' r='10' style='opacity: 0' onmouseover='document.getElementById(25855452).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25855452).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='366.6945295404814' y='145.33333333333334' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-12.00
+<circle cx='Infinity' cy='158.39999999999998' r='10' style='opacity: 0' onmouseover='document.getElementById(23570088).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23570088).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='251.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+7.00
 </text>
-<text x='366.6945295404814' y='145.33333333333334' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-12.00
+<text x='Infinity' y='251.39999999999998' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+7.00
 </text>
-<text x='413.11947483588625' y='245.44444444444446' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25816488'>
+<text x='Infinity' y='245.39999999999998' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='23490528'>
 05/08/02, 7
 </text>
-<circle cx='408.11947483588625' cy='257.44444444444446' r='10' style='opacity: 0' onmouseover='document.getElementById(25816488).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25816488).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='408.11947483588625' y='251.44444444444446' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-7.00
+<circle cx='Infinity' cy='257.4' r='10' style='opacity: 0' onmouseover='document.getElementById(23490528).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(23490528).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='291.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+5.00
 </text>
-<text x='408.11947483588625' y='251.44444444444446' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-7.00
+<text x='Infinity' y='291.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+5.00
 </text>
-<text x='74.5238512035011' y='287.8888888888889' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25757280'>
+<text x='Infinity' y='285.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='20068140'>
 01/01/78, 5
 </text>
-<circle cx='69.5238512035011' cy='299.8888888888889' r='10' style='opacity: 0' onmouseover='document.getElementById(25757280).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25757280).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='69.5238512035011' y='293.8888888888889' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-5.00
+<circle cx='Infinity' cy='297.0' r='10' style='opacity: 0' onmouseover='document.getElementById(20068140).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(20068140).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='132.59999999999997' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+13.00
 </text>
-<text x='69.5238512035011' y='293.8888888888889' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-5.00
+<text x='Infinity' y='132.59999999999997' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+13.00
 </text>
-<text x='144.0477024070022' y='118.11111111111114' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25707864'>
+<text x='Infinity' y='126.59999999999997' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='20033100'>
 01/01/83, 13
 </text>
-<circle cx='139.0477024070022' cy='130.11111111111114' r='10' style='opacity: 0' onmouseover='document.getElementById(25707864).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25707864).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='139.0477024070022' y='124.11111111111114' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-13.00
+<circle cx='Infinity' cy='138.59999999999997' r='10' style='opacity: 0' onmouseover='document.getElementById(20033100).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(20033100).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='192.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+10.00
 </text>
-<text x='139.0477024070022' y='124.11111111111114' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-13.00
+<text x='Infinity' y='192.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+10.00
 </text>
-<text x='283.13347921225386' y='181.77777777777777' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25610172'>
+<text x='Infinity' y='186.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='7842864'>
 01/01/93, 10
 </text>
-<circle cx='278.13347921225386' cy='193.77777777777777' r='10' style='opacity: 0' onmouseover='document.getElementById(25610172).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25610172).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='278.13347921225386' y='187.77777777777777' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-10.00
+<circle cx='Infinity' cy='198.0' r='10' style='opacity: 0' onmouseover='document.getElementById(7842864).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(7842864).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<text x='Infinity' y='291.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
+5.00
 </text>
-<text x='278.13347921225386' y='187.77777777777777' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-10.00
+<text x='Infinity' y='291.0' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+5.00
 </text>
-<text x='422.18118161925605' y='287.8888888888889' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: start;' id='25579416'>
+<text x='Infinity' y='285.0' class='dataPointLabel' visibility='hidden' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;stroke-width: 2; fill: #000; text-anchor: end;' id='25967172'>
 01/01/03, 5
 </text>
-<circle cx='417.18118161925605' cy='299.8888888888889' r='10' style='opacity: 0' onmouseover='document.getElementById(25579416).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25579416).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
-<text x='417.18118161925605' y='293.8888888888889' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal; stroke: #fff; stroke-width: 2;'>
-5.00
-</text>
-<text x='417.18118161925605' y='293.8888888888889' class='dataPointLabel' style='fill: #000000; text-anchor:middle; font-size: 10px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-5.00
-</text>
+<circle cx='Infinity' cy='297.0' r='10' style='opacity: 0' onmouseover='document.getElementById(25967172).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25967172).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 </g>
 </g>
 <text x='320' y='16' class='mainTitle' style='text-anchor: middle; fill: #000000; font-size: 16px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
-Plot
+TimeSeries
 </text>
 <text x='291.5' y='468' class='xAxisTitle' style='text-anchor: middle; fill: #ff0000; font-size: 14px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
 Time
 </text>
-<text x='17' y='229' class='yAxisTitle' transform='rotate( -90, 17, 229 )' style='fill: #ff0000; text-anchor: middle; font-size: 14px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
+<text x='17' y='224' class='yAxisTitle' transform='rotate( -90, 17, 224 )' style='fill: #ff0000; text-anchor: middle; font-size: 14px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;'>
 Units
 </text>
 <g transform='translate(531.0 46)'>

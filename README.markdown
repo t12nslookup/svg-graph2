@@ -86,6 +86,8 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### Plot
 
+![example plot graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/plot.svg)
+
 ### Schedule
 
 ### TimeSeries

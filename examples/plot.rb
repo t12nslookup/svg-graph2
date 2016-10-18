@@ -1,6 +1,5 @@
 require 'SVG/Graph/Plot'
 
-
 title = "Plot"
 #data1 = []
 #(rand(10)+5).times{
@@ -22,22 +21,23 @@ graph = SVG::Graph::Plot.new( {
   :graph_title => title,
   :show_graph_title => true,
   :no_css => false,
-  :area_fill => true,
+  :area_fill => false,
   :key => true,
   :scale_x_integers => true,
-  :scale_y_integers => false,
+  :stagger_x_labels => true,
+  :scale_y_integers => true,
   :min_x_value => 0,
   :min_y_value => 0,
   :show_data_labels => true,
   :show_x_guidelines => true,
   :show_x_title => true,
-  :x_title => "Time",
+  :x_title => "Temperature in °C",
   :show_y_title => true,
   :y_title => "Ice Cream Cones",
   :y_title_text_direction => :bt,
-  :show_lines => false,
+  :show_lines => true,
   :add_popups => true,
-  :round_popups => true,
+  :round_popups => false,
   :stacked => true,
 })
 graph.add_data( 

@@ -431,7 +431,7 @@ module SVG
         else
           max_width = y_label_font_size + 3
         end
-        max_width += 10 if stagger_y_labels
+        max_width += 5 + y_label_font_size if stagger_y_labels
         return max_width
       end
 
@@ -543,7 +543,7 @@ module SVG
         else
           max_height = x_label_font_size + 3
         end
-        max_height += 10 if stagger_x_labels
+        max_height += 5 + x_label_font_size if stagger_x_labels
         return max_height
       end
 
@@ -887,7 +887,7 @@ module SVG
               # }.to_s.length * x_label_font_size * 0.6
               #   x_label_font_size
               y_offset += max_x_label_height_px
-              y_offset += max_x_label_height_px + 5 if stagger_x_labels
+              #y_offset += max_x_label_height_px + 5 if stagger_x_labels
             end
             y_offset += x_title_font_size + 5 if show_x_title
           end

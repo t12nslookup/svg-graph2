@@ -30,6 +30,7 @@ graph = SVG::Graph::Line.new( {
   :show_data_labels => true,
   :show_actual_values => false,
   :show_x_guidelines => true,
+  :stagger_x_labels => true,
   :show_x_title => true,
   :x_title => "Time",
   :show_y_title => true,
