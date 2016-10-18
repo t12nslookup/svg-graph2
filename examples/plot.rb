@@ -7,13 +7,13 @@ title = "Plot"
 #  data1 << rand(20)
 #  data1 << rand(20)
 #}
-data1 = [6.1, 11.2, 0.3, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19.44, 0.555, 3.6666, 13.77777, 7.888888, 9.9999999]
+data1 = [-6.1, 11.2, 0.3, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19.44, 0.555, 3.6666, 13.77777, 7.888888, 9.9999999]
 #data2 = []
 #(rand(10)+5).times{
 #  data2 << rand(20)
 #  data2 << rand(20)
 #}
-data2 = [0, 18, nil,nil, 8, 15, nil,nil, 9, 4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 4, 17, 2, 12]
+data2 = [0, 18, -2,4, 8, 15, -4,4, 9, 4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 4, 17, 2, 12]
 
 
 graph = SVG::Graph::Plot.new( {
@@ -21,7 +21,8 @@ graph = SVG::Graph::Plot.new( {
   :height => 480,
   :graph_title => title,
   :show_graph_title => true,
-  :no_css => true,
+  :no_css => false,
+  :area_fill => true,
   :key => true,
   :scale_x_integers => true,
   :scale_y_integers => false,
@@ -36,7 +37,8 @@ graph = SVG::Graph::Plot.new( {
   :y_title_text_direction => :bt,
   :show_lines => false,
   :add_popups => true,
-  :round_popups => false
+  :round_popups => true,
+  :stacked => true,
 })
 graph.add_data( 
   :data => data1,

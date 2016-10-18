@@ -1,7 +1,8 @@
 TODO
 * fix axis titles positioning for staggered axis (prevent overlap)
+* refactor various constant pixel offsets in Graph class to use constants or be dynamic
 * fix scale_integer
-* fix sorting and connected lines for Plot
+* add unit tests for all types of graph
 
 
 === 2.0.2 work in progress

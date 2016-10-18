@@ -67,8 +67,11 @@ module SVG
     #
     # Unlike the other types of charts, data sets must contain x,y pairs:
     #
-    #   [ 1, 2 ]    # A data set with 1 point: (1,2)
-    #   [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6)  
+    #   [ 1,2 ]    # A data set with 1 point: (1,2)
+    #   [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6)
+    # Additional possible notation
+    #   [ [1,2], 5,6] # A data set with 2 points: (1,2) and (5,6), mixed notation
+    #   [ [1,2], [5,6]] # A data set with 2 points: (1,2) and (5,6), nested array
     # 
     # = See also
     # 
@@ -89,18 +92,20 @@ module SVG
     class Plot < Graph
 
       # In addition to the defaults set by Graph::initialize, sets
-      # [show_data_values] true
       # [show_data_points] true
       # [area_fill] false
-      # [stacked] false
+      # [stacked] false, will not have any effect if true
+      # [show_lines] true
+      # [round_popups] true
       def set_defaults
         init_with(
-                  :show_data_values  => true,
                   :show_data_points  => true,
                   :area_fill         => false,
                   :stacked           => false,
                   :show_lines        => true,
-                  :round_popups      => true
+                  :round_popups      => true,
+                  :scale_x_integers  => false,
+                  :scale_y_integerrs => false,
                  )
                  # self.top_align = self.right_align = self.top_font = self.right_font = 1
       end
@@ -111,6 +116,7 @@ module SVG
       #
       # would cause the graph to attempt to generate labels stepped by 2; EG:
       # 0,2,4,6,8...
+      # default is automatic such that there are 10 labels
       attr_accessor :scale_x_divisions
       # Determines the scaling for the Y axis divisions.
       #
@@ -118,33 +124,38 @@ module SVG
       #
       # would cause the graph to attempt to generate labels stepped by 0.5; EG:
       # 0, 0.5, 1, 1.5, 2, ...
+      # default is automatic such that there are 10 labels
       attr_accessor :scale_y_divisions 
-      # Make the X axis labels integers
+      # Make the X axis labels integers, default: false
       attr_accessor :scale_x_integers 
-      # Make the Y axis labels integers
+      # Make the Y axis labels integers, default: false
       attr_accessor :scale_y_integers 
-      # Fill the area under the line
+      # Fill the area under the line, default: false
       attr_accessor :area_fill 
       # Show a small circle on the graph where the line
-      # goes from one point to the next.
+      # goes from one point to the next. default: true
       attr_accessor :show_data_points
-      # Set the minimum value of the X axis
+      # Set the minimum value of the X axis, if nil the minimum from data is chosen, default: nil
       attr_accessor :min_x_value 
-      # Set the maximum value of the X axis
+      # Set the maximum value of the X axis, if nil the maximum from data is chosen, default: nil
       attr_accessor :max_x_value 
-      # Set the minimum value of the Y axis
+      # Set the minimum value of the Y axis, if nil the minimum from data is chosen, default: nil
       attr_accessor :min_y_value
-      # Set the maximum value of the Y axis
+      # Set the maximum value of the Y axis, if nil the maximum from data is chosen, default: nil
       attr_accessor :max_y_value
-      # Show lines connecting data points
+      # Show lines connecting data points, default: true
       attr_accessor :show_lines
-      # Round value of data points in popups to integer
+      # Round value of data points in popups to integer, default: true
       attr_accessor :round_popups
 
 
       # Adds data to the plot.  The data must be in X,Y pairs; EG
       #   data_set1 = [ 1, 2 ]    # A data set with 1 point: (1,2)
-      #   data_set2 = [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6) 
+      #   data_set2 = [ 1,2, 5,6] # A data set with 2 points: (1,2) and (5,6)
+      # It's also supported to supply nested array or a mix (flatten is applied to the array); EG
+      #   data_set2 = [[1,2], 5,6]
+      # or
+      #   data_set2 = [[1,2], [5,6]]
       #   
       #   graph.add_data({
       #     :data => data_set1,
@@ -156,13 +167,18 @@ module SVG
       #   })         
       def add_data(conf)
 	      @data ||= []
-        # remove nil values
-        conf[:data] = conf[:data].compact
         raise "No data provided by #{conf.inspect}" unless conf[:data] and
           conf[:data].kind_of? Array
+        # support array of arrays and flatten it
+        conf[:data] = conf[:data].flatten
+        # check that we have pairs of values
         raise "Data supplied must be x,y pairs!  "+
           "The data provided contained an odd set of "+
           "data points" unless conf[:data].length % 2 == 0
+          
+        # remove nil values
+        conf[:data] = conf[:data].compact
+          
         return if conf[:data].length == 0
 
         conf[:description] ||= Array.new(conf[:data].size/2)
@@ -359,7 +375,8 @@ module SVG
           line += 1
         end
       end
-
+      
+      # returns the formatted string which is added as popup information
       def format x, y, desc
         info = []
         info << (round_popups ? (x * 100).to_i / 100 : x)
