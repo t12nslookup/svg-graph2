@@ -157,29 +157,29 @@ module SVG
       def get_y_labels
         maxvalue = max_value
         minvalue = min_value
-        #
         range = maxvalue - minvalue
+        # add some padding on top of the graph
         if range == 0
-          top_pad = 10
+          maxvalue += 10
         else
-          top_pad = range / 20.0
+          maxvalue += range / 20.0
         end
-        scale_range = (maxvalue + top_pad) - minvalue
+        scale_range = maxvalue - minvalue
 
         @y_scale_division = scale_divisions || (scale_range / 10.0)
-
+        @y_offset = 0
+        
         if scale_integers
-          # only use integers if there will be at least 3 labels and division is > 0.5
-          if maxvalue/@y_scale_division >= 3 && @y_scale_division > 0.5
-            @y_scale_division = @y_scale_division.round
-          end
+          @y_scale_division = @y_scale_division < 1 ? 1 : @y_scale_division.round
+          @y_offset = (minvalue.to_f - minvalue.floor).to_f
+          minvalue = minvalue.floor
         end
 
         rv = []
-        # make sure we have at least one label higher than the max_value
-        if maxvalue%@y_scale_division != 0
-          maxvalue = maxvalue + @y_scale_division
-        end 
+        # # make sure we have at least one label higher than the max_value
+        # if maxvalue%@y_scale_division != 0
+        #   maxvalue = maxvalue + @y_scale_division
+        # end 
         minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end
@@ -188,8 +188,7 @@ module SVG
         coords = {:x => 0, :y => 0}
         coords[:x] = width * field
         # make sure we do float division, otherwise coords get messed up
-        coords[:y] = @graph_height - value/@y_scale_division.to_f * height
-      
+        coords[:y] = @graph_height - (value + @y_offset)/@y_scale_division.to_f * height
         return coords
       end
 
@@ -201,7 +200,7 @@ module SVG
         fieldwidth = field_width
         line = @data.length
         # always zero for filling areas
-        prev_sum = Array.new(@config[:fields].length).fill(0)
+        prev_sum = Array.new(@config[:fields].length).fill(-@y_offset)
         # cumulated sum (used for stacked graphs)
         cum_sum = Array.new(@config[:fields].length).fill(nil)
 
@@ -236,7 +235,7 @@ module SVG
               c = calc_coords(0, prev_sum[0], fieldwidth, fieldheight)
             else
               apath = "V#@graph_height"
-              c = calc_coords(0, 0, fieldwidth, fieldheight)
+              c = calc_coords(0, -@y_offset, fieldwidth, fieldheight)
             end
               
             @graph.add_element("path", {

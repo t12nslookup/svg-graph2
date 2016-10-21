@@ -78,11 +78,15 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### ErrBar
 
+![example line graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/err_bar.svg)
+
 ### Line
 
 ![example line graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/line.svg)
 
 ### Pie
+
+![example plot graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/pie.svg)
 
 ### Plot
 
@@ -90,8 +94,11 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### Schedule
 
+![example schedule graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/schedule.svg)
+
 ### TimeSeries
 
+![example timeseries graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/timeseries.svg)
 
 Also have a look at the original [SVG::Graph web page](http://www.germane-software.com/software/SVG/SVG::Graph/), but note that this repository has already added some additional functionality, not available with the original.
 

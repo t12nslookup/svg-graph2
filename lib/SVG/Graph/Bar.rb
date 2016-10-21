@@ -74,9 +74,13 @@ module SVG
         maxvalue = max_value
         minvalue = min_value
         range = maxvalue - minvalue
-
-        top_pad = range == 0 ? 10 : range / 20.0
-        scale_range = (maxvalue + top_pad) - minvalue
+        # add some padding on top of the graph
+        if range == 0
+          maxvalue += 10
+        else
+          maxvalue += range / 20.0
+        end
+        scale_range = maxvalue - minvalue
 
         @y_scale_division = scale_divisions || (scale_range / 10.0)
 

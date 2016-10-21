@@ -82,20 +82,24 @@ module SVG
         maxvalue = max_value
         minvalue = min_value
         range = maxvalue - minvalue
+        # add some padding on top of the graph
+        if range == 0
+          maxvalue += 10
+        else
+          maxvalue += range / 20.0
+        end
+        scale_range = maxvalue - minvalue
 
-        top_pad = range == 0 ? 10 : range / 20.0
-        scale_range = (maxvalue + top_pad) - minvalue
-
-        scale_division = scale_divisions || (scale_range / 10.0)
+        @y_scale_division = scale_divisions || (scale_range / 10.0)
 
         if scale_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          @y_scale_division = @y_scale_division < 1 ? 1 : @y_scale_division.round
         end
 
         rv = []
-        maxvalue = maxvalue%scale_division == 0 ? 
-          maxvalue : maxvalue + scale_division
-        minvalue.step( maxvalue, scale_division ) {|v| rv << v}
+        maxvalue = maxvalue%@y_scale_division == 0 ? 
+          maxvalue : maxvalue + @y_scale_division
+        minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end
 
@@ -107,8 +111,9 @@ module SVG
         minvalue = min_value
         fieldwidth = field_width
 
-        unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
-                          (get_y_labels.max - get_y_labels.min)
+        #unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
+        #                  (get_y_labels.max - get_y_labels.min)
+        unit_size = field_height
         bargap = bar_gap ? (fieldwidth < 10 ? fieldwidth / 2 : 10) : 0
 
         bar_width = fieldwidth - (bargap *2)
@@ -128,7 +133,7 @@ module SVG
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
           
-            value = dataset[:data][i]
+            value = dataset[:data][i]/@y_scale_division
             
             left = (fieldwidth * field_count)
             left += bargap
@@ -149,7 +154,7 @@ module SVG
 
 		
 			
-			threshold = @config[:errorBars][i] * unit_size
+			threshold = @config[:errorBars][i]/@y_scale_division * unit_size
 			middlePointErr = left+bar_width/2
 			upperErr = top+threshold
 			bottomErr = top-threshold

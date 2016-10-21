@@ -113,8 +113,8 @@ module SVG
         )
       end
 
-      # The format string use do format the X axis labels.
-      # See Time::strformat
+      # The format string used to format the X axis labels.
+      # See Time::strformat, default: '%Y-%m-%d %H:%M:%S'
       attr_accessor :x_label_format
       # Use this to set the spacing between dates on the axis.  The value
       # must be of the form 
@@ -138,7 +138,7 @@ module SVG
       #   graph.add_data( 
       #     :data => d1,
       #     :title => 'One',
-      #     :template => '%H:%M'
+      #     :template => '%H:%M'  #template is optional
       #   )
       #   graph.add_data(
       #     :data => d2,
@@ -150,26 +150,24 @@ module SVG
       # a format that is parseable by ParseDate, a Time object, or a number of seconds
       # after the unix epoch.
       def add_data data
-        @time_template = data[:template]
         data[:data].each_index do |i|
-          data[:data][i] = parse_time(data[:data][i]).to_i if i % 2 == 0
+          data[:data][i] = parse_time(data[:data][i], data[:template]).to_i if i % 2 == 0  # only even indices are time, odd indices are values
         end
-        @time_template = nil # reset for the next data series
         super(data)
       end
 
 
       protected
 
-      
+      # value must be Integer, Time, or parseable by DateTime#parse
       def min_x_value=(value)
-        t = parse_time(value)
+        t = parse_time(value, nil)
         @min_x_value = t.to_i
       end
 
-      # value should be 
+      # value must be Integer, Time, or parseable by DateTime#parse
       def max_x_value=(value)
-        t = parse_time(value)
+        t = parse_time(value, nil)
         @max_x_value = t.to_i
       end
 
@@ -190,13 +188,13 @@ module SVG
       # Accepts date time as a string, number of seconds since the epoch, or Time 
       # object and returns a Time object. Raises an error if not a valid date time
       # representation.
-      def parse_time(time)
+      def parse_time(time, template)
         case time
         when Time
           return time
         when String
-          if @time_template.kind_of? String
-            return DateTime.strptime(time, @time_template).to_time
+          if template.kind_of? String
+            return DateTime.strptime(time, template).to_time
           else
             return DateTime.parse(time).to_time
           end
@@ -209,7 +207,7 @@ module SVG
 
       def get_x_values
         rv = []
-        min, max, scale_division = x_range
+        min, max, @x_scale_division = x_label_range
         if timescale_divisions
           timescale_divisions =~ /(\d+) ?(day|week|month|year|hour|minute|second)?/
           division_units = $2 ? $2 : "day"
@@ -219,6 +217,7 @@ module SVG
             case division_units
             when "month"
               cur = min
+              @x_scale_division = 365.25/12 * 24 * 60 * 60 * amount
               while cur < max
                 rv << cur
                 arr = Time.at( cur ).to_a
@@ -231,6 +230,7 @@ module SVG
               end
             when "year"
               cur = min
+              @x_scale_division = 365.25 * 24 * 60 * 60 * amount
               while cur < max
                 rv << cur
                 arr = Time.at( cur ).to_a
@@ -248,12 +248,13 @@ module SVG
             when "second"
               step = amount
             end
+            # only do this if division_units is not year or month. Those are done already above in the cases.
             min.step( max, step ) {|v| rv << v} if step
-
+            @x_scale_division = step if step
             return rv
           end
         end
-        min.step( max, scale_division ) {|v| rv << v}
+        min.step( max, @x_scale_division ) {|v| rv << v}
         return rv
       end # get_x_values
       

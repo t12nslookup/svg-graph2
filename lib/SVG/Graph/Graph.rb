@@ -381,7 +381,8 @@ module SVG
       # Customize popup radius
       attr_accessor :popup_radius
       # Number format values and Y axis representation like 1.2345667 represent as 1.23,
-      # defaults to '%.2f'
+      # Any valid format accepted by sprintf can be specified.
+      # If you don't want to change the format in any way you can use "%s". Defaults to "%.2f"
       attr_accessor :number_format
 
 
@@ -598,7 +599,7 @@ module SVG
           if( numeric?(value) )
             textStr = @number_format % value
           end
-          # change anchor is label overlaps axis
+          # change anchor is label overlaps axis, normally anchor is middle (that's why we compute length/2)
           if x < textStr.length/2 * font_size * 0.6
             style << "text-anchor: start;"
           end
@@ -694,9 +695,9 @@ module SVG
       
       # space in px between x-labels
       def field_width
-        #(@graph_width.to_f - font_size*2*right_font) /
-        #   (get_x_labels.length - right_align)
-        @graph_width.to_f / get_x_labels.length
+        # -1 is to use entire x-axis
+        # otherwise there is always 1 division unused        
+        @graph_width.to_f / ( get_x_labels.length - 1 )
       end
 
       # space in px between the y-labels

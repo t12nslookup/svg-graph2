@@ -140,7 +140,7 @@ module SVG
       # Note that the data must be in time,value pairs, and that the date format
       # may be any date that is parseable by DateTime#parse, DateTime#strptime.
       # The :template argument is optional. By default DateTime#parse will be used.
-      # Checkout the ruby doc for valit template notation:
+      # Checkout the ruby doc for valid template notation:
       # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html#method-i-strftime
       # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/DateTime.html#method-c-parse
       # http://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/DateTime.html#method-c-strptime.

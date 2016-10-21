@@ -40,6 +40,12 @@ module SVG
       attr_accessor :stack
       protected
       
+      # space in px between x-labels
+      def field_width
+        # don't use -1 otherwise bar is out of bounds        
+        @graph_width.to_f / ( get_x_labels.length )
+      end
+      
       def max_value
         @data.collect{|x| x[:data].max}.max
       end

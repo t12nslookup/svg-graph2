@@ -16,54 +16,54 @@
 <text class='xAxisLabels' x='0.0' y='407.0' transform='rotate( 90 0.0 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 05/19
 </text>
-<text class='xAxisLabels' x='40.400000000000006' y='407.0' transform='rotate( 90 40.400000000000006 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<text class='xAxisLabels' x='43.76666666666667' y='407.0' transform='rotate( 90 43.76666666666667 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 05/26
 </text>
-<path d='M40.400000000000006 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='80.80000000000001' y='407.0' transform='rotate( 90 80.80000000000001 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M43.76666666666667 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='87.53333333333335' y='407.0' transform='rotate( 90 87.53333333333335 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 06/02
 </text>
-<path d='M80.80000000000001 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='121.20000000000002' y='407.0' transform='rotate( 90 121.20000000000002 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M87.53333333333335 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='131.3' y='407.0' transform='rotate( 90 131.3 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 06/09
 </text>
-<path d='M121.20000000000002 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='161.60000000000002' y='407.0' transform='rotate( 90 161.60000000000002 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M131.3 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='175.0666666666667' y='407.0' transform='rotate( 90 175.0666666666667 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 06/16
 </text>
-<path d='M161.60000000000002 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='202.00000000000003' y='407.0' transform='rotate( 90 202.00000000000003 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M175.0666666666667 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='218.83333333333337' y='407.0' transform='rotate( 90 218.83333333333337 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 06/23
 </text>
-<path d='M202.00000000000003 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='242.40000000000003' y='407.0' transform='rotate( 90 242.40000000000003 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M218.83333333333337 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='262.6' y='407.0' transform='rotate( 90 262.6 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 06/30
 </text>
-<path d='M242.40000000000003 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='282.80000000000007' y='407.0' transform='rotate( 90 282.80000000000007 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M262.6 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='306.36666666666673' y='407.0' transform='rotate( 90 306.36666666666673 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 07/07
 </text>
-<path d='M282.80000000000007 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='323.20000000000005' y='407.0' transform='rotate( 90 323.20000000000005 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M306.36666666666673 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='350.1333333333334' y='407.0' transform='rotate( 90 350.1333333333334 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 07/14
 </text>
-<path d='M323.20000000000005 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='363.6' y='407.0' transform='rotate( 90 363.6 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M350.1333333333334 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='393.90000000000003' y='407.0' transform='rotate( 90 393.90000000000003 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 07/21
 </text>
-<path d='M363.6 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='404.00000000000006' y='407.0' transform='rotate( 90 404.00000000000006 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M393.90000000000003 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='437.66666666666674' y='407.0' transform='rotate( 90 437.66666666666674 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 07/28
 </text>
-<path d='M404.00000000000006 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='444.4000000000001' y='407.0' transform='rotate( 90 444.4000000000001 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M437.66666666666674 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='481.4333333333334' y='407.0' transform='rotate( 90 481.4333333333334 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 08/04
 </text>
-<path d='M444.4000000000001 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
-<text class='xAxisLabels' x='484.80000000000007' y='407.0' transform='rotate( 90 484.80000000000007 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
+<path d='M481.4333333333334 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<text class='xAxisLabels' x='525.2' y='407.0' transform='rotate( 90 525.2 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 08/11
 </text>
-<path d='M484.80000000000007 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
+<path d='M525.2 0 v392.0' class='guideLines' style='stroke: #666666; stroke-width: 1px; stroke-dasharray: 5 5;'/>
 <text x='-3' y='347.0' class='yAxisLabels' style='text-anchor: end; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: end'>
 History 107
 </text>

@@ -235,25 +235,32 @@ module SVG
         min_value
       end
 
-      def x_range
+      def x_label_range
         max_value = max_x_range
         min_value = min_x_range
-
         range = max_value - min_value
-        right_pad = range == 0 ? 10 : range / 20.0
-        scale_range = (max_value + right_pad) - min_value
+        # add some padding on right
+        if range == 0
+          max_value += 10
+        else
+          max_value += range / 20.0
+        end
+        scale_range = max_value - min_value
 
         scale_division = scale_x_divisions || (scale_range / 10.0)
-
+        @x_offset = 0
+        
         if scale_x_integers
           scale_division = scale_division < 1 ? 1 : scale_division.round
+          @x_offset = min_value.to_f - min_value.floor
+          min_value = min_value.floor
         end
 
         [min_value, max_value, scale_division]
       end
 
       def get_x_values
-        min_value, max_value, @x_scale_division = x_range
+        min_value, max_value, @x_scale_division = x_label_range
         rv = []
         min_value.step( max_value, @x_scale_division ) {|v| rv << v}
         return rv
@@ -263,11 +270,12 @@ module SVG
       def field_width
         # exclude values which are outside max_x_range
         values = get_x_values
-        max = max_x_range
-        dx = (max - values[-1]).to_f / (values[-1] - values[-2])
+        #max = max_x_range
+        #dx = (max - values[-1]).to_f / (values[-1] - values[-2])
         #(@graph_width.to_f - font_size*2*right_font) /
         #  (values.length + dx - right_align)
-        @graph_width.to_f / values.length
+        @graph_width.to_f / (values.length - 1 ) # -1 is to use entire x-axis
+                                                 # otherwise there is always 1 division unused 
       end
 
 
@@ -283,25 +291,32 @@ module SVG
         min_value
       end
 
-      def y_range
+      def y_label_range
         max_value = max_y_range
         min_value = min_y_range
-
         range = max_value - min_value
-        top_pad = range == 0 ? 10 : range / 20.0
-        scale_range = (max_value + top_pad) - min_value
+        # add some padding on top
+        if range == 0
+          max_value += 10
+        else
+          max_value += range / 20.0
+        end
+        scale_range = max_value - min_value
 
         scale_division = scale_y_divisions || (scale_range / 10.0)
-
+        @y_offset = 0
+        
         if scale_y_integers
           scale_division = scale_division < 1 ? 1 : scale_division.round
+          @y_offset = (min_value.to_f - min_value.floor).to_f
+          min_value = min_value.floor
         end
 
         return [min_value, max_value, scale_division]
       end
 
       def get_y_values
-        min_value, max_value, @y_scale_division = y_range
+        min_value, max_value, @y_scale_division = y_label_range
         if max_value != min_value
           while (max_value - min_value) < @y_scale_division
             @y_scale_division /= 10.0
@@ -332,16 +347,18 @@ module SVG
         coords = {:x => 0, :y => 0}
         # scale the coordinates, use float division / multiplication
         # otherwise the point will be place inaccurate
-        coords[:x] = x/@x_scale_division.to_f * field_width 
-        coords[:y] = @graph_height - y/@y_scale_division.to_f * field_height
+        coords[:x] = (x + @x_offset)/@x_scale_division.to_f * field_width 
+        coords[:y] = @graph_height - (y + @y_offset)/@y_scale_division.to_f * field_height
         return coords
       end
 
       def draw_data
         line = 1
         
-        x_min, x_max = x_range
-        y_min, y_max = y_range
+        x_min = min_x_range
+        x_max = max_x_range
+        y_min = min_y_range
+        y_max = max_y_range
         #x_step = (@graph_width.to_f - font_size*2) / (x_max-x_min)
         #y_step = (@graph_height.to_f -  font_size*2) / (y_max-y_min)
         #x_step = field_width
