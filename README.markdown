@@ -78,7 +78,7 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### ErrBar
 
-![example line graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/err_bar.svg)
+![example err_bar graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/err_bar.svg)
 
 ### Line
 
@@ -86,7 +86,7 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ### Pie
 
-![example plot graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/pie.svg)
+![example pie graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/pie.svg)
 
 ### Plot
 
