@@ -1,13 +1,13 @@
 require 'SVG/Graph/ErrBar'
 
 fields = %w(Jan Feb);
-myarr1_mean = 10 
+myarr1_mean = 10
 myarr1_confidence = 1
 
-myarr2_mean = 20 
+myarr2_mean = 20
 myarr2_confidence = 2
 
-data_mesure = [myarr1_mean, myarr2_mean]
+data= [myarr1_mean, myarr2_mean]
 
 err_mesure = [myarr1_confidence, myarr2_confidence]
 
@@ -15,11 +15,13 @@ graph = SVG::Graph::ErrBar.new(
   :height => 500,
   :width => 600,
   :fields => fields,
-  :errorBars =>err_mesure
+  :stacked => :side,
+  :errorBars => err_mesure,
+  :scale_integers => true,
 )
 
 graph.add_data(
-  :data => data_mesure,
+  :data => data,
   :title => 'Sales 2002'
 )
 

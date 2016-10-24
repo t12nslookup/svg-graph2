@@ -8,19 +8,29 @@ module SVG
     #
     # = Synopsis
     #
-    #   require 'SVG/Graph/Bar'
+    #   require 'SVG/Graph/ErrBar'
     #
-    #   fields = %w(Jan Feb Mar);
-    #   data_sales_02 = [12, 45, 21]
-    #
-    #   graph = SVG::Graph::Bar.new(
+    #   fields = %w(Jan Feb);
+    #   myarr1_mean = 10
+    #   myarr1_confidence = 1
+    #   
+    #   myarr2_mean = 20
+    #   myarr2_confidence = 2
+    #   
+    #   data= [myarr1_mean, myarr2_mean]
+    #   
+    #   err_mesure = [myarr1_confidence, myarr2_confidence]
+    #   
+    #   graph = SVG::Graph::ErrBar.new(
     #     :height => 500,
-    #     :width => 300,
-    #     :fields => fields
+    #     :width => 600,
+    #     :fields => fields,
+    #     :errorBars => err_mesure,
+    #     :scale_integers => true,
     #   )
-    #
+    #   
     #   graph.add_data(
-    #     :data => data_sales_02,
+    #     :data => data,
     #     :title => 'Sales 2002'
     #   )
     #
@@ -58,19 +68,15 @@ module SVG
     class ErrBar < BarBase
       include REXML
 
-        def initialize config
-            raise "fields was not supplied or is empty" unless config[:errorBars] &&
-            config[:errorBars].kind_of?(Array) &&
-            config[:errorBars].length > 0 
-            super
-        end 
-
-
-      # See Graph::initialize and BarBase::set_defaults
-      def set_defaults 
-        super
-        # self.top_align = self.top_font = 1
-      end
+      def initialize config
+          raise "fields was not supplied or is empty" unless config[:errorBars] &&
+          config[:errorBars].kind_of?(Array) &&
+          config[:errorBars].length > 0 
+          super
+      end 
+      # Array of confidence values for each item in :fields. A range from 
+      # value[i]-errorBars[i] to value[i]+errorBars[i] is drawn into the graph.
+      attr_accessor :errorBars
 
       protected
 
@@ -111,14 +117,11 @@ module SVG
         minvalue = min_value
         fieldwidth = field_width
 
-        #unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
-        #                  (get_y_labels.max - get_y_labels.min)
         unit_size = field_height
         bargap = bar_gap ? (fieldwidth < 10 ? fieldwidth / 2 : 10) : 0
 
         bar_width = fieldwidth - (bargap *2)
         bar_width /= @data.length if stack == :side
-        #x_mod = (@graph_width-bargap)/2 - (stack==:side ? bar_width/2 : 0)
  
         bottom = @graph_height
 
@@ -133,7 +136,7 @@ module SVG
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
           
-            value = dataset[:data][i]/@y_scale_division
+            value = dataset[:data][i].to_f/@y_scale_division
             
             left = (fieldwidth * field_count)
             left += bargap
@@ -152,13 +155,11 @@ module SVG
               "class" => "fill#{dataset_count+1}"
             })
 
-		
-			
-			threshold = @config[:errorBars][i]/@y_scale_division * unit_size
-			middlePointErr = left+bar_width/2
-			upperErr = top+threshold
-			bottomErr = top-threshold
-			withthErr = bar_width/4
+            threshold = @config[:errorBars][i].to_f/@y_scale_division * unit_size
+            middlePointErr = left+bar_width/2
+            upperErr = top+threshold
+            bottomErr = top-threshold
+            withthErr = bar_width/4
 			
             @graph.add_element( "line", {
               "x1" => middlePointErr.to_s,
@@ -187,8 +188,9 @@ module SVG
             dataset_count += 1
           end
           field_count += 1
-        }
-      end
-    end
+        } # config[:fields].each_index
+      end # draw_data
+      
+    end # ErrBar
   end
 end

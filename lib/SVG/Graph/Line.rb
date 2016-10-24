@@ -104,7 +104,6 @@ module SVG
           :stacked            => false,
           :area_fill          => false
         )
-      # self.top_align = self.top_font = self.right_align = self.right_font = 1
       end
 
       protected
@@ -176,10 +175,7 @@ module SVG
         end
 
         rv = []
-        # # make sure we have at least one label higher than the max_value
-        # if maxvalue%@y_scale_division != 0
-        #   maxvalue = maxvalue + @y_scale_division
-        # end 
+
         minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end
@@ -194,8 +190,6 @@ module SVG
 
       def draw_data
         minvalue = min_value
-        #fieldheight = (@graph_height.to_f - font_size*2*top_font) / 
-        #                 (get_y_labels.max - get_y_labels.min)
         fieldheight = field_height
         fieldwidth = field_width
         line = @data.length
@@ -256,18 +250,13 @@ module SVG
               c = calc_coords(i, cum_sum[i], fieldwidth, fieldheight)
               if show_data_points
                 @graph.add_element( "circle", {
-                  # "cx" => (fieldwidth * i).to_s,
-                  # "cy" => (@graph_height - cum_sum[i] * fieldheight).to_s,
                   "cx" => c[:x].to_s,
                   "cy" => c[:y].to_s,
                   "r" => "2.5",
                   "class" => "dataPoint#{line}"
                 })
               end
-              #x = fieldwidth * i
-              #y = @graph_height - cum_sum[i] * fieldheight
-              #make_datapoint_text( x, y - font_size/2, cum_sum[i] + minvalue)
-              #add_popup(x, y, cum_sum[i] + minvalue)
+
               make_datapoint_text( c[:x], c[:y] - font_size/2, cum_sum[i] + minvalue)
               add_popup(c[:x], c[:y], cum_sum[i] + minvalue)
             end

@@ -204,7 +204,6 @@ module SVG
         diameter -= 10 if show_shadow
         radius = diameter / 2.0
 
-        #xoff = (width - diameter) / 2
         xoff = (@graph_width - diameter) / 2
         yoff = (height - @border_bottom - diameter)
         yoff -= 10 if show_shadow
@@ -224,7 +223,7 @@ module SVG
         prev_percent = 0
         rad_mult = 3.6 * RADIANS
         @config[:fields].each_index { |count|
-          value = @data[count]
+          value = @data[count].to_f
           percent = percent_scale * value
           radians = prev_percent * rad_mult
 

@@ -99,15 +99,14 @@ module SVG
       # [round_popups] true
       def set_defaults
         init_with(
-                  :show_data_points  => true,
-                  :area_fill         => false,
-                  :stacked           => false,
-                  :show_lines        => true,
-                  :round_popups      => true,
-                  :scale_x_integers  => false,
-                  :scale_y_integerrs => false,
-                 )
-                 # self.top_align = self.right_align = self.top_font = self.right_font = 1
+          :show_data_points  => true,
+          :area_fill         => false,
+          :stacked           => false,
+          :show_lines        => true,
+          :round_popups      => true,
+          :scale_x_integers  => false,
+          :scale_y_integerrs => false,
+         )
       end
 
       # Determines the scaling for the X axis divisions.
@@ -270,10 +269,6 @@ module SVG
       def field_width
         # exclude values which are outside max_x_range
         values = get_x_values
-        #max = max_x_range
-        #dx = (max - values[-1]).to_f / (values[-1] - values[-2])
-        #(@graph_width.to_f - font_size*2*right_font) /
-        #  (values.length + dx - right_align)
         @graph_width.to_f / (values.length - 1 ) # -1 is to use entire x-axis
                                                  # otherwise there is always 1 division unused 
       end
@@ -338,8 +333,6 @@ module SVG
         else
           dx = (max - values[-1]).to_f / (values[-1] - values[-2])
         end
-        #(@graph_height.to_f - font_size*2*top_font) /
-        #  (values.length + dx - top_align)
         @graph_height.to_f / values.length
       end
       
@@ -359,10 +352,6 @@ module SVG
         x_max = max_x_range
         y_min = min_y_range
         y_max = max_y_range
-        #x_step = (@graph_width.to_f - font_size*2) / (x_max-x_min)
-        #y_step = (@graph_height.to_f -  font_size*2) / (y_max-y_min)
-        #x_step = field_width
-        #y_step = field_height
 
         for data in @data
           x_points = data[:data][X]

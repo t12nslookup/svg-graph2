@@ -1,4 +1,4 @@
-
+# Allows to customize datapoint shapes
 class DataPoint
   OVERLAY = "OVERLAY" unless defined?(OVERLAY)
   DEFAULT_SHAPE = lambda{|x,y,line| ["circle", {

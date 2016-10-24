@@ -14,6 +14,9 @@ data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 3, 2.2,]
 #}
 data2 = [4, 18, 3, 7, 8, 13, 19, 1,]
 
+#data1 = [3]
+#data2 = [2]
+
 field = %w{jan feb mar apr may jun long_key_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aug}
 
 graph = SVG::Graph::Pie.new( {

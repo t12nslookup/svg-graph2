@@ -104,10 +104,7 @@ module SVG
       def draw_data
         minvalue = min_value
         fieldheight = field_height
-        # number of steps in px between x-labels
-        # unit_size = (@graph_width.to_f - font_size*2*right_font ) /
-        #                 (get_x_labels.max - get_x_labels.min )
-        unit_size = field_width
+
         bargap = bar_gap ? (fieldheight < 10 ? fieldheight / 2 : 10) : 0
 
         bar_height = fieldheight - bargap
@@ -127,8 +124,8 @@ module SVG
             #    +ve   +ve  value.abs - min minvalue.abs
             #    +ve   -ve  value.abs - 0   minvalue.abs
             #    -ve   -ve  value.abs - 0   minvalue.abs + value
-            length = (value.abs - (minvalue > 0 ? minvalue : 0)) * unit_size
-            left = (minvalue.abs + (value < 0 ? value : 0)) * unit_size
+            length = (value.abs - (minvalue > 0 ? minvalue : 0)) * fieldheight
+            left = (minvalue.abs + (value < 0 ? value : 0)) * fieldheight
 
             @graph.add_element( "rect", {
               "x" => left.to_s,

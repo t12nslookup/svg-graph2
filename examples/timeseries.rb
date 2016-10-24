@@ -37,7 +37,7 @@ graph = SVG::Graph::TimeSeries.new( {
   :min_x_value => DateTime.strptime("1/1/73", '%m/%d/%y').to_time, # this must a Time object
   #:timescale_divisions => "5 years",
   :add_popups => true,
-  :popup_format => "%m/%d/%y",
+  :popup_format => "%Y-%m/%d/",
   #:area_fill => true,
   :min_y_value => 0,
 })

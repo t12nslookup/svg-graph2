@@ -198,11 +198,7 @@ module SVG
       # 
       def burn
         raise "No data available" unless @data.size > 0
-        
-        # undocumented and not used in any sublass
-        # to be removed
-        #calculations if methods.include? 'calculations'
-
+       
         start_svg
         calculate_graph_dimensions
         @foreground = Element.new( "g" )
@@ -403,9 +399,6 @@ module SVG
         @popup_radius ||= 10
       end
 
-      # unknown why needed
-      # attr_accessor :top_align, :top_font, :right_align, :right_font
-
       # size of the square box in the legend which indicates the colors
       KEY_BOX_SIZE = 12
 
@@ -502,8 +495,8 @@ module SVG
             "onmouseout" => 
               "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
           })
-        end # add_popups
-      end
+        end # if add_popups
+      end # add_popup
 
       # returns the longest label from an array of labels as string
       # each object in the array must support .to_s
@@ -600,8 +593,10 @@ module SVG
             textStr = @number_format % value
           end
           # change anchor is label overlaps axis, normally anchor is middle (that's why we compute length/2)
-          if x < textStr.length/2 * font_size * 0.6
+          if x < textStr.length/2 * font_size
             style << "text-anchor: start;"
+          elsif x > @graph_width - textStr.length/2 * font_size
+            style << "text-anchor: end;"
           end
           # white background for better readability
           @foreground.add_element( "text", {
@@ -881,14 +876,7 @@ module SVG
             x_offset = @border_left + 20
             y_offset = @border_top + @graph_height + 5
             if show_x_labels
-              # max_x_label_height_px = (not rotate_x_labels) ? 
-              # x_label_font_size :
-              # get_x_labels.max{|a,b| 
-              #   a.to_s.length<=>b.to_s.length
-              # }.to_s.length * x_label_font_size * 0.6
-              #   x_label_font_size
               y_offset += max_x_label_height_px
-              #y_offset += max_x_label_height_px + 5 if stagger_x_labels
             end
             y_offset += x_title_font_size + 5 if show_x_title
           end

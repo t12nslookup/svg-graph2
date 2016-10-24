@@ -12,7 +12,7 @@ data1 = [-6.1, 11.2, 0.3, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19
 #  data2 << rand(20)
 #  data2 << rand(20)
 #}
-data2 = [0,18, -2,4, 8,15, -4,4, 9,4, 18,14, 10,2, 11,6, 14,12, 15,6, 4,17, 2,12]
+data2 = [0,18, -2,4, 8,-2, -4,4, 9,4, 18,14, 10,2, 11,6, 14,12, 15,6, 4,17, 2,12]
 data2_desc = %w{jan feb mar apr may jun jul aug sep oct nov dez}
 
 graph = SVG::Graph::Plot.new( {
@@ -23,8 +23,8 @@ graph = SVG::Graph::Plot.new( {
   :no_css => false,
   :area_fill => true,
   :key => true,
-  :scale_x_integers => false,
-  :stagger_x_labels => true,
+  :scale_x_integers => true,
+  :stagger_x_labels => false,
   :scale_y_integers => true,
   :min_x_value => 0,
   :min_y_value => 0,
@@ -38,7 +38,7 @@ graph = SVG::Graph::Plot.new( {
   :show_lines => true,
   :add_popups => true,
   :round_popups => false,
-  :stacked => true,
+  :stacked => false,
 })
 graph.add_data( 
   :data => data1,

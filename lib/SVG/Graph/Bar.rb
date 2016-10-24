@@ -58,12 +58,6 @@ module SVG
     class Bar < BarBase
       include REXML
 
-      # See Graph::initialize and BarBase::set_defaults
-      def set_defaults 
-        super
-        # self.top_align = self.top_font = 1
-      end
-
       protected
 
       def get_x_labels
@@ -104,14 +98,11 @@ module SVG
         minvalue = min_value
         fieldwidth = field_width
 
-        # unit_size =  (@graph_height.to_f - font_size*2*top_font) / 
-        #                   (get_y_labels.max - get_y_labels.min)
         unit_size = field_height
         bargap = bar_gap ? (fieldwidth < 10 ? fieldwidth / 2 : 10) : 0
 
         bar_width = fieldwidth - bargap
         bar_width /= @data.length if stack == :side
-        #x_mod = (@graph_width-bargap)/2 - (stack==:side ? bar_width/2 : 0)
  
         bottom = @graph_height
 

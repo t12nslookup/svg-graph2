@@ -40,7 +40,8 @@ module SVG
       attr_accessor :stack
       protected
       
-      # space in px between x-labels
+      # space in px between x-labels, we override the Graph version because
+      # we need the extra space (i.e. don't subtract 1 from get_x_labels.length)
       def field_width
         # don't use -1 otherwise bar is out of bounds        
         @graph_width.to_f / ( get_x_labels.length )

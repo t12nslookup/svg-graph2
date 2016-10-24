@@ -1,14 +1,15 @@
 TODO / Backlog
-* add unit tests for all types of graph
-* refactor various hardcoded constant pixel offsets in Graph class to use constants or variables
+* add unit tests for all types of graphs
+* refactor various hardcoded constant pixel offsets in Graph class to use named constants or variables
 
 
-=== 2.0.2 work in progress
+=== 2.0.2 / 2016-10-24 [lumean]
 * fix axis-title positioning
 * fix/add support for popups of values line, plot, bar graph
 * Line,Plot,Pie graph support nil values (or pairs of nil for plot) for non-present datapoints
 * fix show datapoint labels: changed text anchor of first datapoint label to avoid overlap with axis
-* fix pie graph key overlapping the graph
+  and text anchor of last datapoint label
+* fix pie graph key overlapping the graph [thanks adamalbrecht for reporting]
 * fix axis titles positioning for staggered axis (prevent overlap)
 * fix axis labels and positioning when scale_integers is true and min value is not integer.
 * added various comments in the code to be better understandable (for me)
