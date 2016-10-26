@@ -86,9 +86,9 @@ module SVG
         end
 
         rv = []
-        if maxvalue%@x_scale_division != 0
-          maxvalue = maxvalue + @x_scale_division
-        end
+        #if maxvalue%@x_scale_division != 0
+        #  maxvalue = maxvalue + @x_scale_division
+        #end
         minvalue.step( maxvalue, @x_scale_division ) {|v| rv << v}
         return rv
       end
@@ -115,7 +115,7 @@ module SVG
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
-            value = dataset[:data][i]/@x_scale_division
+            value = dataset[:data][i]
             
             top = @graph_height - (fieldheight * field_count)
             top += (bar_height * dataset_count) if stack == :side
@@ -124,8 +124,8 @@ module SVG
             #    +ve   +ve  value.abs - min minvalue.abs
             #    +ve   -ve  value.abs - 0   minvalue.abs
             #    -ve   -ve  value.abs - 0   minvalue.abs + value
-            length = (value.abs - (minvalue > 0 ? minvalue : 0)) * fieldheight
-            left = (minvalue.abs + (value < 0 ? value : 0)) * fieldheight
+            length = (value.abs - (minvalue > 0 ? minvalue : 0))/@x_scale_division.to_f * field_width
+            left = (minvalue.abs + (value < 0 ? value : 0))/@x_scale_division.to_f * field_width
 
             @graph.add_element( "rect", {
               "x" => left.to_s,

@@ -184,7 +184,8 @@ module SVG
               "style" => "stroke:rgb(0,0,0);stroke-width:1"
             })
             
-            make_datapoint_text(left + bar_width/2.0, top - 6, value.to_s)
+            make_datapoint_text(left + bar_width/2.0, top - 6, dataset[:data][i].to_s)
+            add_popup(left + bar_width/2.0, top , dataset[:data][i].to_s)
             dataset_count += 1
           end
           field_count += 1

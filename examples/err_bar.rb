@@ -17,7 +17,7 @@ graph = SVG::Graph::ErrBar.new(
   :fields => fields,
   :stacked => :side,
   :errorBars => err_mesure,
-  :scale_integers => true,
+  :scale_integers => false,
 )
 
 graph.add_data(
