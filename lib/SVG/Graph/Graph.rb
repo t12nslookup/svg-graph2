@@ -63,6 +63,8 @@ module SVG
       # instantiate this class directly; see the subclass for options.
       # [width] 500
       # [height] 300
+      # [x_axis_position] 0
+      # [y_axis_position] 0
       # [show_x_guidelines] false
       # [show_y_guidelines] true
       # [show_data_values] true
@@ -111,6 +113,9 @@ module SVG
           :show_x_guidelines    => false,
           :show_y_guidelines    => true,
           :show_data_values     => true,
+          
+          :x_axis_position      => 0,
+          :y_axis_position      => 0,
 
           :min_scale_value      => nil,
 
@@ -260,6 +265,18 @@ module SVG
       attr_accessor :style_sheet
       #   (Bool) Show the value of each element of data on the graph
       attr_accessor :show_data_values
+      #   Sets the axis position relative to the graph dimensions.
+      #   Valid values are between 0 and 1 where 0 means the bottom border
+      #   and 1 is the the top border of the graph. If for example you want to 
+      #   position your axis in the middle, use 0.5
+      #   Default: 0
+      attr_accessor :x_axis_position
+      #   Sets the axis position relative to the graph dimensions.
+      #   Valid values are between 0 and 1 where 0 means the left border
+      #   and 1 is the the right border of the graph. If for example you want to 
+      #   position your axis in the middle, use 0.5
+      #   Default: 0
+      attr_accessor :y_axis_position
       #   The point at which the Y axis starts, defaults to nil,
       #   if set to nil it will default to the minimum data value.
       attr_accessor :min_scale_value
@@ -268,17 +285,17 @@ module SVG
       attr_accessor :show_x_labels
       #   This puts the X labels at alternative levels so if they
       #   are long field names they will not overlap so easily.
-      #   Default it false, to turn on set to true.
+      #   Default is false, to turn on set to true.
       attr_accessor :stagger_x_labels
       #   This puts the Y labels at alternative levels so if they
       #   are long field names they will not overlap so easily.
-      #   Default it false, to turn on set to true.
+      #   Default is false, to turn on set to true.
       attr_accessor :stagger_y_labels
       #   This turns the X axis labels by 90 degrees.
-      #   Default it false, to turn on set to true.
+      #   Default is false, to turn on set to true.
       attr_accessor :rotate_x_labels
       #   This turns the Y axis labels by 90 degrees.
-      #   Default it true, to turn on set to false.
+      #   Default is true, to turn on set to false.
       attr_accessor :rotate_y_labels
       #   How many "steps" to use between displayed X axis labels,
       #   a step of one means display every label, a step of two results
@@ -295,7 +312,7 @@ module SVG
       #   to true, set to false if you want to turn them off.
       attr_accessor :show_y_labels
       #   Ensures only whole numbers are used as the scale divisions.
-      #   Default it false, to turn on set to true. This has no effect if 
+      #   Default is false, to turn on set to true. This has no effect if 
       #   scale divisions are less than 1.
       attr_accessor :scale_integers
       #   This defines the gap between markers on the Y axis,
@@ -557,14 +574,17 @@ module SVG
           "class" => "graphBackground"
         })
 
-        # Axis
+        # Y-Axis
+        x_offset = y_axis_position.to_f * @graph_width
         @graph.add_element( "path", {
-          "d" => "M 0 0 v#@graph_height",
+          "d" => "M #{x_offset} 0 v#@graph_height",
           "class" => "axis",
           "id" => "xAxis"
         })
+        # X-Axis
+        y_offset = (1 - x_axis_position.to_f) * @graph_height
         @graph.add_element( "path", {
-          "d" => "M 0 #@graph_height h#@graph_width",
+          "d" => "M 0 #{y_offset} h#@graph_width",
           "class" => "axis",
           "id" => "yAxis"
         })
@@ -582,7 +602,8 @@ module SVG
       
       # check if an object can be converted to float
       def numeric?(object)
-        true if Float(object) rescue false
+        # true if Float(object) rescue false
+        object.is_a? Numeric
       end
 
       # adds the datapoint text to the graph only if the config option is set
