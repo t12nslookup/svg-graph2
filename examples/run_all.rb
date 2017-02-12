@@ -2,9 +2,11 @@
 require 'svggraph'
 puts SVG::Graph::VERSION
 
-list = Dir.glob("*.rb")
-list.delete __FILE__
+list = Dir.glob(File.expand_path("*.rb", __dir__))
+list.delete File.expand_path(__FILE__)
 
 list.each {|file|
-  `ruby #{File.expand_path(file, __dir__)}`
+  cmd = "ruby #{File.expand_path(file, __dir__)}"
+  puts cmd
+  puts `#{cmd}`
 }

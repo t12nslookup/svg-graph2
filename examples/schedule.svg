@@ -11,8 +11,8 @@
 <rect width='640' height='480' x='0' y='0' class='svgBackground' style='fill:#ffffff;'/>
 <g transform='translate( 107.8 26 )'>
 <rect x='0' y='0' width='525.2' height='392.0' class='graphBackground' style='fill:#f0f0f0;'/>
-<path d='M 0 0 v392.0' class='axis' id='xAxis' style='stroke: #000000; stroke-width: 1px;'/>
 <path d='M 0 392.0 h525.2' class='axis' id='yAxis' style='stroke: #000000; stroke-width: 1px;'/>
+<path d='M 0.0 0 v392.0' class='axis' id='xAxis' style='stroke: #000000; stroke-width: 1px;'/>
 <text class='xAxisLabels' x='0.0' y='407.0' transform='rotate( 90 0.0 395.0 ) translate( 0 -3 )' style='text-anchor: middle; fill: #000000; font-size: 12px; font-family: &quot;Arial&quot;, sans-serif; font-weight: normal;text-anchor: start'>
 05/19
 </text>

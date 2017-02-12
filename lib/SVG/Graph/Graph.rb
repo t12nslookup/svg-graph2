@@ -584,10 +584,9 @@ module SVG
 
       # draws the x-axis; can be overridden by child classes
       def draw_x_axis
-        # X-Axis
         # relative position on y-axis (hence @graph_height is our axis length)
         relative_position = calculate_rel_position(get_y_labels, field_height, @x_axis_position, @graph_height)
-
+        # X-Axis
         y_offset = (1 - relative_position) * @graph_height
         @graph.add_element( "path", {
           "d" => "M 0 #{y_offset} h#@graph_width",
@@ -622,25 +621,34 @@ module SVG
       # @param axis_length [Numeric] either @graph_width or @graph_height
       # @return [Float] relative position between 0 and 1, returns 0
       def calculate_rel_position(labels, segment_px, value, axis_length)
-        if (labels[0].is_a? Numeric) and (labels[-1].is_a? Numeric)
-          # labels are numeric, compute relative position between first and last value
-          range = labels[-1] - labels[0]
-          position = value - labels[0]
-          relative_to_segemts = value/range
-          # convert from segments to axis
-          relative_position = relative_to_segemts * segment_px / axis_length
-        elsif labels[0].is_a? String
-          # labels are strings, see if one of label matches with the position
-          # and place the axis there
-          index = labels.index(value)
-          if !index.nil? # index would be nil if label is not found
-            offset_px = segment_px * index
-            relative_position = offset_px/axis_length   # between 0 and 1
+        # default value, y-axis on the left side, or x-axis at bottom
+        # puts "calculate_rel_position:"
+        # p labels
+        # p segment_px
+        # p value
+        # p axis_length
+        relative_position = 0
+        if !value.nil? # only
+          if (labels[0].is_a? Numeric) && (labels[-1].is_a? Numeric) && (value.is_a? Numeric)
+            # labels are numeric, compute relative position between first and last value
+            range = labels[-1] - labels[0]
+            position = value - labels[0]
+            # compute how many segments long the offset is
+            relative_to_segemts = position/range * (labels.size - 1)
+            # convert from segments to relative position on the axis axis,
+            # the number of segments (i.e. relative_to_segemts >= 1)
+            relative_position = relative_to_segemts * segment_px / axis_length
+          elsif labels[0].is_a? String
+            # labels are strings, see if one of label matches with the position
+            # and place the axis there
+            index = labels.index(value)
+            if !index.nil? # index would be nil if label is not found
+              offset_px = segment_px * index
+              relative_position = offset_px/axis_length   # between 0 and 1
+            end
           end
-        else
-          # default value, y-axis on the left side
-          relative_position = 0
-        end
+        end # value.nil?
+        return relative_position
       end
 
       # Where in the X area the label is drawn
@@ -703,13 +711,13 @@ module SVG
           end
           # only draw every n-th label as defined by step_x_labels
           if step == 0 && show_x_labels then
-            label = label.to_s
+            textStr = label.to_s
             if( numeric?(label) )
-              label = @number_format % label
+              textStr = @number_format % label
             end
             text = @graph.add_element( "text" )
             text.attributes["class"] = "xAxisLabels"
-            text.text = label.to_s
+            text.text = textStr
 
             x = count * label_width + x_label_offset( label_width )
             y = @graph_height + x_label_font_size + 3

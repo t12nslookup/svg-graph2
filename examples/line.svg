@@ -86,69 +86,69 @@
 .staggerGuideLine{
   fill: none;
   stroke: #000000;
-  stroke-width: 0.5px;  
+  stroke-width: 0.5px;
 }
 
 /* default line styles */
 .line1{
 	fill: none;
 	stroke: #ff0000;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line2{
 	fill: none;
 	stroke: #0000ff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line3{
 	fill: none;
 	stroke: #00ff00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line4{
 	fill: none;
 	stroke: #ffcc00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line5{
 	fill: none;
 	stroke: #00ccff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line6{
 	fill: none;
 	stroke: #ff00ff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line7{
 	fill: none;
 	stroke: #00ffff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line8{
 	fill: none;
 	stroke: #ffff00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line9{
 	fill: none;
 	stroke: #ccc6666;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line10{
 	fill: none;
 	stroke: #663399;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line11{
 	fill: none;
 	stroke: #339900;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line12{
 	fill: none;
 	stroke: #9966FF;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 /* default fill styles */
 .fill1{
@@ -215,62 +215,62 @@
 .key1,.dataPoint1{
 	fill: #ff0000;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key2,.dataPoint2{
 	fill: #0000ff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key3,.dataPoint3{
 	fill: #00ff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key4,.dataPoint4{
 	fill: #ffcc00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key5,.dataPoint5{
 	fill: #00ccff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key6,.dataPoint6{
 	fill: #ff00ff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key7,.dataPoint7{
 	fill: #00ffff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key8,.dataPoint8{
 	fill: #ffff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key9,.dataPoint9{
 	fill: #cc6666;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key10,.dataPoint10{
 	fill: #663399;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key11,.dataPoint11{
 	fill: #339900;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key12,.dataPoint12{
 	fill: #9966FF;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 
 
@@ -290,8 +290,8 @@
 <rect width='640' height='480' x='0' y='0' class='svgBackground'/>
 <g transform='translate( 62.0 26 )'>
 <rect x='0' y='0' width='495.0' height='396' class='graphBackground'/>
-<path d='M 0 0 v396' class='axis' id='xAxis'/>
-<path d='M 0 396 h495.0' class='axis' id='yAxis'/>
+<path d='M 0 303.0567986230637 h495.0' class='axis' id='yAxis'/>
+<path d='M 212.1428571428571 0 v396' class='axis' id='xAxis'/>
 <text class='xAxisLabels' x='0.0' y='411' style='text-anchor: middle'>
 jan
 </text>
@@ -397,160 +397,160 @@ aug
 <text x='0.0' y='307.3838209982788' class='dataPointLabel' style='text-anchor: start;'>
 4.00
 </text>
-<text x='5.0' y='301.3838209982788' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='2271240'>
-4.00
+<text x='5.0' y='301.3838209982788' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26353620'>
+4
 </text>
-<circle cx='0.0' cy='313.3838209982788' r='10' style='opacity: 0' onmouseover='document.getElementById(2271240).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(2271240).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='0.0' cy='313.3838209982788' r='10' style='opacity: 0' onmouseover='document.getElementById(26353620).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26353620).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='70.71428571428571' y='162.80550774526677' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 18.00
 </text>
 <text x='70.71428571428571' y='162.80550774526677' class='dataPointLabel'>
 18.00
 </text>
-<text x='75.71428571428571' y='156.80550774526677' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22318620'>
-18.00
+<text x='75.71428571428571' y='156.80550774526677' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26321772'>
+18
 </text>
-<circle cx='70.71428571428571' cy='168.80550774526677' r='10' style='opacity: 0' onmouseover='document.getElementById(22318620).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22318620).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='70.71428571428571' cy='168.80550774526677' r='10' style='opacity: 0' onmouseover='document.getElementById(26321772).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26321772).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='141.42857142857142' y='317.71084337349396' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 3.00
 </text>
 <text x='141.42857142857142' y='317.71084337349396' class='dataPointLabel'>
 3.00
 </text>
-<text x='146.42857142857142' y='311.71084337349396' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22278576'>
-3.00
+<text x='146.42857142857142' y='311.71084337349396' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26283624'>
+3
 </text>
-<circle cx='141.42857142857142' cy='323.71084337349396' r='10' style='opacity: 0' onmouseover='document.getElementById(22278576).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22278576).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='141.42857142857142' cy='323.71084337349396' r='10' style='opacity: 0' onmouseover='document.getElementById(26283624).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26283624).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='212.1428571428571' y='276.4027538726334' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 7.00
 </text>
 <text x='212.1428571428571' y='276.4027538726334' class='dataPointLabel'>
 7.00
 </text>
-<text x='217.1428571428571' y='270.4027538726334' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22247004'>
-7.00
+<text x='217.1428571428571' y='270.4027538726334' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26204796'>
+7
 </text>
-<circle cx='212.1428571428571' cy='282.4027538726334' r='10' style='opacity: 0' onmouseover='document.getElementById(22247004).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22247004).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='212.1428571428571' cy='282.4027538726334' r='10' style='opacity: 0' onmouseover='document.getElementById(26204796).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26204796).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='282.85714285714283' y='266.07573149741825' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 8.00
 </text>
 <text x='282.85714285714283' y='266.07573149741825' class='dataPointLabel'>
 8.00
 </text>
-<text x='287.85714285714283' y='260.07573149741825' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22215564'>
-8.00
+<text x='287.85714285714283' y='260.07573149741825' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26149308'>
+8
 </text>
-<circle cx='282.85714285714283' cy='272.07573149741825' r='10' style='opacity: 0' onmouseover='document.getElementById(22215564).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22215564).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='282.85714285714283' cy='272.07573149741825' r='10' style='opacity: 0' onmouseover='document.getElementById(26149308).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26149308).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='353.57142857142856' y='193.7865748709122' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 15.00
 </text>
 <text x='353.57142857142856' y='193.7865748709122' class='dataPointLabel'>
 15.00
 </text>
-<text x='358.57142857142856' y='187.7865748709122' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22184052'>
-15.00
+<text x='358.57142857142856' y='187.7865748709122' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26111460'>
+15
 </text>
-<circle cx='353.57142857142856' cy='199.7865748709122' r='10' style='opacity: 0' onmouseover='document.getElementById(22184052).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22184052).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='353.57142857142856' cy='199.7865748709122' r='10' style='opacity: 0' onmouseover='document.getElementById(26111460).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26111460).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='424.2857142857142' y='214.4406196213425' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 13.00
 </text>
 <text x='424.2857142857142' y='214.4406196213425' class='dataPointLabel'>
 13.00
 </text>
-<text x='429.2857142857142' y='208.4406196213425' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22152480'>
-13.00
+<text x='429.2857142857142' y='208.4406196213425' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26040552'>
+13
 </text>
-<circle cx='424.2857142857142' cy='220.4406196213425' r='10' style='opacity: 0' onmouseover='document.getElementById(22152480).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22152480).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='424.2857142857142' cy='220.4406196213425' r='10' style='opacity: 0' onmouseover='document.getElementById(26040552).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26040552).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='494.99999999999994' y='328.0378657487091' class='dataPointLabel' style='text-anchor: end; stroke: #fff; stroke-width: 2;'>
 2.00
 </text>
 <text x='494.99999999999994' y='328.0378657487091' class='dataPointLabel' style='text-anchor: end;'>
 2.00
 </text>
-<text x='499.99999999999994' y='322.0378657487091' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22111752'>
-2.00
+<text x='499.99999999999994' y='322.0378657487091' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='26008596'>
+2
 </text>
-<circle cx='494.99999999999994' cy='334.0378657487091' r='10' style='opacity: 0' onmouseover='document.getElementById(22111752).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22111752).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='494.99999999999994' cy='334.0378657487091' r='10' style='opacity: 0' onmouseover='document.getElementById(26008596).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(26008596).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='0.0' y='276.4027538726334' class='dataPointLabel' style='text-anchor: start; stroke: #fff; stroke-width: 2;'>
 7.00
 </text>
 <text x='0.0' y='276.4027538726334' class='dataPointLabel' style='text-anchor: start;'>
 7.00
 </text>
-<text x='5.0' y='270.4027538726334' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='22065192'>
-7.00
+<text x='5.0' y='270.4027538726334' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25947408'>
+7
 </text>
-<circle cx='0.0' cy='282.4027538726334' r='10' style='opacity: 0' onmouseover='document.getElementById(22065192).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(22065192).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='0.0' cy='282.4027538726334' r='10' style='opacity: 0' onmouseover='document.getElementById(25947408).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25947408).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='70.71428571428571' y='47.14285714285711' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 29.20
 </text>
 <text x='70.71428571428571' y='47.14285714285711' class='dataPointLabel'>
 29.20
 </text>
-<text x='75.71428571428571' y='41.14285714285711' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21934548'>
-29.20
+<text x='75.71428571428571' y='41.14285714285711' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25858968'>
+29.200000000000003
 </text>
-<circle cx='70.71428571428571' cy='53.14285714285711' r='10' style='opacity: 0' onmouseover='document.getElementById(21934548).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21934548).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='70.71428571428571' cy='53.14285714285711' r='10' style='opacity: 0' onmouseover='document.getElementById(25858968).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25858968).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='141.42857142857142' y='294.9913941480207' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 5.20
 </text>
 <text x='141.42857142857142' y='294.9913941480207' class='dataPointLabel'>
 5.20
 </text>
-<text x='146.42857142857142' y='288.9913941480207' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21772236'>
-5.20
+<text x='146.42857142857142' y='288.9913941480207' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25327116'>
+5.199999999999999
 </text>
-<circle cx='141.42857142857142' cy='300.9913941480207' r='10' style='opacity: 0' onmouseover='document.getElementById(21772236).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21772236).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='141.42857142857142' cy='300.9913941480207' r='10' style='opacity: 0' onmouseover='document.getElementById(25327116).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25327116).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='212.1428571428571' y='332.1686746987952' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 1.60
 </text>
 <text x='212.1428571428571' y='332.1686746987952' class='dataPointLabel'>
 1.60
 </text>
-<text x='217.1428571428571' y='326.1686746987952' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21740676'>
-1.60
+<text x='217.1428571428571' y='326.1686746987952' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25276824'>
+1.5999999999999996
 </text>
-<circle cx='212.1428571428571' cy='338.1686746987952' r='10' style='opacity: 0' onmouseover='document.getElementById(21740676).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21740676).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='212.1428571428571' cy='338.1686746987952' r='10' style='opacity: 0' onmouseover='document.getElementById(25276824).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25276824).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='282.85714285714283' y='75.02581755593803' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 26.50
 </text>
 <text x='282.85714285714283' y='75.02581755593803' class='dataPointLabel'>
 26.50
 </text>
-<text x='287.85714285714283' y='69.02581755593803' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21628608'>
-26.50
+<text x='287.85714285714283' y='69.02581755593803' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25182756'>
+26.5
 </text>
-<circle cx='282.85714285714283' cy='81.02581755593803' r='10' style='opacity: 0' onmouseover='document.getElementById(21628608).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21628608).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='282.85714285714283' cy='81.02581755593803' r='10' style='opacity: 0' onmouseover='document.getElementById(25182756).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25182756).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='353.57142857142856' y='115.30120481927707' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 22.60
 </text>
 <text x='353.57142857142856' y='115.30120481927707' class='dataPointLabel'>
 22.60
 </text>
-<text x='358.57142857142856' y='109.30120481927707' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21598812'>
-22.60
+<text x='358.57142857142856' y='109.30120481927707' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25102992'>
+22.6
 </text>
-<circle cx='353.57142857142856' cy='121.30120481927707' r='10' style='opacity: 0' onmouseover='document.getElementById(21598812).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21598812).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='353.57142857142856' cy='121.30120481927707' r='10' style='opacity: 0' onmouseover='document.getElementById(25102992).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25102992).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='424.2857142857142' y='196.88468158347675' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
 14.70
 </text>
 <text x='424.2857142857142' y='196.88468158347675' class='dataPointLabel'>
 14.70
 </text>
-<text x='429.2857142857142' y='190.88468158347675' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21560712'>
-14.70
+<text x='429.2857142857142' y='190.88468158347675' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='25059696'>
+14.7
 </text>
-<circle cx='424.2857142857142' cy='202.88468158347675' r='10' style='opacity: 0' onmouseover='document.getElementById(21560712).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21560712).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='424.2857142857142' cy='202.88468158347675' r='10' style='opacity: 0' onmouseover='document.getElementById(25059696).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(25059696).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 <text x='494.99999999999994' y='206.17900172117035' class='dataPointLabel' style='text-anchor: end; stroke: #fff; stroke-width: 2;'>
 13.80
 </text>
 <text x='494.99999999999994' y='206.17900172117035' class='dataPointLabel' style='text-anchor: end;'>
 13.80
 </text>
-<text x='499.99999999999994' y='200.17900172117035' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='21528972'>
-13.80
+<text x='499.99999999999994' y='200.17900172117035' class='dataPointLabel' visibility='hidden' style='stroke-width: 2; fill: #000; text-anchor: start;' id='24873996'>
+13.8
 </text>
-<circle cx='494.99999999999994' cy='212.17900172117035' r='10' style='opacity: 0' onmouseover='document.getElementById(21528972).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(21528972).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
+<circle cx='494.99999999999994' cy='212.17900172117035' r='10' style='opacity: 0' onmouseover='document.getElementById(24873996).setAttribute(&apos;visibility&apos;, &apos;visible&apos; )' onmouseout='document.getElementById(24873996).setAttribute(&apos;visibility&apos;, &apos;hidden&apos; )'/>
 </g>
 </g>
 <text x='320' y='16' class='mainTitle'>

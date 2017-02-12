@@ -3,11 +3,12 @@ TODO / Backlog
 * refactor various hardcoded constant pixel offsets in Graph class to use named constants or variables
 
 === 2.1.0 / 2017-02-12 [lumean]
-* change behavior for number format, Strings axis labels will never be formatted
+* [#2] change behavior for number format, Strings axis labels will never be formatted
   previously, when containing numbers they were formatted with the number_format template
-* added options to change x-axis and y-axis position :x_axis_position and :y_axis_position
+* [#3] added options to change x-axis and y-axis position :x_axis_position and :y_axis_position
 * x_guidelines and y_guidelines can now be drawn independently of show_x_labels and show_y_labels,
   before they were only drawn if show_x_labels resp show_y_labels was true
+* fix number_format not being applied to x-axis labels
 
 === 2.0.2 / 2016-10-24 [lumean]
 * fix axis-title positioning

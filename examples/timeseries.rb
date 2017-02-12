@@ -41,22 +41,22 @@ graph = SVG::Graph::TimeSeries.new( {
   #:area_fill => true,
   :min_y_value => 0,
 })
-graph.add_data( 
+graph.add_data(
   :data => data1,
   :title => "Ice Cream",
   :template => '%d/%m/%y'
   )
-graph.add_data( 
+graph.add_data(
   :data => data2,
   :title => "Ice Cream Cones",
   :template => '%d/%m/%y'
 )
-graph.add_data( 
+graph.add_data(
   :data => data3,
   :title => "Sprinkles",
   :template => '%d/%m/%y'
 )
 #puts graph.burn
-File.open("timeseries.svg", "w") {|fout| 
+File.open(File.expand_path("timeseries.svg",__dir__), "w") {|fout| 
   fout.print( graph.burn )
 }

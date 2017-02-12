@@ -4,43 +4,43 @@ require_relative 'BarBase'
 module SVG
   module Graph
     # === Create presentation quality SVG horitonzal bar graphs easily
-    # 
+    #
     # = Synopsis
-    # 
+    #
     #   require 'SVG/Graph/BarHorizontal'
-    #   
+    #
     #   fields = %w(Jan Feb Mar)
     #   data_sales_02 = [12, 45, 21]
-    #   
+    #
     #   graph = SVG::Graph::BarHorizontal.new({
     #     :height => 500,
     #     :width => 300,
     #     :fields => fields,
     #   })
-    #   
+    #
     #   graph.add_data({
     #     :data => data_sales_02,
     #     :title => 'Sales 2002',
     #   })
-    #   
+    #
     #   print "Content-type: image/svg+xml\r\n\r\n"
     #   print graph.burn
-    # 
+    #
     # = Description
-    # 
+    #
     # This object aims to allow you to easily create high quality
     # SVG horitonzal bar graphs. You can either use the default style sheet
     # or supply your own. Either way there are many options which can
     # be configured to give you control over how the graph is
     # generated - with or without a key, data elements at each point,
     # title, subtitle etc.
-    # 
+    #
     # = Examples
-    # 
+    #
     # * http://germane-software.com/repositories/public/SVG/test/test.rb
-    # 
+    #
     # = See also
-    # 
+    #
     # * SVG::Graph::Graph
     # * SVG::Graph::Bar
     # * SVG::Graph::Line
@@ -62,14 +62,14 @@ module SVG
       # [show_y_guidelines] false
       def set_defaults
         super
-        init_with( 
+        init_with(
           :rotate_y_labels    => true,
           :show_x_guidelines  => true,
           :show_y_guidelines  => false
         )
         # self.right_align = self.right_font = 1
       end
-  
+
       protected
 
       def get_x_labels
@@ -110,14 +110,14 @@ module SVG
         bar_height = fieldheight - bargap
         bar_height /= @data.length if stack == :side
         y_mod = (bar_height / 2) + (font_size / 2)
-        
+
         field_count = 1
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
             value = dataset[:data][i]
-            
-            top = @graph_height - (fieldheight * field_count)
+
+            top = @graph_height - (fieldheight * field_count) + bargap
             top += (bar_height * dataset_count) if stack == :side
             # cases (assume 0 = +ve):
             #   value  min  length          left
@@ -135,9 +135,8 @@ module SVG
               "class" => "fill#{dataset_count+1}"
             })
 
-            make_datapoint_text( 
-              left+length+5, top+y_mod, dataset[:data][i].to_s, "text-anchor: start; "
-              )
+            make_datapoint_text(left+length+5, top+y_mod, dataset[:data][i], "text-anchor: start; ")
+            # number format shall not apply to popup (use .to_s conversion)
             add_popup(left+length, top+y_mod , dataset[:data][i].to_s)
             dataset_count += 1
           end

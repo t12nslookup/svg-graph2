@@ -38,17 +38,19 @@ graph = SVG::Graph::Line.new( {
   :y_title_text_direction => :bt,
   :show_lines => false,
   :add_popups => true,
-  :round_popups => false
+  :round_popups => false,
+  :x_axis_position   => 5,
+  :y_axis_position   => 'apr',
 })
-graph.add_data( 
+graph.add_data(
   :data => data1,
   :title => "Dataset 1"
   )
-graph.add_data( 
+graph.add_data(
   :data => data2,
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open("line.svg", "w") {|fout| 
+File.open(File.expand_path("line.svg",__dir__), "w") {|fout|
   fout.print( graph.burn )
 }

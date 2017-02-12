@@ -33,13 +33,13 @@ graph = SVG::Graph::Schedule.new( {
   :min_y_value => 0,
 })
 
-graph.add_data( 
+graph.add_data(
   :data => data1,
   :title => "Data",
   :template => '%m/%d/%y'
   )
 
 #puts graph.burn
-File.open("schedule.svg", "w") {|fout| 
+File.open(File.expand_path("schedule.svg",__dir__), "w") {|fout| 
   fout.print( graph.burn )
 }

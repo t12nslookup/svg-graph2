@@ -39,17 +39,19 @@ graph = SVG::Graph::Plot.new( {
   :add_popups => true,
   :round_popups => false,
   :stacked => false,
+  :x_axis_position   => 0,
+  :y_axis_position   => 0,
 })
-graph.add_data( 
+graph.add_data(
   :data => data1,
   :title => "Dataset 1"
   )
-graph.add_data( 
+graph.add_data(
   :data => data2,
   :title => "Dataset 2",
   :description => data2_desc
   )
 #puts graph.burn
-File.open("plot.svg", "w") {|fout| 
+File.open(File.expand_path("plot.svg",__dir__), "w") {|fout|
   fout.print( graph.burn )
 }

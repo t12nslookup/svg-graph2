@@ -33,15 +33,15 @@ graph = SVG::Graph::Pie.new( {
   :expanded => false,
   :expand_greatest => true
 })
-graph.add_data( 
+graph.add_data(
   :data => data1,
   :title => "Dataset 1"
   )
-graph.add_data( 
+graph.add_data(
   :data => data2,
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open("pie.svg", "w") {|fout| 
+File.open(File.expand_path("pie.svg",__dir__), "w") {|fout| 
   fout.print( graph.burn )
 }

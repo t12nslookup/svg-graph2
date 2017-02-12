@@ -103,29 +103,29 @@ module SVG
 
         bar_width = fieldwidth - bargap
         bar_width /= @data.length if stack == :side
- 
+
         bottom = @graph_height
 
         field_count = 0
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
-          
+
             # cases (assume 0 = +ve):
             #   value  min  length
             #    +ve   +ve  value - min
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
-          
+
             value = dataset[:data][i]/@y_scale_division
-            
+
             left = (fieldwidth * field_count)
-            
+
             length = (value.abs - (minvalue > 0 ? minvalue : 0)) * unit_size
             # top is 0 if value is negative
             top = bottom - (((value < 0 ? 0 : value) - minvalue) * unit_size)
             left += bar_width * dataset_count if stack == :side
- 
+
             @graph.add_element( "rect", {
               "x" => left.to_s,
               "y" => top.to_s,
@@ -134,7 +134,8 @@ module SVG
               "class" => "fill#{dataset_count+1}"
             })
 
-            make_datapoint_text(left + bar_width/2.0, top - font_size/2, dataset[:data][i].to_s)
+            make_datapoint_text(left + bar_width/2.0, top - font_size/2, dataset[:data][i])
+            # number format shall not apply to popup (use .to_s conversion)
             add_popup(left + bar_width/2.0, top , dataset[:data][i].to_s)
             dataset_count += 1
           end

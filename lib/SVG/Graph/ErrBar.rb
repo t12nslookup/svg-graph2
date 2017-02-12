@@ -13,14 +13,14 @@ module SVG
     #   fields = %w(Jan Feb);
     #   myarr1_mean = 10
     #   myarr1_confidence = 1
-    #   
+    #
     #   myarr2_mean = 20
     #   myarr2_confidence = 2
-    #   
+    #
     #   data= [myarr1_mean, myarr2_mean]
-    #   
+    #
     #   err_mesure = [myarr1_confidence, myarr2_confidence]
-    #   
+    #
     #   graph = SVG::Graph::ErrBar.new(
     #     :height => 500,
     #     :width => 600,
@@ -28,7 +28,7 @@ module SVG
     #     :errorBars => err_mesure,
     #     :scale_integers => true,
     #   )
-    #   
+    #
     #   graph.add_data(
     #     :data => data,
     #     :title => 'Sales 2002'
@@ -71,10 +71,10 @@ module SVG
       def initialize config
           raise "fields was not supplied or is empty" unless config[:errorBars] &&
           config[:errorBars].kind_of?(Array) &&
-          config[:errorBars].length > 0 
+          config[:errorBars].length > 0
           super
-      end 
-      # Array of confidence values for each item in :fields. A range from 
+      end
+      # Array of confidence values for each item in :fields. A range from
       # value[i]-errorBars[i] to value[i]+errorBars[i] is drawn into the graph.
       attr_accessor :errorBars
 
@@ -103,7 +103,7 @@ module SVG
         end
 
         rv = []
-        maxvalue = maxvalue%@y_scale_division == 0 ? 
+        maxvalue = maxvalue%@y_scale_division == 0 ?
           maxvalue : maxvalue + @y_scale_division
         minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
@@ -122,31 +122,31 @@ module SVG
 
         bar_width = fieldwidth - (bargap *2)
         bar_width /= @data.length if stack == :side
- 
+
         bottom = @graph_height
 
         field_count = 0
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
-          
+
             # cases (assume 0 = +ve):
             #   value  min  length
             #    +ve   +ve  value - min
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
-          
+
             value = dataset[:data][i].to_f/@y_scale_division
-            
+
             left = (fieldwidth * field_count)
             left += bargap
-         
-            
+
+
             length = (value.abs - (minvalue > 0 ? minvalue : 0)) * unit_size
             # top is 0 if value is negative
             top = bottom - (((value < 0 ? 0 : value) - minvalue) * unit_size)
             left += bar_width * dataset_count if stack == :side
- 
+
             @graph.add_element( "rect", {
               "x" => left.to_s,
               "y" => top.to_s,
@@ -160,7 +160,7 @@ module SVG
             upperErr = top+threshold
             bottomErr = top-threshold
             withthErr = bar_width/4
-			
+
             @graph.add_element( "line", {
               "x1" => middlePointErr.to_s,
               "y1" => upperErr.to_s,
@@ -168,7 +168,7 @@ module SVG
               "y2" => bottomErr.to_s,
               "style" => "stroke:rgb(0,0,0);stroke-width:1"
             })
-            
+
             @graph.add_element( "line", {
               "x1" => (middlePointErr-withthErr).to_s,
               "y1" => upperErr.to_s,
@@ -183,15 +183,16 @@ module SVG
               "y2" => bottomErr.to_s,
               "style" => "stroke:rgb(0,0,0);stroke-width:1"
             })
-            
-            make_datapoint_text(left + bar_width/2.0, top - 6, dataset[:data][i].to_s)
+
+            make_datapoint_text(left + bar_width/2.0, top - 6, dataset[:data][i])
+            # number format shall not apply to popup (use .to_s conversion)
             add_popup(left + bar_width/2.0, top , dataset[:data][i].to_s)
             dataset_count += 1
           end
           field_count += 1
         } # config[:fields].each_index
       end # draw_data
-      
+
     end # ErrBar
   end
 end

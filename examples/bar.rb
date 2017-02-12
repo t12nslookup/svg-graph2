@@ -2,7 +2,7 @@ require 'SVG/Graph/Bar'
 
 x_axis = ['1-10', '10-30', '30-50', '50-70', 'older']
 
-options = {  
+options = {
   :width             => 640,
   :height            => 500,
   :stack             => :side,  # the stack option is valid for Bar graphs only
@@ -19,7 +19,9 @@ options = {
   :y_title           => 'kg/year',
   :y_title_location  => :end,
   :add_popups        => true,
-  :no_css            => true
+  :no_css            => true,
+  # :x_axis_position   => 0,
+  # :y_axis_position   => '30-50',
 }
 
 data1   = [2, 4, 6.7, 4, 2.8]
@@ -36,6 +38,6 @@ g.add_data( {
     :title => "Dataset2"
   })
 
-# graph.burn            # this returns a full valid xml document containing the graph  
+# graph.burn            # this returns a full valid xml document containing the graph
 # graph.burn_svg_only   # this only returns the <svg>...</svg> node
-File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+File.open(File.expand_path('bar.svg',__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md

@@ -25,6 +25,6 @@ graph.add_data(
   :title => 'Sales 2002'
 )
 
-File.open("err_bar.svg", "w") {|fout| 
+File.open(File.expand_path('err_bar.svg',__dir__), "w") {|fout| 
   fout.print( graph.burn )
 }
