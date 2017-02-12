@@ -10,7 +10,7 @@ module SVG
   module Graph
 
     # === Base object for generating SVG Graphs
-    # 
+    #
     # == Synopsis
     #
     # This class is only used as a superclass of specialized charts.  Do not
@@ -28,9 +28,9 @@ module SVG
     # * file:test/single.rb
     # * file:test/test.rb
     # * file:test/timeseries.rb
-    # 
+    #
     # == Description
-    # 
+    #
     # This package should be used as a base for creating SVG graphs.
     #
     # == Acknowledgements
@@ -39,7 +39,7 @@ module SVG
     # port is based on.
     #
     # Stephen Morgan for creating the TT template and SVG.
-    # 
+    #
     # == See
     #
     # * SVG::Graph::BarHorizontal
@@ -63,8 +63,8 @@ module SVG
       # instantiate this class directly; see the subclass for options.
       # [width] 500
       # [height] 300
-      # [x_axis_position] 0
-      # [y_axis_position] 0
+      # [x_axis_position] nil
+      # [y_axis_position] nil
       # [show_x_guidelines] false
       # [show_y_guidelines] true
       # [show_data_values] true
@@ -100,7 +100,7 @@ module SVG
       # [key_font_size] 10
       # [no_css] false
       # [add_popups] false
-      # [number_format] '%.2f' 
+      # [number_format] '%.2f'
       def initialize( config )
         @config = config
         @data = []
@@ -113,9 +113,9 @@ module SVG
           :show_x_guidelines    => false,
           :show_y_guidelines    => true,
           :show_data_values     => true,
-          
-          :x_axis_position      => 0,
-          :y_axis_position      => 0,
+
+          :x_axis_position      => nil,
+          :y_axis_position      => nil,
 
           :min_scale_value      => nil,
 
@@ -143,7 +143,7 @@ module SVG
           :graph_title          => 'Graph Title',
           :show_graph_subtitle  => false,
           :graph_subtitle        => 'Graph Sub Title',
-          :key                  => true, 
+          :key                  => true,
           :key_position          => :right, # bottom or right
 
           :font_size            =>12,
@@ -154,27 +154,27 @@ module SVG
           :x_title_font_size    =>14,
           :y_title_font_size    =>14,
           :key_font_size        =>10,
-          
+
           :no_css               =>false,
           :add_popups           =>false,
-          :number_format        => '%.2f' 
+          :number_format        => '%.2f'
         })
         set_defaults if self.respond_to? :set_defaults
         init_with config
       end
 
-      
+
       # This method allows you do add data to the graph object.
       # It can be called several times to add more data sets in.
       #
       #   data_sales_02 = [12, 45, 21];
-      #   
+      #
       #   graph.add_data({
       #     :data => data_sales_02,
       #     :title => 'Sales 2002'
       #   })
       def add_data conf
-        @data = [] unless (defined? @data and !@data.nil?) 
+        @data = [] unless (defined? @data and !@data.nil?)
 
         if conf[:data] and conf[:data].kind_of? Array
           @data << conf
@@ -188,7 +188,7 @@ module SVG
       # reuse it to create a new graph but with the same config options.
       #
       #   graph.clear_data
-      def clear_data 
+      def clear_data
         @data = []
       end
 
@@ -198,12 +198,12 @@ module SVG
       #
       # This method will croak unless at least one data set has
       # been added to the graph object.
-      # 
+      #
       #   print graph.burn
-      # 
+      #
       def burn
         raise "No data available" unless @data.size > 0
-       
+
         start_svg
         calculate_graph_dimensions
         @foreground = Element.new( "g" )
@@ -228,14 +228,14 @@ module SVG
             data << "<!-- Ruby Zlib not available for SVGZ -->";
           end
         end
-        
+
         return data
       end
-      
-      # Burns the graph but returns only the <svg> node as String without the 
+
+      # Burns the graph but returns only the <svg> node as String without the
       # Doctype and XML Declaration. This allows easy integration into
       # existing xml documents.
-      # 
+      #
       # @return [String] the SVG node which represents the Graph
       def burn_svg_only
         # initialize all instance variables by burning the graph
@@ -265,17 +265,18 @@ module SVG
       attr_accessor :style_sheet
       #   (Bool) Show the value of each element of data on the graph
       attr_accessor :show_data_values
-      #   Sets the axis position relative to the graph dimensions.
-      #   Valid values are between 0 and 1 where 0 means the bottom border
-      #   and 1 is the the top border of the graph. If for example you want to 
-      #   position your axis in the middle, use 0.5
-      #   Default: 0
+      #   By default (nil/undefined) the x-axis is at the bottom of the graph.
+      #   With this property a custom position for the x-axis can be defined.
+      #   Valid values are between :min_scale_value and maximum value of the
+      #   data.
+      #   Default: nil
       attr_accessor :x_axis_position
-      #   Sets the axis position relative to the graph dimensions.
-      #   Valid values are between 0 and 1 where 0 means the left border
-      #   and 1 is the the right border of the graph. If for example you want to 
-      #   position your axis in the middle, use 0.5
-      #   Default: 0
+      #   By default (nil/undefined) the y-axis is the left border of the graph.
+      #   With this property a custom position for the y-axis can be defined.
+      #   Valid values are any values in the range of x-values (in case of a
+      #   Plot) or any of the :fields values (in case of Line/Bar Graphs, note
+      #   the '==' operator is used to find at which value to draw the axis).
+      #   Default: nil
       attr_accessor :y_axis_position
       #   The point at which the Y axis starts, defaults to nil,
       #   if set to nil it will default to the minimum data value.
@@ -303,7 +304,7 @@ module SVG
       #   a step of three results in every third label being displayed
       #   (label <gap> <gap> label <gap> <gap> label) and so on.
       attr_accessor :step_x_labels
-      #   Whether to (when taking "steps" between X axis labels) step from 
+      #   Whether to (when taking "steps" between X axis labels) step from
       #   the first label (i.e. always include the first label) or step from
       #   the X axis origin (i.e. start with a gap if step_x_labels is greater
       #   than one).
@@ -312,7 +313,7 @@ module SVG
       #   to true, set to false if you want to turn them off.
       attr_accessor :show_y_labels
       #   Ensures only whole numbers are used as the scale divisions.
-      #   Default is false, to turn on set to true. This has no effect if 
+      #   Default is false, to turn on set to true. This has no effect if
       #   scale divisions are less than 1.
       attr_accessor :scale_integers
       #   This defines the gap between markers on the Y axis,
@@ -332,7 +333,7 @@ module SVG
       #   Whether to show the title under the Y axis labels,
       #   default is false, set to true to show.
       attr_accessor :show_y_title
-      #   Aligns writing mode for Y axis label. 
+      #   Aligns writing mode for Y axis label.
       #   Defaults to :bt (Bottom to Top).
       #   Change to :tb (Top to Bottom) to reverse.
       attr_accessor :y_title_text_direction
@@ -400,7 +401,7 @@ module SVG
 
 
       protected
-      
+
       # implementation of quicksort
       # used for Schedule and Plot
       def sort( *arrys )
@@ -428,7 +429,7 @@ module SVG
         # Check size of Y labels
         @border_left += max_y_label_width_px
         if (show_y_title && (y_title_location ==:middle))
-          @border_left += y_title_font_size + 5 
+          @border_left += y_title_font_size + 5
         end
       end
 
@@ -456,12 +457,12 @@ module SVG
         @border_right = 7
         if key and key_position == :right
           val = keys.max { |a,b| a.length <=> b.length }
-          @border_right += val.length * key_font_size * 0.6 
+          @border_right += val.length * key_font_size * 0.6
           @border_right += KEY_BOX_SIZE
           @border_right += 10    # Some padding around the box
         end
         if (x_title_location == :end)
-          @border_right = [@border_right, x_title.length * x_title_font_size * 0.6].max 
+          @border_right = [@border_right, x_title.length * x_title_font_size * 0.6].max
         end
       end
 
@@ -500,16 +501,16 @@ module SVG
             (x+txt_width > width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
           t.attributes["id"] = t.object_id.to_s
-          
+
           # add a circle to catch the mouseover
           @foreground.add_element( "circle", {
             "cx" => x.to_s,
             "cy" => y.to_s,
             "r" => "#{popup_radius}",
             "style" => "opacity: 0",
-            "onmouseover" => 
+            "onmouseover" =>
               "document.getElementById(#{t.object_id}).setAttribute('visibility', 'visible' )",
-            "onmouseout" => 
+            "onmouseout" =>
               "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
           })
         end # if add_popups
@@ -518,16 +519,16 @@ module SVG
       # returns the longest label from an array of labels as string
       # each object in the array must support .to_s
       def get_longest_label(arry)
-        longest_label = arry.max{|a,b| 
+        longest_label = arry.max{|a,b|
               # respect number_format
-              a = @number_format % a if numeric?(a) 
+              a = @number_format % a if numeric?(a)
               b = @number_format % b if numeric?(b)
               a.to_s.length <=> b.to_s.length
             }
         longest_label = @number_format % longest_label if numeric?(longest_label)
         return longest_label
       end
-      
+
       # Override this (and call super) to change the margin to the bottom
       # of the plot area.  Results in @border_bottom being set.
       #
@@ -543,13 +544,13 @@ module SVG
           @border_bottom += x_title_font_size + 5
         end
       end
-      
+
       # returns the maximum height of the labels respect the rotation or 0 if
       # the labels are not shown
       def max_x_label_height_px
         return 0 if !show_x_labels
-        
-        if rotate_x_labels     
+
+        if rotate_x_labels
           max_height = get_longest_label(get_x_labels).to_s.length * x_label_font_size * 0.6
         else
           max_height = x_label_font_size + 3
@@ -574,32 +575,80 @@ module SVG
           "class" => "graphBackground"
         })
 
-        # Y-Axis
-        x_offset = y_axis_position.to_f * @graph_width
-        @graph.add_element( "path", {
-          "d" => "M #{x_offset} 0 v#@graph_height",
-          "class" => "axis",
-          "id" => "xAxis"
-        })
-        # X-Axis
-        y_offset = (1 - x_axis_position.to_f) * @graph_height
-        @graph.add_element( "path", {
-          "d" => "M 0 #{y_offset} h#@graph_width",
-          "class" => "axis",
-          "id" => "yAxis"
-        })
+        draw_x_axis
+        draw_y_axis
 
         draw_x_labels
         draw_y_labels
       end
 
+      # draws the x-axis; can be overridden by child classes
+      def draw_x_axis
+        # X-Axis
+        # relative position on y-axis (hence @graph_height is our axis length)
+        relative_position = calculate_rel_position(get_y_labels, field_height, @x_axis_position, @graph_height)
+
+        y_offset = (1 - relative_position) * @graph_height
+        @graph.add_element( "path", {
+          "d" => "M 0 #{y_offset} h#@graph_width",
+          "class" => "axis",
+          "id" => "yAxis"
+        })
+      end
+
+      # draws the y-axis; can be overridden by child classes
+      def draw_y_axis
+        # relative position on x-axis (hence @graph_width is our axis length)
+        relative_position = calculate_rel_position(get_x_labels, field_width, @y_axis_position, @graph_width)
+        # Y-Axis
+        x_offset = relative_position * @graph_width
+        @graph.add_element( "path", {
+          "d" => "M #{x_offset} 0 v#@graph_height",
+          "class" => "axis",
+          "id" => "xAxis"
+        })
+      end
+
+      # calculates the relative position betewen 0 and 1 of a value on the axis
+      # can be multiplied with either @graph_height or @graph_width to get the
+      # absolute position in pixels.
+      # If labels are strings, checks if one of label matches with the value
+      # and returns this position.
+      # If labels are numeric, compute relative position between first and last value
+      # If nothing else applies or the value is nil, the relative position is 0
+      # @param labels [Array] the array of x or y labels, see {#get_x_labels} or {#get_y_labels}
+      # @param segment_px [Float] number of pixels per label, see {#field_width} or {#field_height}
+      # @param value [Numeric, String] the value for which the relative position is computed
+      # @param axis_length [Numeric] either @graph_width or @graph_height
+      # @return [Float] relative position between 0 and 1, returns 0
+      def calculate_rel_position(labels, segment_px, value, axis_length)
+        if (labels[0].is_a? Numeric) and (labels[-1].is_a? Numeric)
+          # labels are numeric, compute relative position between first and last value
+          range = labels[-1] - labels[0]
+          position = value - labels[0]
+          relative_to_segemts = value/range
+          # convert from segments to axis
+          relative_position = relative_to_segemts * segment_px / axis_length
+        elsif labels[0].is_a? String
+          # labels are strings, see if one of label matches with the position
+          # and place the axis there
+          index = labels.index(value)
+          if !index.nil? # index would be nil if label is not found
+            offset_px = segment_px * index
+            relative_position = offset_px/axis_length   # between 0 and 1
+          end
+        else
+          # default value, y-axis on the left side
+          relative_position = 0
+        end
+      end
 
       # Where in the X area the label is drawn
       # Centered in the field, should be width/2.  Start, 0.
       def x_label_offset( width )
         0
       end
-      
+
       # check if an object can be converted to float
       def numeric?(object)
         # true if Float(object) rescue false
@@ -625,7 +674,7 @@ module SVG
             "y" => y.to_s,
             "class" => "dataPointLabel",
             "style" => "#{style} stroke: #fff; stroke-width: 2;"
-          }).text = textStr 
+          }).text = textStr
           # actual label
           text = @foreground.add_element( "text", {
             "x" => x.to_s,
@@ -636,60 +685,60 @@ module SVG
           text.attributes["style"] = style if style.length > 0
         end
       end
-      
 
-      # Draws the X axis labels
+
+      # Draws the X axis labels. The x-axis (@graph_width) is diveded into
+      # {#get_x_labels.length} equal sections. The (center) x-coordinate for a
+      # label hence is label_index * width_of_section
       def draw_x_labels
         stagger = x_label_font_size + 5
-        if show_x_labels
-          label_width = field_width
-
-          count = 0
-          for label in get_x_labels
-            if step_include_first_x_label == true then
-              step = count % step_x_labels
-            else
-              step = (count + 1) % step_x_labels
-            end
-
-            if step == 0 then
-              label = label.to_s
-              if( numeric?(label) )
-                label = @number_format % label
-              end
-              text = @graph.add_element( "text" )
-              text.attributes["class"] = "xAxisLabels"
-              text.text = label.to_s
-
-              x = count * label_width + x_label_offset( label_width )
-              y = @graph_height + x_label_font_size + 3
-              #t = 0 - (font_size / 2)
-
-              if stagger_x_labels and count % 2 == 1
-                y += stagger
-                @graph.add_element( "path", {
-                  "d" => "M#{x} #@graph_height v#{stagger}",
-                  "class" => "staggerGuideLine"
-                })
-              end
-
-              text.attributes["x"] = x.to_s
-              text.attributes["y"] = y.to_s
-              if rotate_x_labels
-                text.attributes["transform"] = 
-                  "rotate( 90 #{x} #{y-x_label_font_size} )"+
-                  " translate( 0 -#{x_label_font_size/4} )"
-                text.attributes["style"] = "text-anchor: start"
-              else
-                text.attributes["style"] = "text-anchor: middle"
-              end
-            end
-
-            draw_x_guidelines( label_width, count ) if show_x_guidelines
-            count += 1
+        label_width = field_width
+        count = 0
+        x_axis_already_drawn = false
+        for label in get_x_labels
+          if step_include_first_x_label == true then
+            step = count % step_x_labels
+          else
+            step = (count + 1) % step_x_labels
           end
-        end
-      end
+          # only draw every n-th label as defined by step_x_labels
+          if step == 0 && show_x_labels then
+            label = label.to_s
+            if( numeric?(label) )
+              label = @number_format % label
+            end
+            text = @graph.add_element( "text" )
+            text.attributes["class"] = "xAxisLabels"
+            text.text = label.to_s
+
+            x = count * label_width + x_label_offset( label_width )
+            y = @graph_height + x_label_font_size + 3
+            #t = 0 - (font_size / 2)
+
+            if stagger_x_labels and count % 2 == 1
+              y += stagger
+              @graph.add_element( "path", {
+                "d" => "M#{x} #@graph_height v#{stagger}",
+                "class" => "staggerGuideLine"
+              })
+            end
+
+            text.attributes["x"] = x.to_s
+            text.attributes["y"] = y.to_s
+            if rotate_x_labels
+              text.attributes["transform"] =
+                "rotate( 90 #{x} #{y-x_label_font_size} )"+
+                " translate( 0 -#{x_label_font_size/4} )"
+              text.attributes["style"] = "text-anchor: start"
+            else
+              text.attributes["style"] = "text-anchor: middle"
+            end
+          end # if step == 0 && show_x_labels
+
+          draw_x_guidelines( label_width, count ) if show_x_guidelines
+          count += 1
+        end # for label in get_x_labels
+      end # draw_x_labels
 
 
       # Where in the Y area the label is drawn
@@ -702,17 +751,17 @@ module SVG
       # must return the array of labels for the x-axis
       def get_x_labels
       end
-      
+
       # override this method in child class
       # must return the array of labels for the y-axis
       # this method defines @y_scale_division
       def get_y_labels
       end
-      
+
       # space in px between x-labels
       def field_width
         # -1 is to use entire x-axis
-        # otherwise there is always 1 division unused        
+        # otherwise there is always 1 division unused
         @graph_width.to_f / ( get_x_labels.length - 1 )
       end
 
@@ -725,21 +774,20 @@ module SVG
 
 
       # Draws the Y axis labels, the Y-Axis (@graph_height) is divided equally into #get_y_labels.lenght sections
-      # So the y coordinate for an arbitrary value is calculated as follows: 
+      # So the y coordinate for an arbitrary value is calculated as follows:
       #   y = @graph_height equals the min_value
-      #   #normalize value of a single scale_division: 
-      #   count = value /(@y_scale_division) 
-      #   y = @graph_height - count * field_height  
-      # 
+      #   #normalize value of a single scale_division:
+      #   count = value /(@y_scale_division)
+      #   y = @graph_height - count * field_height
+      #
       def draw_y_labels
         stagger = y_label_font_size + 5
-        if show_y_labels
-          label_height = field_height
-
-          count = 0
-          y_offset = @graph_height + y_label_offset( label_height )
-          y_offset += font_size/1.2 unless rotate_y_labels
-          for label in get_y_labels
+        label_height = field_height
+        count = 0
+        y_offset = @graph_height + y_label_offset( label_height )
+        y_offset += font_size/1.2 unless rotate_y_labels
+        for label in get_y_labels
+          if show_y_labels
             y = y_offset - (label_height * count)
             x = rotate_y_labels ? 0 : -3
 
@@ -769,14 +817,14 @@ module SVG
               text.attributes["y"] = (y - (y_label_font_size/2)).to_s
               text.attributes["style"] = "text-anchor: end"
             end
-            draw_y_guidelines( label_height, count ) if show_y_guidelines
-            count += 1
-          end
-        end
-      end
+          end # if show_y_labels
+          draw_y_guidelines( label_height, count ) if show_y_guidelines
+          count += 1
+        end # for label in get_y_labels
+      end # draw_y_labels
 
 
-      # Draws the X axis guidelines
+      # Draws the X axis guidelines, parallel to the y-axis
       def draw_x_guidelines( label_height, count )
         if count != 0
           @graph.add_element( "path", {
@@ -787,7 +835,7 @@ module SVG
       end
 
 
-      # Draws the Y axis guidelines
+      # Draws the Y axis guidelines, parallel to the x-axis
       def draw_y_guidelines( label_height, count )
         if count != 0
           @graph.add_element( "path", {
@@ -809,7 +857,7 @@ module SVG
         end
 
         if show_graph_subtitle
-          y_subtitle = show_graph_title ? 
+          y_subtitle = show_graph_title ?
             title_font_size + subtitle_font_size + 5 :
             subtitle_font_size
           @root.add_element("text", {
@@ -861,7 +909,7 @@ module SVG
         end
       end # draw_titles
 
-      def keys 
+      def keys
         i = 0
         return @data.collect{ |d| i+=1; d[:title] || "Serie #{i}" }
       end
@@ -914,7 +962,7 @@ module SVG
           sort_multiple(arrys, lo, p-1)
           sort_multiple(arrys, p+1, hi)
         end
-        arrys 
+        arrys
       end
 
       def partition( arrys, lo, hi )
@@ -976,11 +1024,11 @@ module SVG
       def add_defs defs
       end
 
-      # Creates the XML document and adds the root svg element with 
+      # Creates the XML document and adds the root svg element with
       # the width, height and viewBox attributes already set.
-      # The element is stored as @root. 
+      # The element is stored as @root.
       #
-      # In addition a rectangle background of the same size as the 
+      # In addition a rectangle background of the same size as the
       # svg is added.
       #
       def start_svg
@@ -1117,7 +1165,7 @@ module SVG
 .staggerGuideLine{
   fill: none;
   stroke: #000000;
-  stroke-width: 0.5px;  
+  stroke-width: 0.5px;
 }
 
 #{get_css}

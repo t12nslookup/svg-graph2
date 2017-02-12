@@ -2,10 +2,12 @@ TODO / Backlog
 * add unit tests for all types of graphs
 * refactor various hardcoded constant pixel offsets in Graph class to use named constants or variables
 
-=== 2.1.0 / 2016-10-24 [lumean]
+=== 2.1.0 / 2017-02-12 [lumean]
 * change behavior for number format, Strings axis labels will never be formatted
   previously, when containing numbers they were formatted with the number_format template
-* added options to change x-axis and y-axis position :x_axis_position and :y_axis_position 
+* added options to change x-axis and y-axis position :x_axis_position and :y_axis_position
+* x_guidelines and y_guidelines can now be drawn independently of show_x_labels and show_y_labels,
+  before they were only drawn if show_x_labels resp show_y_labels was true
 
 === 2.0.2 / 2016-10-24 [lumean]
 * fix axis-title positioning
@@ -28,7 +30,7 @@ TODO / Backlog
 * all ruby files in the test directory now run on ruby >2.0 and write output to files [lumean]
 * changed from autoload to static loading due to issues with unit-testing when the gem is not installed [lumean]
 * begin transition to minitest for tests [lumean]
-* merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph 
+* merged fix for 100% pie graphs from https://github.com/endersstocker/svg-graph
 * fix wrong margins for labels after merge of number formatting [lumean]
 * Add new option for locations for the axis titles (at the end of the axis instead of below / left from it) [lumean]
 * improved x-axis label location when x-axis marks are vertical and long [lumean]
@@ -50,5 +52,3 @@ TODO / Backlog
 * Max values and improved Time data handling.
 * Merge pull request #1 from thinkingbox/master
 * Adding scattered plot support with :show_lines =>false Rounding values to integers in popups can be disabled with :round_popups => false Optional description gets shown in popup
-
-
