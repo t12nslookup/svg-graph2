@@ -490,7 +490,7 @@ module SVG
             label = @number_format % label
           end
           txt_width = label.length * font_size * 0.6 + 10
-          tx = (x+txt_width > width ? x-5 : x+5)
+          tx = (x+txt_width > @graph_width ? x-5 : x+5)
           t = @foreground.add_element( "text", {
             "x" => tx.to_s,
             "y" => (y - font_size).to_s,
@@ -498,7 +498,7 @@ module SVG
             "visibility" => "hidden",
           })
           t.attributes["style"] = "stroke-width: 2; fill: #000; #{style}"+
-            (x+txt_width > width ? "text-anchor: end;" : "text-anchor: start;")
+            (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
           t.attributes["id"] = t.object_id.to_s
 
