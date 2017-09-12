@@ -117,7 +117,7 @@ module SVG
             #    +ve   -ve  value - 0
             #    -ve   -ve  value.abs - 0
 
-            value = dataset[:data][i]/@y_scale_division
+            value = dataset[:data][i] / @y_scale_division.to_f
 
             left = (fieldwidth * field_count)
 
