@@ -9,7 +9,7 @@ options = {
   :fields            => x_axis,
   :graph_title       => "kg per head and year chocolate consumption",
   :show_graph_title  => true,
-  :scale_integers    => false,
+  :scale_integers    => true,
   :show_x_title      => true,
   :x_title           => 'Age in years',
   :stagger_x_labels => true,
@@ -24,8 +24,8 @@ options = {
   # :y_axis_position   => '30-50',
 }
 
-data1   = [2, 4, 6.7, 4, 2.8]
-data2 = [1, 5, 4, 5, 2.7]
+data1   = [15, 4, 6.7, 4, 2.8]
+data2 = [1, 5, 4, 5, 12.7]
 
 g = SVG::Graph::Bar.new(options)
 
