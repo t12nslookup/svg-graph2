@@ -187,7 +187,8 @@ module SVG
           count += 1
           v = @data[count]
           perc = show_key_percent ? " "+(v * percent_scale).round.to_s+"%" : ""
-          x + " [" + v.to_s + "]" + perc
+          val = show_key_actual_values  ? " [" + v.to_s + "]"  : ""
+          x + val + perc
         }
       end
 
