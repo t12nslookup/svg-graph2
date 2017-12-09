@@ -2,6 +2,12 @@ TODO / Backlog
 * add unit tests for all types of graphs
 * refactor various hardcoded constant pixel offsets in Graph class to use named constants or variables
 
+=== 2.1.2 / 2017-02-26
+* show_key_actual_values in pie chart lets user chose to show values in key [thanks olegsfinest, pull request #5]
+
+=== 2.1.1 / 2017-02-26
+* Bar graphs are rounding bars to nearest Y axis label number [thanks adamalbrecht, pull request #4]
+
 === 2.1.0 / 2017-02-26 [lumean]
 * [#2] change behavior for number format, Strings axis labels will never be formatted
   previously, when containing numbers they were formatted with the number_format template
