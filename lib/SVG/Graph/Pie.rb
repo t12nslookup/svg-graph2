@@ -232,7 +232,7 @@ module SVG
               "cx" => radius.to_s,
               "cy" => radius.to_s,
               "r" => radius.to_s,
-              "class" => "fill1"
+              "class" => "fill#{count+1}"
             })
 
             if show_shadow
