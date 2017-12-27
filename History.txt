@@ -1,6 +1,13 @@
 TODO / Backlog
 * add unit tests for all types of graphs
 * refactor various hardcoded constant pixel offsets in Graph class to use named constants or variables
+* add support for c3js / d3js based graphs, see http://c3js.org/
+
+=== 2.2.0 / todo
+
+
+=== 2.1.3 / 2017-12-27
+* fixes float comparison and color for pie chart [thanks tiwi, pull request #7]
 
 === 2.1.2 / 2017-02-26
 * show_key_actual_values in pie chart lets user chose to show values in key [thanks olegsfinest, pull request #5]
