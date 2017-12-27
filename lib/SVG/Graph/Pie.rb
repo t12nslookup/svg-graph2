@@ -227,7 +227,7 @@ module SVG
           percent = 100.0 * value / total
           radians = prev_percent * rad_mult
 
-          if percent == 100.0
+          if percent.rationalize(0.001) == 100.0
             @foreground.add_element( "circle", {
               "cx" => radius.to_s,
               "cy" => radius.to_s,
