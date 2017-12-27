@@ -11,3 +11,6 @@ pkg/*
 *.swo
 .DS_Store
 .tags
+
+.vscode
+test/*.svg
