@@ -3,30 +3,30 @@ require_relative 'Graph'
 module SVG
   module Graph
     # === Create presentation quality SVG pie graphs easily
-    # 
+    #
     # == Synopsis
-    # 
+    #
     #   require 'SVG/Graph/Pie'
-    # 
+    #
     #   fields = %w(Jan Feb Mar)
     #   data_sales_02 = [12, 45, 21]
-    #   
+    #
     #   graph = SVG::Graph::Pie.new({
     #   	:height => 500,
     # 	  :width  => 300,
     # 	  :fields => fields,
     #   })
-    #   
+    #
     #   graph.add_data({
     #   	:data => data_sales_02,
     # 	  :title => 'Sales 2002',
     #   })
-    #   
+    #
     #   print "Content-type: image/svg+xml\r\n\r\n"
     #   print graph.burn();
-    # 
+    #
     # == Description
-    # 
+    #
     # This object aims to allow you to easily create high quality
     # SVG pie graphs. You can either use the default style sheet
     # or supply your own. Either way there are many options which can
@@ -35,9 +35,9 @@ module SVG
     # title, subtitle etc.
     #
     # = Examples
-    # 
+    #
     # http://www.germane-software/repositories/public/SVG/test/single.rb
-    # 
+    #
     # == See also
     #
     # * SVG::Graph::Graph
@@ -73,8 +73,8 @@ module SVG
       def set_defaults
         init_with(
           :show_shadow		        => true,
-          :shadow_offset	        => 10, 
-          
+          :shadow_offset	        => 10,
+
           :show_data_labels	      => false,
           :show_actual_values     => false,
           :show_percent		        => true,
@@ -82,11 +82,11 @@ module SVG
           :show_key_data_labels	  => true,
           :show_key_actual_values => true,
           :show_key_percent		    => false,
-          
+
           :expanded				        => false,
           :expand_greatest		    => false,
           :expand_gap             => 10,
-          
+
           :show_x_labels          => false,
           :show_y_labels          => false,
           :datapoint_font_size    => 12
@@ -110,7 +110,7 @@ module SVG
       #   graph.add_data( { :data => [3,5,8,13] } )
       #
       # nil values in the array will be replaced by 0
-      #   
+      #
       #   graph.add_data( { :data => [3,nil,nil,2] } ) is equivalent to graph.add_data( { :data => [3,0,0,2] } )
       #
       def add_data arg
@@ -123,28 +123,28 @@ module SVG
       end
 
       # If true, displays a drop shadow for the chart
-      attr_accessor :show_shadow 
+      attr_accessor :show_shadow
       # Sets the offset of the shadow from the pie chart
       attr_accessor :shadow_offset
       # If true, display the data labels on the chart
-      attr_accessor :show_data_labels 
+      attr_accessor :show_data_labels
       # If true, display the actual field values in the data labels
-      attr_accessor :show_actual_values 
+      attr_accessor :show_actual_values
       # If true, display the percentage value of each pie wedge in the data
       # labels
       attr_accessor :show_percent
       # If true, display the labels in the key
-      attr_accessor :show_key_data_labels 
+      attr_accessor :show_key_data_labels
       # If true, display the actual value of the field in the key
-      attr_accessor :show_key_actual_values 
+      attr_accessor :show_key_actual_values
       # If true, display the percentage value of the wedges in the key
       attr_accessor :show_key_percent
       # If true, "explode" the pie (put space between the wedges)
-      attr_accessor :expanded 
+      attr_accessor :expanded
       # If true, expand the largest pie wedge
-      attr_accessor :expand_greatest 
+      attr_accessor :expand_greatest
       # The amount of space between expanded wedges
-      attr_accessor :expand_gap 
+      attr_accessor :expand_gap
       # The font size of the data point labels
       attr_accessor :datapoint_font_size
 
@@ -219,13 +219,12 @@ module SVG
           max_value = max_value < x ? x : max_value
           total += x
         }
-        percent_scale = 100.0 / total
 
         prev_percent = 0
         rad_mult = 3.6 * RADIANS
         @config[:fields].each_index { |count|
           value = @data[count].to_f
-          percent = percent_scale * value
+          percent = 100.0 * value / total
           radians = prev_percent * rad_mult
 
           if percent == 100.0
@@ -233,7 +232,7 @@ module SVG
               "cx" => radius.to_s,
               "cy" => radius.to_s,
               "r" => radius.to_s,
-              "class" => "fill1"
+              "class" => "fill#{count+1}"
             })
 
             if show_shadow
@@ -357,73 +356,73 @@ module SVG
 	fill: #ff0000;
 	fill-opacity: 0.7;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key2,.fill2{
 	fill: #0000ff;
 	fill-opacity: 0.7;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key3,.fill3{
 	fill-opacity: 0.7;
 	fill: #00ff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key4,.fill4{
 	fill-opacity: 0.7;
 	fill: #ffcc00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key5,.fill5{
 	fill-opacity: 0.7;
 	fill: #00ccff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key6,.fill6{
 	fill-opacity: 0.7;
 	fill: #ff00ff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key7,.fill7{
 	fill-opacity: 0.7;
 	fill: #00ff99;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key8,.fill8{
 	fill-opacity: 0.7;
 	fill: #ffff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key9,.fill9{
 	fill-opacity: 0.7;
 	fill: #cc6666;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key10,.fill10{
 	fill-opacity: 0.7;
 	fill: #663399;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key11,.fill11{
 	fill-opacity: 0.7;
 	fill: #339900;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key12,.fill12{
 	fill-opacity: 0.7;
 	fill: #9966FF;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 EOL
       end
