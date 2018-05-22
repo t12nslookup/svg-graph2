@@ -154,6 +154,8 @@ module SVG
           :x_title_font_size    =>14,
           :y_title_font_size    =>14,
           :key_font_size        =>10,
+          :key_box_size         =>12,
+          :key_spacing          =>5,
 
           :no_css               =>false,
           :add_popups           =>false,
@@ -263,6 +265,13 @@ module SVG
       #   default internal version and copy the stylesheet section to
       #   an external file and edit from there.
       attr_accessor :style_sheet
+      #   Set the path to an external stylesheet, set to '' if
+      #   you want to revert back to using the defaut internal version.
+      #
+      #   To create an external stylesheet create a graph using the
+      #   default internal version and copy the stylesheet section to
+      #   an external file and edit from there.
+      attr_accessor :style_sheet_path
       #   (Bool) Show the value of each element of data on the graph
       attr_accessor :show_data_values
       #   By default (nil/undefined) the x-axis is at the bottom of the graph.
@@ -358,6 +367,11 @@ module SVG
       #   Where the key should be positioned, defaults to
       #   :right, set to :bottom if you want to move it.
       attr_accessor :key_position
+
+      attr_accessor :key_box_size
+
+      attr_accessor :key_spacing
+
       # Set the font size (in points) of the data point labels.
       # Defaults to 12.
       attr_accessor :font_size
@@ -417,9 +431,6 @@ module SVG
         @popup_radius ||= 10
       end
 
-      # size of the square box in the legend which indicates the colors
-      KEY_BOX_SIZE = 12
-
       # Override this (and call super) to change the margin to the left
       # of the plot area.  Results in @border_left being set.
       #
@@ -458,7 +469,7 @@ module SVG
         if key and key_position == :right
           val = keys.max { |a,b| a.length <=> b.length }
           @border_right += val.length * key_font_size * 0.6
-          @border_right += KEY_BOX_SIZE
+          @border_right += key_box_size
           @border_right += 10    # Some padding around the box
         end
         if (x_title_location == :end)
@@ -929,17 +940,17 @@ module SVG
 
           key_count = 0
           for key_name in keys
-            y_offset = (KEY_BOX_SIZE * key_count) + (key_count * 5)
+            y_offset = (key_box_size * key_count) + (key_count * key_spacing)
             group.add_element( "rect", {
               "x" => 0.to_s,
               "y" => y_offset.to_s,
-              "width" => KEY_BOX_SIZE.to_s,
-              "height" => KEY_BOX_SIZE.to_s,
+              "width" => key_box_size.to_s,
+              "height" => key_box_size.to_s,
               "class" => "key#{key_count+1}"
             })
             group.add_element( "text", {
-              "x" => (KEY_BOX_SIZE + 5).to_s,
-              "y" => (y_offset + KEY_BOX_SIZE).to_s,
+              "x" => (key_box_size + key_spacing).to_s,
+              "y" => (y_offset + key_box_size).to_s,
               "class" => "keyText"
             }).text = key_name.to_s
             key_count += 1
@@ -947,15 +958,15 @@ module SVG
 
           case key_position
           when :right
-            x_offset = @graph_width + @border_left + 10
-            y_offset = @border_top + 20
+            x_offset = @graph_width + @border_left + (key_spacing * 2)
+            y_offset = @border_top + (key_spacing * 2)
           when :bottom
-            x_offset = @border_left + 20
-            y_offset = @border_top + @graph_height + 5
+            x_offset = @border_left + (key_spacing * 2)
+            y_offset = @border_top + @graph_height + key_spacing
             if show_x_labels
               y_offset += max_x_label_height_px
             end
-            y_offset += x_title_font_size + 5 if show_x_title
+            y_offset += x_title_font_size + key_spacing if show_x_title
           end
           group.attributes["transform"] = "translate(#{x_offset} #{y_offset})"
         end
@@ -1045,9 +1056,9 @@ module SVG
         @doc << XMLDecl.new
         @doc << DocType.new( %q{svg PUBLIC "-//W3C//DTD SVG 1.0//EN" } +
           %q{"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"} )
-        if style_sheet && style_sheet != ''
+        if style_sheet_path && style_sheet_path != ''
           @doc << Instruction.new( "xml-stylesheet",
-            %Q{href="#{style_sheet}" type="text/css"} )
+            %Q{href="#{style_sheet_path}" type="text/css"} )
         end
         @root = @doc.add_element( "svg", {
           "width" => width.to_s,
@@ -1067,10 +1078,15 @@ module SVG
 
         defs = @root.add_element( "defs" )
         add_defs defs
-        if not(style_sheet && style_sheet != '') and !no_css
-          @root << Comment.new(" include default stylesheet if none specified ")
-          style = defs.add_element( "style", {"type"=>"text/css"} )
-          style << CData.new( get_style )
+        if !no_css
+          if style_sheet && style_sheet != ''
+            style = defs.add_element( "style", {"type"=>"text/css"} )
+            style << CData.new( style_sheet )
+          else
+            @root << Comment.new(" include default stylesheet if none specified ")
+            style = defs.add_element( "style", {"type"=>"text/css"} )
+            style << CData.new( get_style )
+          end
         end
 
         @root << Comment.new( "SVG Background" )
