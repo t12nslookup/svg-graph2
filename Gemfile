@@ -5,7 +5,7 @@ source "http://rubygems.org"
 group :development do
   gem 'juwelier'
   # development on windows 
-  gem 'win32console'
+  gem 'win32console', platforms: [:mingw, :mswin, :x64_mingw]
 end
 
 group :test do
