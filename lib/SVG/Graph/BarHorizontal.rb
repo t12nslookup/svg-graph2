@@ -117,7 +117,7 @@ module SVG
           for dataset in @data
             value = dataset[:data][i]
 
-            top = @graph_height - (fieldheight * field_count) + bargap
+            top = @graph_height - (fieldheight * field_count) + (bargap/2)
             top += (bar_height * dataset_count) if stack == :side
             # cases (assume 0 = +ve):
             #   value  min  length          left
