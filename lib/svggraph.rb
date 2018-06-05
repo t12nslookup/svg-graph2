@@ -1,6 +1,6 @@
 module SVG
   module Graph
-    VERSION = '2.2.0'
+    VERSION = '2.2.2'
   end
 end
 require_relative 'SVG/Graph/C3js'
