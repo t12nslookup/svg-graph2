@@ -28,7 +28,7 @@ module SVG
       # [bar_gap] true
       # [stack] :overlap
       def set_defaults
-        init_with( :bar_gap => true, :stack => :overlap )
+        init_with( :bar_gap => true, :stack => :overlap, :show_percent => false, :show_actual_values => true)
       end
 
       #   Whether to have a gap between the bars or not, default
@@ -38,6 +38,10 @@ module SVG
       #   transparent colors, :top stacks bars on top of one another,
       #   :side stacks the bars side-by-side. Defaults to :overlap.
       attr_accessor :stack
+      # If true, display the percentage value of each bar
+      attr_accessor :show_percent
+      # If true, display the actual field values in the data labels
+      attr_accessor :show_actual_values
       protected
       
       # space in px between x-labels, we override the Graph version because

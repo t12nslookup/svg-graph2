@@ -110,6 +110,10 @@ module SVG
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
+            total = 0
+            dataset[:data].each {|x|
+              total += x
+            }
 
             # cases (assume 0 = +ve):
             #   value  min  length
@@ -133,10 +137,13 @@ module SVG
               "height" => length.to_s,
               "class" => "fill#{dataset_count+1}"
             })
-
-            make_datapoint_text(left + bar_width/2.0, top - font_size/2, dataset[:data][i])
+            value_string = ""
+            value_string += (@number_format % dataset[:data][i]) if show_actual_values
+            percent = 100.0 * dataset[:data][i] / total
+            value_string += " (" + percent.round.to_s + "%)" if show_percent
+            make_datapoint_text(left + bar_width/2.0, top - font_size/2, value_string)
             # number format shall not apply to popup (use .to_s conversion)
-            add_popup(left + bar_width/2.0, top , dataset[:data][i].to_s)
+            add_popup(left + bar_width/2.0, top , value_string)
             dataset_count += 1
           end
           field_count += 1
