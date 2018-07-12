@@ -144,6 +144,7 @@ module SVG
           :show_graph_subtitle  => false,
           :graph_subtitle        => 'Graph Sub Title',
           :key                  => true,
+          :key_width             => nil,
           :key_position          => :right, # bottom or right
 
           :font_size            =>12,
@@ -372,6 +373,8 @@ module SVG
 
       attr_accessor :key_spacing
 
+      attr_accessor :key_width
+
       # Set the font size (in points) of the data point labels.
       # Defaults to 12.
       attr_accessor :font_size
@@ -471,6 +474,12 @@ module SVG
           @border_right += val.length * key_font_size * 0.6
           @border_right += key_box_size
           @border_right += 10    # Some padding around the box
+
+          if key_width.nil?
+            @border_right
+          else
+            @border_right = [key_width, @border_right].min
+          end
         end
         if (x_title_location == :end)
           @border_right = [@border_right, x_title.length * x_title_font_size * 0.6].max
