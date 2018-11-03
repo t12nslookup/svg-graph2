@@ -1,10 +1,10 @@
 require_relative '../lib/SVG/Graph/ErrBar'
 
 fields = %w(Jan Feb);
-myarr1_mean = 10 
+myarr1_mean = 10
 myarr1_confidence = 1
 
-myarr2_mean = 20 
+myarr2_mean = 20
 myarr2_confidence = 2
 
 data_mesure = [myarr1_mean, myarr2_mean]
@@ -23,6 +23,6 @@ graph.add_data(
   :title => 'Sales 2002'
 )
 
-File.open("test_err_bar.svg", "w") {|fout| 
+File.open(File.expand_path("test_err_bar.svg",__dir__), "w") {|fout|
   fout.print( graph.burn )
 }

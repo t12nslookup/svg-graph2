@@ -7,11 +7,11 @@ class TestSvgGraphPlot < Test::Unit::TestCase
   def setup
     DataPoint.reset_shape_criteria
   end
-  
+
   def teardown
     DataPoint.reset_shape_criteria
   end
-  
+
   def test_plot
 
       projection = [
@@ -44,7 +44,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
       out=graph.burn()
       assert(out=~/Created with SVG::Graph/)
   end
-  
+
   def test_default_plot_emits_polyline_connecting_data_points
     actual = [
       0, 18,    8, 15,    9, 4,   18, 14,   10, 2,   11, 6,  14, 12,
@@ -112,7 +112,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write("plot_#{__method__}.svg", out)
+    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
     assert_no_match(/\(0.1, 18\)/, out)
     assert_match(/\(0, 18\)/, out)
     assert_no_match(/\(8.55, 15.1234\)/, out)
@@ -143,7 +143,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write("plot_#{__method__}.svg", out)
+    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
     assert_match(/\(0.1, 18\)/, out)
     assert_no_match(/\(0, 18\)/, out)
     assert_match(/\(8.55, 15.1234\)/, out)
@@ -178,7 +178,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write("plot_#{__method__}.svg", out)
+    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
     assert_match(/\(8.55, 15.1234, first\)/, out)
     assert_no_match(/\(8.55, 15.1234\)/, out)
     assert_match(/\(9.09876765, 4, second\)/, out)
@@ -186,7 +186,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     assert_match(/\(0.1, 18, third\)/, out)
     assert_no_match(/\(0.1, 18\)/, out)
   end
-  
+
   def test_combine_different_shapes_based_on_description
     actual = [
      8.55, 15.1234,         9.09876765, 4,                  2.1, 18,
@@ -195,8 +195,8 @@ class TestSvgGraphPlot < Test::Unit::TestCase
      'one is a circle',     'two is a rectangle',           'three is a rectangle with strikethrough',
     ]
 
-    # multiple array of the form 
-    # [ regex , 
+    # multiple array of the form
+    # [ regex ,
     #   lambda taking three arguments (x,y, line_number for css)
     #     -> return value of the lambda must be an array: [svg tag name,  Hash with keys "points" and "class"]
     # ]
@@ -232,11 +232,11 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write("plot_#{__method__}.svg", out)
+    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
     assert_match(/polygon.*points/, out)
     assert_match(/line.*axis/, out)
   end
-  
+
   def test_popup_radius_is_10_by_default
     actual = [
      1, 1,    5, 5,     10, 10,
@@ -264,9 +264,9 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     out=graph.burn()
     assert_match(/circle .*r='10'/, out)
     assert_match(/circle .*onmouseover=.*/, out)
-    
+
   end
-  
+
   def test_popup_radius_is_overridable
     actual = [
      1, 1,    5, 5,     10, 10,
@@ -295,6 +295,6 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     out=graph.burn()
     assert_match(/circle .*r='1.23'/, out)
     assert_match(/circle .*onmouseover=.*/, out)
-    
+
   end
 end
