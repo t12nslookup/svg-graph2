@@ -17,7 +17,7 @@ data2 = [4, 18, 3, 7, 8, 13, 19, 1,]
 #data1 = [3]
 #data2 = [2]
 
-field = %w{jan feb mar apr may jun long_key_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aug}
+field = %w{jan feb mar apr may jun jul aug}
 
 graph = SVG::Graph::Pie.new( {
   :width => 640,
@@ -27,7 +27,7 @@ graph = SVG::Graph::Pie.new( {
   :key => true,
   :key_position => :right, #:bottom, # or :right
   :fields => field,
-  :show_data_labels => false,
+  :show_data_labels => true,
   :show_actual_values => true,
   :show_shadow => true,
   :expanded => false,
@@ -42,6 +42,6 @@ graph.add_data(
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open(File.expand_path("pie.svg",__dir__), "w") {|fout| 
+File.open(File.expand_path("pie.svg",__dir__), "w") {|fout|
   fout.print( graph.burn )
 }

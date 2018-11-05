@@ -3,7 +3,7 @@ SVG::Graph
 
 Description
 -----------
-This is an effort to revive the [SVG::Graph library](http://www.germane-software.com/software/SVG/SVG::Graph/) by Sean Russell. I'd also like to thank Claudio Bustos for giving me permissions to continue publishing the gem under it's original name: [svg-graph](https://rubygems.org/gems/svg-graph)
+This repo is the continuation of the original [SVG::Graph library](http://www.germane-software.com/software/SVG/SVG::Graph/) by Sean Russell. I'd like to thank Claudio Bustos for giving me permissions to continue publishing the gem under it's original name: [svg-graph](https://rubygems.org/gems/svg-graph)
 
 [Changelog](../master/History.txt)
 
@@ -37,7 +37,7 @@ require 'SVG/Graph/Bar'
 
 x_axis = ['1-10', '10-30', '30-50', '50-70', 'older']
 
-options = {  
+options = {
   :width             => 640,
   :height            => 300,
   :stack             => :side,  # the stack option is valid for Bar graphs only
@@ -66,7 +66,7 @@ g.add_data( {
     :title => "Male"
   })
 
-# graph.burn            # this returns a full valid xml document containing the graph  
+# graph.burn            # this returns a full valid xml document containing the graph
 # graph.burn_svg_only   # this only returns the <svg>...</svg> node
 File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 ```

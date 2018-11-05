@@ -1,16 +1,12 @@
 *.html
-install.rb
-test.rb
 *.gem
-images/
 Gemfile.lock
-pkg/
-pkg/*
+test/*.svg
+
+# ide files
+.vscode
 *~
 *.swp
 *.swo
 .DS_Store
 .tags
-
-.vscode
-test/*.svg
