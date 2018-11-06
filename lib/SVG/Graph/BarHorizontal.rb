@@ -110,14 +110,18 @@ module SVG
         bar_height = fieldheight - bargap
         bar_height /= @data.length if stack == :side
         y_mod = (bar_height / 2) + (font_size / 2)
-
         field_count = 1
+
         @config[:fields].each_index { |i|
           dataset_count = 0
           for dataset in @data
+            total = 0
+            dataset[:data].each {|x|
+              total += x
+            }
             value = dataset[:data][i]
 
-            top = @graph_height - (fieldheight * field_count) + bargap
+            top = @graph_height - (fieldheight * field_count) + (bargap/2)
             top += (bar_height * dataset_count) if stack == :side
             # cases (assume 0 = +ve):
             #   value  min  length          left
@@ -134,10 +138,13 @@ module SVG
               "height" => bar_height.to_s,
               "class" => "fill#{dataset_count+1}"
             })
-
-            make_datapoint_text(left+length+5, top+y_mod, dataset[:data][i], "text-anchor: start; ")
+            value_string = ""
+            value_string += (@number_format % dataset[:data][i]) if show_actual_values
+            percent = 100.0 * dataset[:data][i] / total
+            value_string += " (" + percent.round.to_s + "%)" if show_percent
+            make_datapoint_text(left+length+5, top+y_mod, value_string, "text-anchor: start; ")
             # number format shall not apply to popup (use .to_s conversion)
-            add_popup(left+length, top+y_mod , dataset[:data][i].to_s)
+            add_popup(left+length, top+y_mod , value_string)
             dataset_count += 1
           end
           field_count += 1

@@ -2,11 +2,6 @@ module SVG
   module Graph
     VERSION = '2.2.0'
 
-    # some Error classes
-    class Error < RuntimeError
-    end
-
-
   end
 end
 require_relative 'SVG/Graph/C3js'

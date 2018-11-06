@@ -2,6 +2,7 @@
 *.gem
 Gemfile.lock
 test/*.svg
+*.orig
 
 # ide files
 .vscode
