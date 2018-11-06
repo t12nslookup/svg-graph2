@@ -10,6 +10,7 @@ module SVG
 
       # @param js_chart_variable_name [String] a unique variable name representing
       #    the chart in javascript scope
+      # @param js_chart_specification [String] see http://c3js.org/examples.html
       def initialize(js_chart_variable_name, js_chart_specification)
         @chart = js_chart_variable_name
         start_document()
@@ -53,15 +54,37 @@ module SVG
         else
           raise "Unsupported argument type: #{javascript.class}"
         end
-        if m = chart_spec.match(/"bindto":\s*"#(.+)"/)
+        # (.+?)" means non-greedy match up to next double quote
+        if m = chart_spec.match(/"bindto":\s*"#(.+?)"/)
           @bindto = m[1]
         else
           raise "Missing chart specification is missing the mandatory \"bindto\" key/value pair."
         end
+
         inline_script = "var #{@chart} = c3.generate(#{chart_spec});"
-        #add_javascript() {inline_script}
-        #add_svg_element()
+
+        add_svg_element()
+        add_javascript() {inline_script}
+
       end # def add_chart_spec
+
+      # Appends a <script> node to the svg node, this can be used to add additional animations
+      # but any script can also directly be part of the js_chart_specification in the #initialize method.
+      # @param attrs [Hash] attributes for the <script> element. The following attribute
+      #   is added by default:  type="text/javascript"
+      # @yieldreturn [String] the actual javascript code to be added to the <script> element
+      # @return [REXML::Element] the Element which was just added
+      def add_javascript(attrs={}, &block)
+        default_attrs = {"type" => "text/javascript"}
+        attrs = default_attrs.merge(attrs)
+        temp = REXML::Element.new("script")
+        temp.add_attributes(attrs)
+        @svg.add_element(temp)
+        raise "Block argument is mandatory" unless block_given?
+        script_content = block.call()
+        cdata(script_content, temp)
+      end # def add_javascript
+
 
       # @return [String] the complete html file
       def burn
@@ -91,30 +114,44 @@ module SVG
       def start_document
         # Base document
         @doc = REXML::Document.new
-        @doc << REXML::XMLDecl.new
+        @doc << REXML::XMLDecl.new("1.0", "UTF-8")
         @doc << REXML::DocType.new("html")
-        @html = @doc.add_element("html")
+        # attribute xmlns is needed, otherwise the browser will only display raw xml
+        # instead of rendering the page
+        @html = @doc.add_element("html", {"xmlns" => 'http://www.w3.org/1999/xhtml'})
         @html << REXML::Comment.new( " "+"\\"*66 )
         @html << REXML::Comment.new( " Created with SVG::Graph - https://github.com/lumean/svg-graph2" )
         @head = @html.add_element("head")
         @body = @html.add_element("body")
 
-
         # insert js files
 #        opts[:js].each do |js_path|
 #          script = head.add_element("script", {"type" => "text/javascript"})
-        @head.add_element("script", {"src" => ""})
-        @head.add_element("script", {"src" => ""})
+        @head.add_element("meta", {"charset" => "utf-8"})
+        # note: script tags are not allowed in html to be self closed
+        # but for xhtml this is ok. Thus add a space textnode to enforce closing tags.
+        a = @head.add_element("script", {"type" => "text/javascript",
+          "src" => "https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"})
+        a.add_text(" ")
+        # for inline css use "style"
+        #@head.add_element("style", {"type" => "text/css"})
+        # for external css use "link"
+        @head.add_element("link", {"href" => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+          "rel" => "stylesheet"})
+
+        a = @head.add_element("script", {"type" => "text/javascript",
+          "src" => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js"})
+        a.add_text(" ")
 #          cdata(File.read(js_path), script)
 #        end
-
       end # def start_svg
 
-      def add_svg_element
+      #
+      def add_svg_element(attrs={})
         if @bindto.to_s.empty?
           raise "#add_chart_spec needs to be called before the svg can be added"
         end
-        @svg = @body.add_element("svg", {"id" => @bindto})
+        @svg = @body.add_element("div", {"id" => @bindto})
       end
 
       # Surrounds CData tag with c-style comments to remain compatible with normal html.
@@ -131,22 +168,6 @@ module SVG
         parent_element.add(REXML::Comment.new("dummy comment to make c-style comments for cdata work"))
         parent_element.add_text("*/")
       end # def cdata
-
-      # Appends a <script> node after the @current node
-      # @param attrs [Hash] attributes for the <script> element. The following attribute is added by default:
-      #                     type="text/javascript"
-      # @yieldreturn [String] the actual javascript code to be added to the <script> element
-      # @return [REXML::Element] the Element which was just added
-      def add_javascript(attrs={}, &block)
-        default_attrs = {"type" => "text/javascript"}
-        attrs = default_attrs.merge(attrs)
-        temp = REXML::Element.new("script")
-        temp.add_attributes(attrs)
-        @svg.add_element(temp)
-        raise "Block argument is mandatory" unless block_given?
-        script_content = block.call()
-        cdata(script_content, @svg)
-      end # def add_javascript
 
     end # class C3js
 
