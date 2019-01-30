@@ -27,7 +27,7 @@ module SVG
     #    	:width => 300,
     #     :key => true,
     #     :scale_x_integers => true,
-    #     :scale_y_integerrs => true,
+    #     :scale_y_integers => true,
     #   })
     #   
     #   graph.add_data({
@@ -105,7 +105,7 @@ module SVG
           :show_lines        => true,
           :round_popups      => true,
           :scale_x_integers  => false,
-          :scale_y_integerrs => false,
+          :scale_y_integers  => false,
          )
       end
 
