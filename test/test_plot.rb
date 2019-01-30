@@ -56,7 +56,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
       :width => 300,
       :key => true,
       :scale_x_integers => true,
-      :scale_y_integerrs => true,
+      :scale_y_integers => true,
     })
 
     graph.add_data({
