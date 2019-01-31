@@ -24,25 +24,49 @@ class TestSvgGraphPlot < Test::Unit::TestCase
       ]
 
       graph = SVG::Graph::Plot.new({
-      :height => 500,
-          :width => 300,
-       :key => true,
-       :scale_x_integers => true,
-       :scale_y_integerrs => true,
+        :height => 500,
+        :width => 300,
+        :key => true,
+        :scale_x_integers => true,
+        :scale_y_integers => true,
       })
 
       graph.add_data({
-      :data => projection,
+        :data => projection,
         :title => 'Projected',
       })
 
       graph.add_data({
-      :data => actual,
+        :data => actual,
         :title => 'Actual',
       })
 
       out=graph.burn()
       assert(out=~/Created with SVG::Graph/)
+  end
+
+  def test_plot_axis_too_short
+    graph = SVG::Graph::Plot.new({
+      :height => 500,
+      :width => 300,
+      :key => true,
+      :scale_x_integers => true,
+      :scale_y_integers => true,
+      :max_x_value => 9,
+      :max_y_value => 9,
+      :min_x_value => 6,
+      :min_y_value => 6,
+      :scale_x_divisions => 3,
+      :scale_y_divisions => 3
+    })
+
+    graph.add_data({
+      :data => [5,5,  12,12,  6,6,  9,9,  7,7,  10,10],
+      :title => '10',
+    })
+
+    out = graph.burn()
+    File.write(File.expand_path("../plot_axis_short.svg", __FILE__), out)
   end
 
   def test_default_plot_emits_polyline_connecting_data_points

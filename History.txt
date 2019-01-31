@@ -3,9 +3,14 @@ TODO / Backlog
 
 
 === 2.2.0 / todo
-* add support for c3js / d3js based graphs, see http://c3js.org/
+* Fix typo in Plot's `scale_y_integers` [thanks ashleydavies, PR #9]
+* Fix bug in Plot which enabled too-short axis [thanks ashleydavies, PR #10]
+* Fix bug in Plot where min/max_x/y_value are not respected
+
+* add support for c3js / d3js based graphs `SVG::Graph::C3js`, see http://c3js.org/
 * removed some outdated documentation and uneeded files
 * added *very* basic unit tests for all types of graphs
+
 
 === 2.1.3 / 2017-12-27
 * fixes float comparison and color for pie chart [thanks tiwi, pull request #7]

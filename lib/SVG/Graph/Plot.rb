@@ -4,24 +4,24 @@ require_relative 'DataPoint'
 module SVG
   module Graph
     # === For creating SVG plots of scalar data
-    # 
+    #
     # = Synopsis
-    # 
+    #
     #   require 'SVG/Graph/Plot'
-    # 
+    #
     #   # Data sets are x,y pairs
     #   # Note that multiple data sets can differ in length, and that the
     #   # data in the datasets needn't be in order; they will be ordered
     #   # by the plot along the X-axis.
     #   projection = [
     #     6, 11,    0, 5,   18, 7,   1, 11,   13, 9,   1, 2,   19, 0,   3, 13,
-    #     7, 9 
+    #     7, 9
     #   ]
     #   actual = [
-    #     0, 18,    8, 15,    9, 4,   18, 14,   10, 2,   11, 6,  14, 12,   
+    #     0, 18,    8, 15,    9, 4,   18, 14,   10, 2,   11, 6,  14, 12,
     #     15, 6,   4, 17,   2, 12
     #   ]
-    #   
+    #
     #   graph = SVG::Graph::Plot.new({
     #   	:height => 500,
     #    	:width => 300,
@@ -29,23 +29,23 @@ module SVG
     #     :scale_x_integers => true,
     #     :scale_y_integers => true,
     #   })
-    #   
+    #
     #   graph.add_data({
     #   	:data => projection
     # 	  :title => 'Projected',
     #   })
-    # 
+    #
     #   graph.add_data({
     #   	:data => actual,
     # 	  :title => 'Actual',
     #   })
-    #   
+    #
     #   print graph.burn()
-    # 
+    #
     # = Description
-    # 
+    #
     # Produces a graph of scalar data.
-    # 
+    #
     # This object aims to allow you to easily create high quality
     # SVG[http://www.w3c.org/tr/svg] scalar plots. You can either use the
     # default style sheet or supply your own. Either way there are many options
@@ -54,11 +54,11 @@ module SVG
     # subtitle etc.
     #
     # = Examples
-    # 
+    #
     # http://www.germane-software/repositories/public/SVG/test/plot.rb
-    # 
+    #
     # = Notes
-    # 
+    #
     # The default stylesheet handles upto 10 data sets, if you
     # use more you must create your own stylesheet and add the
     # additional settings for the extra data sets. You will know
@@ -72,9 +72,9 @@ module SVG
     # Additional possible notation
     #   [ [1,2], 5,6] # A data set with 2 points: (1,2) and (5,6), mixed notation
     #   [ [1,2], [5,6]] # A data set with 2 points: (1,2) and (5,6), nested array
-    # 
+    #
     # = See also
-    # 
+    #
     # * SVG::Graph::Graph
     # * SVG::Graph::BarHorizontal
     # * SVG::Graph::Bar
@@ -124,20 +124,20 @@ module SVG
       # would cause the graph to attempt to generate labels stepped by 0.5; EG:
       # 0, 0.5, 1, 1.5, 2, ...
       # default is automatic such that there are 10 labels
-      attr_accessor :scale_y_divisions 
+      attr_accessor :scale_y_divisions
       # Make the X axis labels integers, default: false
-      attr_accessor :scale_x_integers 
+      attr_accessor :scale_x_integers
       # Make the Y axis labels integers, default: false
-      attr_accessor :scale_y_integers 
+      attr_accessor :scale_y_integers
       # Fill the area under the line, default: false
-      attr_accessor :area_fill 
+      attr_accessor :area_fill
       # Show a small circle on the graph where the line
       # goes from one point to the next. default: true
       attr_accessor :show_data_points
       # Set the minimum value of the X axis, if nil the minimum from data is chosen, default: nil
-      attr_accessor :min_x_value 
+      attr_accessor :min_x_value
       # Set the maximum value of the X axis, if nil the maximum from data is chosen, default: nil
-      attr_accessor :max_x_value 
+      attr_accessor :max_x_value
       # Set the minimum value of the Y axis, if nil the minimum from data is chosen, default: nil
       attr_accessor :min_y_value
       # Set the maximum value of the Y axis, if nil the maximum from data is chosen, default: nil
@@ -155,15 +155,15 @@ module SVG
       #   data_set2 = [[1,2], 5,6]
       # or
       #   data_set2 = [[1,2], [5,6]]
-      #   
+      #
       #   graph.add_data({
       #     :data => data_set1,
       #     :title => 'single point'
-      #   })   
+      #   })
       #   graph.add_data({
       #     :data => data_set2,
       #     :title => 'two points'
-      #   })         
+      #   })
       def add_data(conf)
 	      @data ||= []
         raise "No data provided by #{conf.inspect}" unless conf[:data] and
@@ -174,10 +174,10 @@ module SVG
         raise "Data supplied must be x,y pairs!  "+
           "The data provided contained an odd set of "+
           "data points" unless conf[:data].length % 2 == 0
-          
+
         # remove nil values
         conf[:data] = conf[:data].compact
-          
+
         return if conf[:data].length == 0
 
         conf[:description] ||= Array.new(conf[:data].size/2)
@@ -248,7 +248,7 @@ module SVG
 
         scale_division = scale_x_divisions || (scale_range / 10.0)
         @x_offset = 0
-        
+
         if scale_x_integers
           scale_division = scale_division < 1 ? 1 : scale_division.round
           @x_offset = min_value.to_f - min_value.floor
@@ -261,7 +261,7 @@ module SVG
       def get_x_values
         min_value, max_value, @x_scale_division = x_label_range
         rv = []
-        min_value.step( max_value, @x_scale_division ) {|v| rv << v}
+        min_value.step( max_value + @x_scale_division , @x_scale_division ) {|v| rv << v}
         return rv
       end
       alias :get_x_labels :get_x_values
@@ -270,7 +270,7 @@ module SVG
         # exclude values which are outside max_x_range
         values = get_x_values
         @graph_width.to_f / (values.length - 1 ) # -1 is to use entire x-axis
-                                                 # otherwise there is always 1 division unused 
+                                                 # otherwise there is always 1 division unused
       end
 
 
@@ -300,7 +300,7 @@ module SVG
 
         scale_division = scale_y_divisions || (scale_range / 10.0)
         @y_offset = 0
-        
+
         if scale_y_integers
           scale_division = scale_division < 1 ? 1 : scale_division.round
           @y_offset = (min_value.to_f - min_value.floor).to_f
@@ -318,7 +318,7 @@ module SVG
           end
         end
         rv = []
-        min_value.step( max_value, @y_scale_division ) {|v| rv << v}
+        min_value.step( max_value + @y_scale_division, @y_scale_division ) {|v| rv << v}
         rv << rv[0] + 1 if rv.length == 1
         return rv
       end
@@ -335,19 +335,19 @@ module SVG
         end
         @graph_height.to_f / values.length
       end
-      
+
       def calc_coords(x, y)
         coords = {:x => 0, :y => 0}
         # scale the coordinates, use float division / multiplication
         # otherwise the point will be place inaccurate
-        coords[:x] = (x + @x_offset)/@x_scale_division.to_f * field_width 
+        coords[:x] = (x + @x_offset)/@x_scale_division.to_f * field_width
         coords[:y] = @graph_height - (y + @y_offset)/@y_scale_division.to_f * field_height
         return coords
       end
 
       def draw_data
         line = 1
-        
+
         x_min = min_x_range
         x_max = max_x_range
         y_min = min_y_range
@@ -395,7 +395,7 @@ module SVG
           line += 1
         end
       end
-      
+
       # returns the formatted string which is added as popup information
       def format x, y, desc
         info = []
@@ -404,69 +404,69 @@ module SVG
         info << desc
         "(#{info.compact.join(', ')})"
       end
-      
+
       def get_css
         return <<EOL
 /* default line styles */
 .line1{
 	fill: none;
 	stroke: #ff0000;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line2{
 	fill: none;
 	stroke: #0000ff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line3{
 	fill: none;
 	stroke: #00ff00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line4{
 	fill: none;
 	stroke: #ffcc00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line5{
 	fill: none;
 	stroke: #00ccff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line6{
 	fill: none;
 	stroke: #ff00ff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line7{
 	fill: none;
 	stroke: #00ffff;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line8{
 	fill: none;
 	stroke: #ffff00;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line9{
 	fill: none;
 	stroke: #ccc6666;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line10{
 	fill: none;
 	stroke: #663399;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line11{
 	fill: none;
 	stroke: #339900;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .line12{
 	fill: none;
 	stroke: #9966FF;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 /* default fill styles */
 .fill1{
@@ -533,62 +533,62 @@ module SVG
 .key1,.dataPoint1{
 	fill: #ff0000;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key2,.dataPoint2{
 	fill: #0000ff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key3,.dataPoint3{
 	fill: #00ff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key4,.dataPoint4{
 	fill: #ffcc00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key5,.dataPoint5{
 	fill: #00ccff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key6,.dataPoint6{
 	fill: #ff00ff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key7,.dataPoint7{
 	fill: #00ffff;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key8,.dataPoint8{
 	fill: #ffff00;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key9,.dataPoint9{
 	fill: #cc6666;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key10,.dataPoint10{
 	fill: #663399;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key11,.dataPoint11{
 	fill: #339900;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key12,.dataPoint12{
 	fill: #9966FF;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 EOL
       end
