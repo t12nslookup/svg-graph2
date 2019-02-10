@@ -5,11 +5,15 @@ TODO / Backlog
 === 2.2.0 / todo
 * Fix typo in Plot's `scale_y_integers` [thanks ashleydavies, PR #9]
 * Fix bug in Plot which enabled too-short axis [thanks ashleydavies, PR #10]
-* Fix bug in Plot where min/max_x/y_value are not respected
+* Fix bug in Plot where min/max_x/y_value are not respected, TODO
+* Fixed issue where horizontal bar graphs were not lined up properly [thanks erullmann]
 
 * add support for c3js / d3js based graphs `SVG::Graph::C3js`, see http://c3js.org/
 * removed some outdated documentation and uneeded files
 * added *very* basic unit tests for all types of graphs
+* add :show_percent for Bar graphs [thanks  Cameron2920]
+* add :inline_style_sheet  parameter for all graphs to allow inline css instead of specifying external stylesheets via url [thanks erullmann]
+* add parameters to control the key  :key_box_size, :key_spacing, :key_width  [thanks erullmann]
 
 
 === 2.1.3 / 2017-12-27
