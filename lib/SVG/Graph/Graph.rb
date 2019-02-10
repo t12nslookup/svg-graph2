@@ -147,22 +147,26 @@ module SVG
           :key_width             => nil,
           :key_position          => :right, # bottom or right
 
-          :font_size            =>12,
-          :title_font_size      =>16,
-          :subtitle_font_size   =>14,
-          :x_label_font_size    =>12,
-          :y_label_font_size    =>12,
-          :x_title_font_size    =>14,
-          :y_title_font_size    =>14,
-          :key_font_size        =>10,
-          :key_box_size         =>12,
-          :key_spacing          =>5,
+          :font_size            => 12,
+          :title_font_size      => 16,
+          :subtitle_font_size   => 14,
+          :x_label_font_size    => 12,
+          :y_label_font_size    => 12,
+          :x_title_font_size    => 14,
+          :y_title_font_size    => 14,
+          :key_font_size        => 10,
+          :key_box_size         => 12,
+          :key_spacing          => 5,
 
-          :no_css               =>false,
-          :add_popups           =>false,
-          :number_format        => '%.2f'
+          :no_css               => false,
+          :add_popups           => false,
+          :popup_radius         => 10,
+          :number_format        => '%.2f',
+          :style_sheet          => '',
+          :inline_style_sheet   => ''
         })
         set_defaults if self.respond_to? :set_defaults
+        # override default values with user supplied values
         init_with config
       end
 
@@ -259,20 +263,23 @@ module SVG
       #   of the SVG box created - not the graph it self which auto
       #   scales to fix the space.
       attr_accessor :width
-      #   Set the path to an external stylesheet, set to '' if
+      #   Set the path/url to an external stylesheet, set to '' if
       #   you want to revert back to using the defaut internal version.
       #
       #   To create an external stylesheet create a graph using the
       #   default internal version and copy the stylesheet section to
       #   an external file and edit from there.
       attr_accessor :style_sheet
-      #   Set the path to an external stylesheet, set to '' if
-      #   you want to revert back to using the defaut internal version.
+      #   Define as String the stylesheet contents to be inlined, set to '' to disable.
+      #   This can be used, when referring to a url via :style_sheet is not suitable.
+      #   E.g. in situations where there will be no internet access or the graph must
+      #   consist of only one file.
       #
-      #   To create an external stylesheet create a graph using the
-      #   default internal version and copy the stylesheet section to
-      #   an external file and edit from there.
-      attr_accessor :style_sheet_path
+      #   If not empty, the :style_sheet parameter (url) above will be ignored and is
+      #   not written to the file
+      #   see also https://github.com/erullmann/svg-graph2/commit/55eb6e983f6fcc69cc5a110d0ee6e05f906f639a
+      #   Default: ''
+      attr_accessor :inline_style_sheet
       #   (Bool) Show the value of each element of data on the graph
       attr_accessor :show_data_values
       #   By default (nil/undefined) the x-axis is at the bottom of the graph.
@@ -431,7 +438,6 @@ module SVG
         config.each { |key, value|
             self.send( key.to_s+"=", value ) if self.respond_to?  key
         }
-        @popup_radius ||= 10
       end
 
       # Override this (and call super) to change the margin to the left
@@ -1065,9 +1071,10 @@ module SVG
         @doc << XMLDecl.new
         @doc << DocType.new( %q{svg PUBLIC "-//W3C//DTD SVG 1.0//EN" } +
           %q{"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"} )
-        if style_sheet_path && style_sheet_path != ''
+        if style_sheet && style_sheet != '' && inline_style_sheet.to_s.empty?
+          # if inline_style_sheet is defined, url style sheet is ignored
           @doc << Instruction.new( "xml-stylesheet",
-            %Q{href="#{style_sheet_path}" type="text/css"} )
+            %Q{href="#{style_sheet}" type="text/css"} )
         end
         @root = @doc.add_element( "svg", {
           "width" => width.to_s,
@@ -1088,9 +1095,9 @@ module SVG
         defs = @root.add_element( "defs" )
         add_defs defs
         if !no_css
-          if style_sheet && style_sheet != ''
+          if inline_style_sheet && inline_style_sheet != ''
             style = defs.add_element( "style", {"type"=>"text/css"} )
-            style << CData.new( style_sheet )
+            style << CData.new( inline_style_sheet )
           else
             @root << Comment.new(" include default stylesheet if none specified ")
             style = defs.add_element( "style", {"type"=>"text/css"} )

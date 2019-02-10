@@ -21,7 +21,7 @@ options = {
   :add_popups        => true,
   :no_css            => true,
   :show_percent      => true,
-  :show_actual_values => true
+  :show_actual_values => true,
   # :x_axis_position   => 0,
   # :y_axis_position   => '30-50',
 }

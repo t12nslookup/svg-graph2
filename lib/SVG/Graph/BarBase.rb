@@ -38,26 +38,26 @@ module SVG
       #   transparent colors, :top stacks bars on top of one another,
       #   :side stacks the bars side-by-side. Defaults to :overlap.
       attr_accessor :stack
-      # If true, display the percentage value of each bar
+      # If true, display the percentage value of each bar. Default: false
       attr_accessor :show_percent
-      # If true, display the actual field values in the data labels
+      # If true, display the actual field values in the data labels. Default: true
       attr_accessor :show_actual_values
       protected
-      
+
       # space in px between x-labels, we override the Graph version because
       # we need the extra space (i.e. don't subtract 1 from get_x_labels.length)
       def field_width
-        # don't use -1 otherwise bar is out of bounds        
+        # don't use -1 otherwise bar is out of bounds
         @graph_width.to_f / ( get_x_labels.length )
       end
-      
+
       def max_value
         @data.collect{|x| x[:data].max}.max
       end
 
       def min_value
         min = 0
-        if min_scale_value.nil? 
+        if min_scale_value.nil?
           min = @data.collect{|x| x[:data].min}.min
           # by default bar should always start from zero unless there are negative values
           min = min > 0 ? 0 : min
@@ -74,73 +74,73 @@ module SVG
 	fill: #ff0000;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 0.5px;	
+	stroke-width: 0.5px;
 }
 .key2,.fill2{
 	fill: #0000ff;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key3,.fill3{
 	fill: #00ff00;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key4,.fill4{
 	fill: #ffcc00;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key5,.fill5{
 	fill: #00ccff;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key6,.fill6{
 	fill: #ff00ff;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key7,.fill7{
 	fill: #00ffff;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key8,.fill8{
 	fill: #ffff00;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key9,.fill9{
 	fill: #cc6666;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key10,.fill10{
 	fill: #663399;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key11,.fill11{
 	fill: #339900;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 .key12,.fill12{
 	fill: #9966FF;
 	fill-opacity: 0.5;
 	stroke: none;
-	stroke-width: 1px;	
+	stroke-width: 1px;
 }
 EOL
       end
