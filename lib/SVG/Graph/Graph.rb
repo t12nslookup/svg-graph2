@@ -309,10 +309,12 @@ module SVG
       #   are long field names they will not overlap so easily.
       #   Default is false, to turn on set to true.
       attr_accessor :stagger_y_labels
-      #   This turns the X axis labels by 90 degrees.
+      #   This turns the X axis labels by 90 degrees when true or by a custom
+      #   amount when a numeric value is given.
       #   Default is false, to turn on set to true.
       attr_accessor :rotate_x_labels
-      #   This turns the Y axis labels by 90 degrees.
+      #   This turns the Y axis labels by 90 degrees when true or by a custom
+      #   amount when a numeric value is given.
       #   Default is true, to turn on set to false.
       attr_accessor :rotate_y_labels
       #   How many "steps" to use between displayed X axis labels,
@@ -760,8 +762,12 @@ module SVG
             text.attributes["x"] = x.to_s
             text.attributes["y"] = y.to_s
             if rotate_x_labels
+              degrees = 90
+              if numeric? rotate_x_labels
+                degrees = rotate_x_labels
+              end
               text.attributes["transform"] =
-                "rotate( 90 #{x} #{y-x_label_font_size} )"+
+                "rotate( #{degrees} #{x} #{y-x_label_font_size} )"+
                 " translate( 0 -#{x_label_font_size/4} )"
               text.attributes["style"] = "text-anchor: start"
             else
@@ -844,8 +850,12 @@ module SVG
             end
             text.text = textStr
             if rotate_y_labels
+              degrees = 90
+              if numeric? rotate_y_labels
+                degrees = rotate_y_labels
+              end
               text.attributes["transform"] = "translate( -#{font_size} 0 ) "+
-                "rotate( 90 #{x} #{y} ) "
+                "rotate( #{degrees} #{x} #{y} ) "
               text.attributes["style"] = "text-anchor: middle"
             else
               text.attributes["y"] = (y - (y_label_font_size/2)).to_s
