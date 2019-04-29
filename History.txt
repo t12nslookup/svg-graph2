@@ -14,6 +14,7 @@ TODO / Backlog
 * add :show_percent for Bar graphs [thanks  Cameron2920]
 * add :inline_style_sheet  parameter for all graphs to allow inline css instead of specifying external stylesheets via url [thanks erullmann]
 * add parameters to control the key  :key_box_size, :key_spacing, :key_width  [thanks erullmann]
+* add support for X and Y label rotation to be different than 90 degree
 
 
 === 2.1.3 / 2017-12-27
