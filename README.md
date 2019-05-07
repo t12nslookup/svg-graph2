@@ -100,6 +100,14 @@ File.open('bar.svg', 'w') {|f| f.write(g.burn_svg_only)}
 
 ![example timeseries graph](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/timeseries.svg)
 
+### C3js
+
+Source: [C3js.rb](../master/examples/c3js.rb)
+
+[Link to Preview](https://cdn.rawgit.com/lumean/svg-graph2/master/examples/c3js.html)
+
+<iframe src="https://cdn.rawgit.com/lumean/svg-graph2/master/examples/c3js.html" width="600px"> </iframe>
+
 Also have a look at the original [SVG::Graph web page](http://www.germane-software.com/software/SVG/SVG::Graph/), but note that this repository has already added some additional functionality, not available with the original.
 
 Build

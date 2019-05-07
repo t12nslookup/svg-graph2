@@ -1,8 +1,9 @@
+# -*- encoding: utf-8 -*-
 # For now the Gemspec is maintained manually
 # EDIT THIS FILE DIRECTLY
 # currently there are no Jeweler::Tasks in the rake file Rakefile,
 # setup of the dev toolchain including rake and juwelier will be done at a later stage.
-# -*- encoding: utf-8 -*-
+
 
 require_relative 'lib/svggraph'
 
@@ -34,10 +35,12 @@ the Perl original at all.
     "History.txt",
     "LICENSE.txt",
     "README.txt",
+    "README.md",
     "Rakefile",
     "lib/SVG/Graph/Bar.rb",
     "lib/SVG/Graph/BarBase.rb",
     "lib/SVG/Graph/BarHorizontal.rb",
+    "lib/SVG/Graph/C3js.rb",
     "lib/SVG/Graph/DataPoint.rb",
     "lib/SVG/Graph/ErrBar.rb",
     "lib/SVG/Graph/Graph.rb",
