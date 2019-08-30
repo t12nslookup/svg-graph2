@@ -254,6 +254,14 @@ module SVG
         return out
       end
 
+      # Burns the graph to an SVG string and returns it with a text/html mime type to be
+      # displayed in IRuby.
+      #
+      # @return [Array] A 2-dimension array containing the SVg string and a mime-type. This is the format expected by IRuby.
+      def to_iruby
+        ["text/html", burn_svg_only]
+      end
+
 
       #   Set the height of the graph box, this is the total height
       #   of the SVG box created - not the graph it self which auto
