@@ -224,7 +224,7 @@ module SVG
         rad_mult = 3.6 * RADIANS
         @config[:fields].each_index { |count|
           value = @data[count].to_f
-          percent = 100.0 * value / total
+          percent = total.zero? ? 0.0 : 100.0 * value / total
           radians = prev_percent * rad_mult
 
           if percent.rationalize(0.001) == 100.0
