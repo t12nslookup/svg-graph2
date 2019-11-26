@@ -48,9 +48,9 @@ module SVG
       def initialize(opts = {})
         default_opts = {
           "inline_dependencies" => false,
-          "d3_js"  => "https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js",
-          "c3_css" => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.min.css",
-          "c3_js"  => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.min.js"
+          "d3_js"  => "https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js",
+          "c3_css" => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css",
+          "c3_js"  => "https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"
         }
         @opts = default_opts.merge(opts)
         if @opts["inline_dependencies"]
