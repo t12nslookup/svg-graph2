@@ -343,12 +343,17 @@ module SVG
 
       def get_css
         return <<EOL
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground{
 	fill: #000000;
 	text-anchor:middle;
 	font-size: #{datapoint_font_size}px;
 	font-family: "Arial", sans-serif;
 	font-weight: normal;
+}
+
+.dataPointLabelBackground {
+  stroke: #ffffff;
+  stroke-width: 2;
 }
 
 /* key - MUST match fill styles */

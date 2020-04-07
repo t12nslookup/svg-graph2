@@ -712,12 +712,11 @@ module SVG
           elsif x > @graph_width - textStr.length/2 * font_size
             style << "text-anchor: end;"
           end
-          # white background for better readability
+          # background for better readability
           @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
-            "class" => "dataPointLabel",
-            "style" => "#{style} stroke: #fff; stroke-width: 2;"
+            "class" => "dataPointLabelBackground",
           }).text = textStr
           # actual label
           text = @foreground.add_element( "text", {
@@ -1212,12 +1211,17 @@ module SVG
   font-weight: normal;
 }
 
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
   font-family: "Arial", sans-serif;
   font-weight: normal;
+}
+
+.dataPointLabelBackground {
+  stroke: #ffffff;
+  stroke-width: 2;
 }
 
 .staggerGuideLine{
