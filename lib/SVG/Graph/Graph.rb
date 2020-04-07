@@ -532,7 +532,7 @@ module SVG
             "y" => (y - font_size).to_s,
             "class" => "dataPointPopup"
           })
-          t.attributes["style"] = style+
+          t.attributes["style"] = style +
             (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
           t.attributes["id"] = t.object_id.to_s
