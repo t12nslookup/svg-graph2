@@ -530,10 +530,10 @@ module SVG
           t = @foreground.add_element( "text", {
             "x" => tx.to_s,
             "y" => (y - font_size).to_s,
-            "class" => "dataPointLabel",
+            "class" => "dataPointPopup",
             "visibility" => "hidden",
           })
-          t.attributes["style"] = "stroke-width: 2; fill: #000; #{style}"+
+          t.attributes["style"] = style+
             (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
           t.attributes["id"] = t.object_id.to_s
@@ -1211,7 +1211,7 @@ module SVG
   font-weight: normal;
 }
 
-.dataPointLabel, .dataPointLabelBackground{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
@@ -1219,8 +1219,14 @@ module SVG
   font-weight: normal;
 }
 
-.dataPointLabelBackground {
+.dataPointLabelBackground{
   stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopup{
+  fill: #000000;
+  visibility: hidden;
   stroke-width: 2;
 }
 

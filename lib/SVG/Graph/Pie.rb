@@ -343,7 +343,7 @@ module SVG
 
       def get_css
         return <<EOL
-.dataPointLabel, .dataPointLabelBackground{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup{
 	fill: #000000;
 	text-anchor:middle;
 	font-size: #{datapoint_font_size}px;
@@ -351,8 +351,14 @@ module SVG
 	font-weight: normal;
 }
 
-.dataPointLabelBackground {
+.dataPointLabelBackground{
   stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopup{
+  fill: #000000;
+  visibility: hidden;
   stroke-width: 2;
 }
 
