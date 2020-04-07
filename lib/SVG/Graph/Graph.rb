@@ -530,8 +530,7 @@ module SVG
           t = @foreground.add_element( "text", {
             "x" => tx.to_s,
             "y" => (y - font_size).to_s,
-            "class" => "dataPointPopup",
-            "visibility" => "hidden",
+            "class" => "dataPointPopup"
           })
           t.attributes["style"] = style+
             (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
