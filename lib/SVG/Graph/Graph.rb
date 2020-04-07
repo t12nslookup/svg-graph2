@@ -544,9 +544,9 @@ module SVG
             "r" => "#{popup_radius}",
             "style" => "opacity: 0",
             "onmouseover" =>
-              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'visible' )",
+              "document.getElementById(#{t.object_id}).style.visibility ='visible'",
             "onmouseout" =>
-              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
+              "document.getElementById(#{t.object_id}).style.visibility = 'hidden'",
           })
         end # if add_popups
       end # add_popup
