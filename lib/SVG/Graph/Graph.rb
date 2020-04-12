@@ -530,10 +530,9 @@ module SVG
           t = @foreground.add_element( "text", {
             "x" => tx.to_s,
             "y" => (y - font_size).to_s,
-            "class" => "dataPointLabel",
-            "visibility" => "hidden",
+            "class" => "dataPointPopup"
           })
-          t.attributes["style"] = "stroke-width: 2; fill: #000; #{style}"+
+          t.attributes["style"] = style +
             (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
           t.attributes["id"] = t.object_id.to_s
@@ -545,9 +544,9 @@ module SVG
             "r" => "#{popup_radius}",
             "style" => "opacity: 0",
             "onmouseover" =>
-              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'visible' )",
+              "document.getElementById(#{t.object_id}).style.visibility ='visible'",
             "onmouseout" =>
-              "document.getElementById(#{t.object_id}).setAttribute('visibility', 'hidden' )",
+              "document.getElementById(#{t.object_id}).style.visibility = 'hidden'",
           })
         end # if add_popups
       end # add_popup
@@ -712,12 +711,11 @@ module SVG
           elsif x > @graph_width - textStr.length/2 * font_size
             style << "text-anchor: end;"
           end
-          # white background for better readability
+          # background for better readability
           @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
-            "class" => "dataPointLabel",
-            "style" => "#{style} stroke: #fff; stroke-width: 2;"
+            "class" => "dataPointLabelBackground",
           }).text = textStr
           # actual label
           text = @foreground.add_element( "text", {
@@ -1212,12 +1210,23 @@ module SVG
   font-weight: normal;
 }
 
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
   font-family: "Arial", sans-serif;
   font-weight: normal;
+}
+
+.dataPointLabelBackground{
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopup{
+  fill: #000000;
+  visibility: hidden;
+  stroke-width: 2;
 }
 
 .staggerGuideLine{
