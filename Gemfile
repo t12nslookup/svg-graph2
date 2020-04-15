@@ -10,5 +10,5 @@ group :test do
   gem 'minitest'
   gem 'minitest-reporters'
   gem 'test-unit'
-  gem 'simplecov', '< 0.18' # CodeClimate doesn't support 0.18
+  gem 'simplecov', '< 0.18', require: false # CodeClimate doesn't support 0.18
 end
