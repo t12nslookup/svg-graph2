@@ -25,8 +25,13 @@
 task default: %w[test]
 
 task :test do
-  ruby "test/test_data_point.rb"
-  ruby "test/test_plot.rb"
-  ruby "test/test_svg_graph.rb"
-  ruby "test/test_graph.rb"
+  [
+    "test/test_data_point.rb",
+    "test/test_plot.rb",
+    "test/test_svg_graph.rb",
+    "test/test_graph.rb"
+  ].each do |file|
+    simplecov = ENV['COVERAGE'] ? ['-r', './test/simplecov'] : []
+    ruby *(simplecov + [file])
+  end
 end
