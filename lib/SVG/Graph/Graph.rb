@@ -527,7 +527,22 @@ module SVG
           end
           txt_width = label.length * font_size * 0.6 + 10
           tx = (x+txt_width > @graph_width ? x-5 : x+5)
-          t = @foreground.add_element( "text", {
+          g = Element.new( "g" )
+          g.attributes["id"] = g.object_id.to_s
+          g.attributes["visibility"] = "hidden"
+
+          # First add the mask
+          t = g.add_element( "text", {
+            "x" => tx.to_s,
+            "y" => (y - font_size).to_s,
+            "class" => "dataPointPopupMask"
+          })
+          t.attributes["style"] = style +
+            (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
+          t.text = label.to_s
+
+          # Then add the text
+          t = g.add_element( "text", {
             "x" => tx.to_s,
             "y" => (y - font_size).to_s,
             "class" => "dataPointPopup"
@@ -535,7 +550,8 @@ module SVG
           t.attributes["style"] = style +
             (x+txt_width > @graph_width ? "text-anchor: end;" : "text-anchor: start;")
           t.text = label.to_s
-          t.attributes["id"] = t.object_id.to_s
+
+          @foreground.add_element( g )
 
           # add a circle to catch the mouseover
           @foreground.add_element( "circle", {
@@ -544,9 +560,9 @@ module SVG
             "r" => "#{popup_radius}",
             "style" => "opacity: 0",
             "onmouseover" =>
-              "document.getElementById(#{t.object_id}).style.visibility ='visible'",
+              "document.getElementById(#{g.object_id.to_s}).style.visibility ='visible'",
             "onmouseout" =>
-              "document.getElementById(#{t.object_id}).style.visibility = 'hidden'",
+              "document.getElementById(#{g.object_id.to_s}).style.visibility = 'hidden'",
           })
         end # if add_popups
       end # add_popup
@@ -1210,7 +1226,7 @@ module SVG
   font-weight: normal;
 }
 
-.dataPointLabel, .dataPointLabelBackground, .dataPointPopup{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup, .dataPointPopupMask{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
@@ -1223,9 +1239,13 @@ module SVG
   stroke-width: 2;
 }
 
+.dataPointPopupMask{
+  stroke: white;
+  stroke-width: 7;
+}
+
 .dataPointPopup{
-  fill: #000000;
-  visibility: hidden;
+  fill: black;
   stroke-width: 2;
 }
 

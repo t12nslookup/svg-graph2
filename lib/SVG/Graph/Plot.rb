@@ -59,10 +59,10 @@ module SVG
     #
     # = Notes
     #
-    # The default stylesheet handles upto 10 data sets, if you
+    # The default stylesheet handles upto 12 data sets, if you
     # use more you must create your own stylesheet and add the
     # additional settings for the extra data sets. You will know
-    # if you go over 10 data sets as they will have no style and
+    # if you go over 12 data sets as they will have no style and
     # be in black.
     #
     # Unlike the other types of charts, data sets must contain x,y pairs:
@@ -239,14 +239,14 @@ module SVG
         min_value = min_x_range
         range = max_value - min_value
         # add some padding on right
-        if range == 0
+        if range == 0 
           max_value += 10
         else
           max_value += range / 20.0
         end
         scale_range = max_value - min_value
 
-        scale_division = scale_x_divisions || (scale_range / 10.0)
+        scale_division = scale_x_divisions || (scale_range / 9.0)
         @x_offset = 0
 
         if scale_x_integers
@@ -298,7 +298,7 @@ module SVG
         end
         scale_range = max_value - min_value
 
-        scale_division = scale_y_divisions || (scale_range / 10.0)
+        scale_division = scale_y_divisions || (scale_range / 9.0)
         @y_offset = 0
 
         if scale_y_integers
@@ -314,7 +314,7 @@ module SVG
         min_value, max_value, @y_scale_division = y_label_range
         if max_value != min_value
           while (max_value - min_value) < @y_scale_division
-            @y_scale_division /= 10.0
+            @y_scale_division /= 9.0
           end
         end
         rv = []
