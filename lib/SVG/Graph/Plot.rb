@@ -384,7 +384,7 @@ module SVG
             x_points.each_index { |idx|
               c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
               if show_data_points
-                DataPoint.new(c[:x], c[:y], line).shape(data[:description][idx]).each{|s|
+                DataPoint.new(c[:x], c[:y], line).shape(data[:shape][idx]).each{|s|
                   @graph.add_element( *s )
                 }
               end
