@@ -250,7 +250,7 @@ module SVG
         @x_offset = 0
 
         if scale_x_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          scale_division = scale_division < 1 ? 1 : scale_division.ceil
           @x_offset = min_value.to_f - min_value.floor
           min_value = min_value.floor
         end
