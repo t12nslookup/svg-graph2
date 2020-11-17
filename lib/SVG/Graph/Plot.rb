@@ -389,7 +389,8 @@ module SVG
                 }
               end
               make_datapoint_text( c[:x], c[:y]-6, y_points[idx] )
-              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]))
+              url = data[:urls][idx] if data[:urls].present?
+              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]), "", url)
             }
           end
           line += 1

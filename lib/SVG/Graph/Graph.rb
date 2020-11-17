@@ -520,7 +520,7 @@ module SVG
       end
 
       # Adds pop-up point information to a graph only if the config option is set.
-      def add_popup( x, y, label, style="" )
+      def add_popup( x, y, label, style="", url="" )
         if add_popups
           if( numeric?(label) )
             label = @number_format % label
@@ -554,7 +554,8 @@ module SVG
           @foreground.add_element( g )
 
           # add a circle to catch the mouseover
-          @foreground.add_element( "circle", {
+          mouseover = Element.new( "circle" )
+          mouseover.add_attributes({
             "cx" => x.to_s,
             "cy" => y.to_s,
             "r" => "#{popup_radius}",
@@ -564,6 +565,27 @@ module SVG
             "onmouseout" =>
               "document.getElementById(#{g.object_id.to_s}).style.visibility = 'hidden'",
           })
+          if url.present?
+            href = Element.new("a")
+            href.add_attribute("xlink:href", url)
+            href.add_element(mouseover)
+            @foreground.add_element(href)
+          else
+            @foreground.add_element(mouseover)
+          end
+        elsif url.present?
+          # add a circle to catch the mouseover
+          mouseover = Element.new( "circle" )
+          mouseover.add_attributes({
+            "cx" => x.to_s,
+            "cy" => y.to_s,
+            "r" => "#{popup_radius}",
+            "style" => "opacity: 0",
+          })
+          href = Element.new("a")
+          href.add_attribute("xlink:href", url)
+          href.add_element(mouseover)
+          @foreground.add_element(href)
         end # if add_popups
       end # add_popup
 
