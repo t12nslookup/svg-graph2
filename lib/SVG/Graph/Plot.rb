@@ -190,7 +190,7 @@ module SVG
         conf[:data].each_index {|i|
           (i%2 == 0 ? x : y) << conf[:data][i]
         }
-        sort( x, y, conf[:description] )
+        sort(x, y, conf[:description], conf[:shape], conf[:url])
         conf[:data] = [x,y]
         # at the end data looks like:
         # [
@@ -302,7 +302,7 @@ module SVG
         @y_offset = 0
 
         if scale_y_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          scale_division = scale_division < 1 ? 1 : scale_division.ceil
           @y_offset = (min_value.to_f - min_value.floor).to_f
           min_value = min_value.floor
         end
@@ -333,7 +333,7 @@ module SVG
         else
           dx = (max - values[-1]).to_f / (values[-1] - values[-2])
         end
-        @graph_height.to_f / values.length
+        @graph_height.to_f / (values.length - 1)
       end
 
       def calc_coords(x, y)
