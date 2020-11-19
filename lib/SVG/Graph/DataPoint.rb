@@ -53,12 +53,12 @@ class DataPoint
   #   # for each svg we insert it to the graph
   #   dp.each {|s| @graph.add_element( *s )}
   #
-  def shape(description=nil)
+  def shape(shape=nil)
     # select all criteria with size 2, and collect rendered lambdas in an array 
     shapes = CRITERIA.select {|criteria|
       criteria.size == 2
     }.collect {|regexp, proc|
-      proc.call(@x, @y, @line) if description =~ regexp
+      proc.call(@x, @y, @line) if shape =~ regexp
     }.compact
     # if above did not render anything use the defalt shape
     shapes = [DEFAULT_SHAPE.call(@x, @y, @line)] if shapes.empty?
@@ -66,7 +66,7 @@ class DataPoint
     overlays = CRITERIA.select { |criteria|
       criteria.last == OVERLAY
     }.collect { |regexp, proc|
-      proc.call(@x, @y, @line) if description =~ regexp
+      proc.call(@x, @y, @line) if shape =~ regexp
     }.compact
 
     return shapes + overlays
