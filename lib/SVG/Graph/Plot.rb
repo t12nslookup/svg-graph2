@@ -165,7 +165,7 @@ module SVG
       #     :title => 'two points'
       #   })
       def add_data(conf)
-	      @data ||= []
+        @data ||= []
         raise "No data provided by #{conf.inspect}" unless conf[:data] and
           conf[:data].kind_of? Array
         # support array of arrays and flatten it
@@ -178,11 +178,23 @@ module SVG
         # remove nil values
         conf[:data] = conf[:data].compact
 
-        return if conf[:data].length == 0
+        return if conf[:data].length.zero?
 
-        conf[:description] ||= Array.new(conf[:data].size/2)
-        if conf[:description].size != conf[:data].size/2
+        datasize = conf[:data].size / 2
+        conf[:description] ||= Array.new(datasize)
+        conf[:shape] ||= Array.new(datasize)
+        conf[:url] ||= Array.new(datasize)
+
+        if conf[:description].size != datasize
           raise "Description for popups does not have same size as provided data: #{conf[:description].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:shape].size != datasize
+          raise "Shapes for points do not have same size as provided data: #{conf[:shape].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:url].size != datasize
+          raise "URLs for points do not have same size as provided data: #{conf[:url].size} vs #{conf[:data].size/2}"
         end
 
         x = []
