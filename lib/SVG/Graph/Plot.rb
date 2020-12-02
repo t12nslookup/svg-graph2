@@ -230,20 +230,25 @@ module SVG
         @border_right = label_right if label_right > @border_right
       end
 
-
       X = 0
       Y = 1
 
       def max_x_range
+        return @max_x_range if @max_x_range
+
         max_value = @data.collect{|x| x[:data][X][-1] }.max
         max_value = max_value > max_x_value ? max_value : max_x_value if max_x_value
-        max_value
+        @max_x_range = max_value
+        @max_x_range
       end
 
       def min_x_range
+        return @min_x_range if @min_x_range
+
         min_value = @data.collect{|x| x[:data][X][0] }.min
         min_value = min_value < min_x_value ? min_value : min_x_value if min_x_value
-        min_value
+        @min_x_range = min_value
+        @min_x_range
       end
 
       def x_label_range
@@ -285,17 +290,22 @@ module SVG
                                                  # otherwise there is always 1 division unused
       end
 
-
       def max_y_range
+        return @max_y_range if @max_y_range
+
         max_value = @data.collect{|x| x[:data][Y].max }.max
         max_value = max_value > max_y_value ? max_value : max_y_value if max_y_value
-        max_value
+        @max_y_range = max_value
+        @max_y_range
       end
 
       def min_y_range
+        return @min_y_range if @min_y_range
+
         min_value = @data.collect{|x| x[:data][Y].min }.min
         min_value = min_value < min_y_value ? min_value : min_y_value if min_y_value
-        min_value
+        @min_y_range = min_value
+        @min_y_range
       end
 
       def y_label_range
