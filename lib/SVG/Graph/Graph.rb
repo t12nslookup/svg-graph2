@@ -180,14 +180,11 @@ module SVG
       #     :data => data_sales_02,
       #     :title => 'Sales 2002'
       #   })
-      def add_data conf
-        @data = [] unless (defined? @data and !@data.nil?)
+      def add_data(conf)
+        raise "No data provided by #{conf.inspect}" unless conf[:data].is_a?(Array)
 
-        if conf[:data] and conf[:data].kind_of? Array
-          @data << conf
-        else
-          raise "No data provided by #{conf.inspect}"
-        end
+        @data ||= []
+        @data << conf
       end
 
 
@@ -1045,6 +1042,9 @@ module SVG
       private
 
       def sort_multiple( arrys, lo=0, hi=arrys[0].length-1 )
+        first = arrys.first
+        return arrys if first == first.sort
+
         if lo < hi
           p = partition(arrys,lo,hi)
           sort_multiple(arrys, lo, p-1)
