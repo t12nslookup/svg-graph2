@@ -433,17 +433,16 @@ module SVG
 
       protected
 
-      # implementation of quicksort
-      # used for Schedule and Plot
+      # implementation of a multiple array sort used for Schedule and Plot
       def sort( *arrys )
-        sort_multiple( arrys )
+        arrys.transpose.sort_by(&:first).transpose
       end
 
       # Overwrite configuration options with supplied options.  Used
       # by subclasses.
       def init_with config
         config.each { |key, value|
-            self.send( key.to_s+"=", value ) if self.respond_to?  key
+          self.send( key.to_s+"=", value ) if self.respond_to?  key
         }
       end
 
@@ -1040,33 +1039,6 @@ module SVG
 
 
       private
-
-      def sort_multiple( arrys, lo=0, hi=arrys[0].length-1 )
-        first = arrys.first
-        return arrys if first == first.sort
-
-        if lo < hi
-          p = partition(arrys,lo,hi)
-          sort_multiple(arrys, lo, p-1)
-          sort_multiple(arrys, p+1, hi)
-        end
-        arrys
-      end
-
-      def partition( arrys, lo, hi )
-        p = arrys[0][lo]
-        l = lo
-        z = lo+1
-        while z <= hi
-          if arrys[0][z] < p
-            l += 1
-            arrys.each { |arry| arry[z], arry[l] = arry[l], arry[z] }
-          end
-          z += 1
-        end
-        arrys.each { |arry| arry[lo], arry[l] = arry[l], arry[lo] }
-        l
-      end
 
       def style
         if no_css
