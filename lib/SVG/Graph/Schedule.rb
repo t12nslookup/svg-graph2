@@ -176,7 +176,7 @@ module SVG
             (im3 == 1 ? x_start : x_end) << t.to_i
           end
         }
-        x_start, x_end, y = sort( x_start, x_end, y )
+        sort( x_start, x_end, y )
         @data = [x_start, x_end, y ]
       end
 

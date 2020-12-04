@@ -435,7 +435,8 @@ module SVG
 
       # implementation of a multiple array sort used for Schedule and Plot
       def sort( *arrys )
-        arrys.transpose.sort_by(&:first).transpose
+        new_arrys = arrys.transpose.sort_by(&:first).transpose
+        new_arrys.each_index { |k| arrys[k].replace(new_arrys[k]) }
       end
 
       # Overwrite configuration options with supplied options.  Used

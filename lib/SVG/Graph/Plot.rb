@@ -202,7 +202,7 @@ module SVG
         conf[:data].each_index {|i|
           (i%2 == 0 ? x : y) << conf[:data][i]
         }
-        x, y, conf[:description], conf[:shape], conf[:url] = sort(x, y, conf[:description], conf[:shape], conf[:url])
+        sort(x, y, conf[:description], conf[:shape], conf[:url])
         conf[:data] = [x, y]
         # at the end data looks like:
         # [
