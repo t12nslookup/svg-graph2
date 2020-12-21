@@ -113,8 +113,14 @@ Source: [C3js.rb](../master/examples/c3js.rb)
 
 Build
 -----
+* Test
+
+`bundle exec rake`
 
 * Build gem:
- *  gem build svg-graph.gemspec
+
+`gem build svg-graph.gemspec`
+
 * Install:
- *  gem install svg-graph-\<version>.gem
+
+`gem install svg-graph-\<version>.gem`

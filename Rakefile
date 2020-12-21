@@ -21,8 +21,8 @@
 #  self.remote_rdoc_dir = 'svg-graph'
 #end
 
-# run all unit tests with 'rake test'
-task default: %w[test]
+# by default run all unit tests with 'rake test'
+task default: [:test]
 
 task :test do
   [
@@ -31,7 +31,11 @@ task :test do
     "test/test_svg_graph.rb",
     "test/test_graph.rb"
   ].each do |file|
-    simplecov = ENV['COVERAGE'] ? ['-r', './test/simplecov'] : []
-    ruby *(simplecov + [file])
+    # exec all above scripts (with simplecov if env is set)
+    args = file
+    if ENV['COVERAGE']
+      args = '-r ./test/simplecov ' + file
+    end
+    ruby args
   end
 end
