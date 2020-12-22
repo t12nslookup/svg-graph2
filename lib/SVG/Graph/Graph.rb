@@ -180,14 +180,11 @@ module SVG
       #     :data => data_sales_02,
       #     :title => 'Sales 2002'
       #   })
-      def add_data conf
-        @data = [] unless (defined? @data and !@data.nil?)
+      def add_data(conf)
+        raise "No data provided by #{conf.inspect}" unless conf[:data].is_a?(Array)
 
-        if conf[:data] and conf[:data].kind_of? Array
-          @data << conf
-        else
-          raise "No data provided by #{conf.inspect}"
-        end
+        @data ||= []
+        @data << conf
       end
 
 
@@ -436,17 +433,17 @@ module SVG
 
       protected
 
-      # implementation of quicksort
-      # used for Schedule and Plot
+      # implementation of a multiple array sort used for Schedule and Plot
       def sort( *arrys )
-        sort_multiple( arrys )
+        new_arrys = arrys.transpose.sort_by(&:first).transpose
+        new_arrys.each_index { |k| arrys[k].replace(new_arrys[k]) }
       end
 
       # Overwrite configuration options with supplied options.  Used
       # by subclasses.
       def init_with config
         config.each { |key, value|
-            self.send( key.to_s+"=", value ) if self.respond_to?  key
+          self.send( key.to_s+"=", value ) if self.respond_to?  key
         }
       end
 
@@ -520,7 +517,7 @@ module SVG
       end
 
       # Adds pop-up point information to a graph only if the config option is set.
-      def add_popup( x, y, label, style="" )
+      def add_popup( x, y, label, style="", url="" )
         if add_popups
           if( numeric?(label) )
             label = @number_format % label
@@ -554,7 +551,8 @@ module SVG
           @foreground.add_element( g )
 
           # add a circle to catch the mouseover
-          @foreground.add_element( "circle", {
+          mouseover = Element.new( "circle" )
+          mouseover.add_attributes({
             "cx" => x.to_s,
             "cy" => y.to_s,
             "r" => "#{popup_radius}",
@@ -564,6 +562,27 @@ module SVG
             "onmouseout" =>
               "document.getElementById(#{g.object_id.to_s}).style.visibility = 'hidden'",
           })
+          if !url.nil?
+            href = Element.new("a")
+            href.add_attribute("xlink:href", url)
+            href.add_element(mouseover)
+            @foreground.add_element(href)
+          else
+            @foreground.add_element(mouseover)
+          end
+        elsif !url.nil?
+          # add a circle to catch the mouseover
+          mouseover = Element.new( "circle" )
+          mouseover.add_attributes({
+            "cx" => x.to_s,
+            "cy" => y.to_s,
+            "r" => "#{popup_radius}",
+            "style" => "opacity: 0",
+          })
+          href = Element.new("a")
+          href.add_attribute("xlink:href", url)
+          href.add_element(mouseover)
+          @foreground.add_element(href)
         end # if add_popups
       end # add_popup
 
@@ -1021,30 +1040,6 @@ module SVG
 
 
       private
-
-      def sort_multiple( arrys, lo=0, hi=arrys[0].length-1 )
-        if lo < hi
-          p = partition(arrys,lo,hi)
-          sort_multiple(arrys, lo, p-1)
-          sort_multiple(arrys, p+1, hi)
-        end
-        arrys
-      end
-
-      def partition( arrys, lo, hi )
-        p = arrys[0][lo]
-        l = lo
-        z = lo+1
-        while z <= hi
-          if arrys[0][z] < p
-            l += 1
-            arrys.each { |arry| arry[z], arry[l] = arry[l], arry[z] }
-          end
-          z += 1
-        end
-        arrys.each { |arry| arry[lo], arry[l] = arry[l], arry[lo] }
-        l
-      end
 
       def style
         if no_css

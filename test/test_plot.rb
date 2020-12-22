@@ -252,7 +252,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     graph.add_data({
       :data => actual,
       :title => 'Actual',
-      :description => description,
+      :shape => description,
     })
 
     out=graph.burn()

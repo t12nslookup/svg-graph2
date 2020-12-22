@@ -165,7 +165,7 @@ module SVG
       #     :title => 'two points'
       #   })
       def add_data(conf)
-	      @data ||= []
+        @data ||= []
         raise "No data provided by #{conf.inspect}" unless conf[:data] and
           conf[:data].kind_of? Array
         # support array of arrays and flatten it
@@ -178,11 +178,23 @@ module SVG
         # remove nil values
         conf[:data] = conf[:data].compact
 
-        return if conf[:data].length == 0
+        return if conf[:data].length.zero?
 
-        conf[:description] ||= Array.new(conf[:data].size/2)
-        if conf[:description].size != conf[:data].size/2
+        datasize = conf[:data].size / 2
+        conf[:description] ||= Array.new(datasize)
+        conf[:shape] ||= Array.new(datasize)
+        conf[:url] ||= Array.new(datasize)
+
+        if conf[:description].size != datasize
           raise "Description for popups does not have same size as provided data: #{conf[:description].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:shape].size != datasize
+          raise "Shapes for points do not have same size as provided data: #{conf[:shape].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:url].size != datasize
+          raise "URLs for points do not have same size as provided data: #{conf[:url].size} vs #{conf[:data].size/2}"
         end
 
         x = []
@@ -190,8 +202,8 @@ module SVG
         conf[:data].each_index {|i|
           (i%2 == 0 ? x : y) << conf[:data][i]
         }
-        sort( x, y, conf[:description] )
-        conf[:data] = [x,y]
+        sort(x, y, conf[:description], conf[:shape], conf[:url])
+        conf[:data] = [x, y]
         # at the end data looks like:
         # [
         #   [all x values],
@@ -218,20 +230,25 @@ module SVG
         @border_right = label_right if label_right > @border_right
       end
 
-
       X = 0
       Y = 1
 
       def max_x_range
+        return @max_x_range if @max_x_range
+
         max_value = @data.collect{|x| x[:data][X][-1] }.max
         max_value = max_value > max_x_value ? max_value : max_x_value if max_x_value
-        max_value
+        @max_x_range = max_value
+        @max_x_range
       end
 
       def min_x_range
+        return @min_x_range if @min_x_range
+
         min_value = @data.collect{|x| x[:data][X][0] }.min
         min_value = min_value < min_x_value ? min_value : min_x_value if min_x_value
-        min_value
+        @min_x_range = min_value
+        @min_x_range
       end
 
       def x_label_range
@@ -250,7 +267,7 @@ module SVG
         @x_offset = 0
 
         if scale_x_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          scale_division = scale_division < 1 ? 1 : scale_division.ceil
           @x_offset = min_value.to_f - min_value.floor
           min_value = min_value.floor
         end
@@ -273,17 +290,22 @@ module SVG
                                                  # otherwise there is always 1 division unused
       end
 
-
       def max_y_range
+        return @max_y_range if @max_y_range
+
         max_value = @data.collect{|x| x[:data][Y].max }.max
         max_value = max_value > max_y_value ? max_value : max_y_value if max_y_value
-        max_value
+        @max_y_range = max_value
+        @max_y_range
       end
 
       def min_y_range
+        return @min_y_range if @min_y_range
+
         min_value = @data.collect{|x| x[:data][Y].min }.min
         min_value = min_value < min_y_value ? min_value : min_y_value if min_y_value
-        min_value
+        @min_y_range = min_value
+        @min_y_range
       end
 
       def y_label_range
@@ -302,7 +324,7 @@ module SVG
         @y_offset = 0
 
         if scale_y_integers
-          scale_division = scale_division < 1 ? 1 : scale_division.round
+          scale_division = scale_division < 1 ? 1 : scale_division.ceil
           @y_offset = (min_value.to_f - min_value.floor).to_f
           min_value = min_value.floor
         end
@@ -333,7 +355,7 @@ module SVG
         else
           dx = (max - values[-1]).to_f / (values[-1] - values[-2])
         end
-        @graph_height.to_f / values.length
+        @graph_height.to_f / (values.length - 1)
       end
 
       def calc_coords(x, y)
@@ -349,9 +371,7 @@ module SVG
         line = 1
 
         x_min = min_x_range
-        x_max = max_x_range
         y_min = min_y_range
-        y_max = max_y_range
 
         for data in @data
           x_points = data[:data][X]
@@ -384,12 +404,13 @@ module SVG
             x_points.each_index { |idx|
               c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
               if show_data_points
-                DataPoint.new(c[:x], c[:y], line).shape(data[:description][idx]).each{|s|
+                DataPoint.new(c[:x], c[:y], line).shape(data[:shape][idx]).each{|s|
                   @graph.add_element( *s )
                 }
               end
               make_datapoint_text( c[:x], c[:y]-6, y_points[idx] )
-              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]))
+              url = data[:urls][idx] if data.has_key? :urls
+              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]), "", url)
             }
           end
           line += 1
