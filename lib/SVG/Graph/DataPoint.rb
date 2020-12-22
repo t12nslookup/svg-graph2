@@ -19,10 +19,13 @@ class DataPoint
   #     ]
   # @example
   #   DataPoint.configure_shape_criteria(
-  #     [/.*/, lambda{|x,y,line| ['polygon', {
-  #       "points" => "#{x-1.5},#{y+2.5} #{x+1.5},#{y+2.5} #{x+1.5},#{y-2.5} #{x-1.5},#{y-2.5}",
-  #       "class" => "dataPoint#{line}"
-  #       }]
+  #     [/.*/, lambda{|x,y,line|
+  #       [ 'polygon',
+  #         {
+  #         "points" => "#{x-1.5},#{y+2.5} #{x+1.5},#{y+2.5} #{x+1.5},#{y-2.5} #{x-1.5},#{y-2.5}",
+  #         "class" => "dataPoint#{line}"
+  #         }
+  #       ]
   #     }]
   #   )
   def DataPoint.configure_shape_criteria(*matchers)
