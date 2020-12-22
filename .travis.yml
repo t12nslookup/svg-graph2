@@ -3,6 +3,7 @@ language: ruby
 rvm:
   - 2.5
 cache: bundler
+node_js: 14
 
 # copy CC_TEST_REPORTER_ID from codeclimate.com -> repo settings -> test coverage
 # environment variables could also be defined in travis-ci.com  under repo settings.
