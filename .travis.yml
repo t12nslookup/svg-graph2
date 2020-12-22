@@ -3,7 +3,9 @@ language: ruby
 rvm:
   - 2.5
 cache: bundler
-node_js: 14
+node_js: 12
+before_install:
+  - nvm install v12.20
 
 # copy CC_TEST_REPORTER_ID from codeclimate.com -> repo settings -> test coverage
 # environment variables could also be defined in travis-ci.com  under repo settings.
