@@ -1,4 +1,4 @@
-require 'SVG/Graph/Bar'
+# require 'SVG/Graph/Bar'
 
 x_axis = ['1-10', '10-30', '30-50', '50-70', 'older']
 
@@ -40,4 +40,9 @@ g.add_data( {
 
 # graph.burn            # this returns a full valid xml document containing the graph
 # graph.burn_svg_only   # this only returns the <svg>...</svg> node
-File.open(File.expand_path('bar.svg',__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end

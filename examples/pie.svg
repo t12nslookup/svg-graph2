@@ -78,12 +78,27 @@
   font-weight: normal;
 }
 
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup, .dataPointPopupMask{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
   font-family: "Arial", sans-serif;
   font-weight: normal;
+}
+
+.dataPointLabelBackground{
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopupMask{
+  stroke: white;
+  stroke-width: 7;
+}
+
+.dataPointPopup{
+  fill: black;
+  stroke-width: 2;
 }
 
 .staggerGuideLine{
@@ -92,12 +107,23 @@
   stroke-width: 0.5px;
 }
 
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup{
 	fill: #000000;
 	text-anchor:middle;
 	font-size: 12px;
 	font-family: "Arial", sans-serif;
 	font-weight: normal;
+}
+
+.dataPointLabelBackground{
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopup{
+  fill: #000000;
+  visibility: hidden;
+  stroke-width: 2;
 }
 
 /* key - MUST match fill styles */
@@ -277,10 +303,10 @@ apr [12.4] 10%
 apr [12.4] 10%
 </text>
 <path d='M117.5,117.5 L169.75861735837873,222.73918904947226 A117.5,117.5 0, 0,1, 28.490626212069316 194.20450689418738 Z' class='fill5'/>
-<text x='94.23604620960047' y='232.67394867780718' class='dataPointLabel' style='stroke: #fff; stroke-width: 2;'>
+<text x='94.23604620960049' y='232.67394867780718' class='dataPointLabel' style='stroke: #fff; stroke-width: 2;'>
 may [26.5] 21%
 </text>
-<text x='94.23604620960047' y='232.67394867780718' class='dataPointLabel'>
+<text x='94.23604620960049' y='232.67394867780718' class='dataPointLabel'>
 may [26.5] 21%
 </text>
 <path d='M117.5,117.5 L28.490626212069316,194.20450689418738 A117.5,117.5 0, 0,1, 5.787098687400473 81.07915870931319 Z' class='fill6'/>

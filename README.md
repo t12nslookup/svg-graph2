@@ -124,3 +124,8 @@ Build
 * Install:
 
 `gem install svg-graph-\<version>.gem`
+
+Percy.io integration
+---
+https://docs.percy.io/docs/travis-ci
+https://docs.percy.io/docs/snapshot-cli-command

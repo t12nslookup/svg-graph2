@@ -1,4 +1,4 @@
-require 'SVG/Graph/Plot'
+# require 'SVG/Graph/Plot'
 
 title = "Plot"
 #data1 = []
@@ -15,7 +15,7 @@ data1 = [-6.1, 11.2, 0.3, 5.4, 18.5, 7.6, 1.7, 11.8, 13.9, 9.11, 11.22, 2.33, 19
 data2 = [0,18, -2,4, 8,-2, -4,4, 9,4, 18,14, 10,2, 11,6, 14,12, 15,6, 4,17, 2,12]
 data2_desc = %w{jan feb mar apr may jun jul aug sep oct nov dez}
 
-graph = SVG::Graph::Plot.new( {
+g = SVG::Graph::Plot.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
@@ -42,16 +42,19 @@ graph = SVG::Graph::Plot.new( {
   :x_axis_position   => 0,
   :y_axis_position   => 0,
 })
-graph.add_data(
+g.add_data(
   :data => data1,
   :title => "Dataset 1"
   )
-graph.add_data(
+g.add_data(
   :data => data2,
   :title => "Dataset 2",
   :description => data2_desc
   )
 #puts graph.burn
-File.open(File.expand_path("plot.svg",__dir__), "w") {|fout|
-  fout.print( graph.burn )
-}
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end

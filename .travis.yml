@@ -25,3 +25,5 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  #https://docs.percy.io/docs/snapshot-cli-command  (no prerequisites are required)
+  - npx percy snapshot test/percy.io_staticpages/

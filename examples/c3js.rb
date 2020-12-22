@@ -1,4 +1,4 @@
-require 'SVG/Graph/C3js'
+# require 'SVG/Graph/C3js'
 require 'bigdecimal'
 
 # phi is the golden ratio, very precise.  Why? - just because.
@@ -64,4 +64,10 @@ HEREDOC
 g = SVG::Graph::C3js.new()
 g.add_chart_spec(chart_spec)
 #puts g.burn
-File.open(File.expand_path('c3js.html',__dir__), 'w') {|f| f.write(g.burn) }
+
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.html",__dir__), 'w') {|f| f.write(g.burn)} # for inclusion into readme.md
+end

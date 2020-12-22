@@ -1,4 +1,4 @@
-require 'SVG/Graph/ErrBar'
+# require 'SVG/Graph/ErrBar'
 
 fields = %w(Jan Feb);
 myarr1_mean = 10
@@ -11,7 +11,7 @@ data= [myarr1_mean, myarr2_mean]
 
 err_mesure = [myarr1_confidence, myarr2_confidence]
 
-graph = SVG::Graph::ErrBar.new(
+g = SVG::Graph::ErrBar.new(
   :height => 500,
   :width => 600,
   :fields => fields,
@@ -20,11 +20,15 @@ graph = SVG::Graph::ErrBar.new(
   :scale_integers => false,
 )
 
-graph.add_data(
+g.add_data(
   :data => data,
   :title => 'Sales 2002'
 )
 
-File.open(File.expand_path('err_bar.svg',__dir__), "w") {|fout| 
-  fout.print( graph.burn )
-}
+
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end
