@@ -4,6 +4,7 @@ SVG::Graph
 [![Build Status](https://travis-ci.com/lumean/svg-graph2.svg?branch=master)](https://travis-ci.com/lumean/svg-graph2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0a2b2d977bb9a43f488a/maintainability)](https://codeclimate.com/github/lumean/svg-graph2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0a2b2d977bb9a43f488a/test_coverage)](https://codeclimate.com/github/lumean/svg-graph2/test_coverage)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/a5e00e98/svg-graph2)
 
 Description
 -----------
