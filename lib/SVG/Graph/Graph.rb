@@ -562,7 +562,7 @@ module SVG
             "onmouseout" =>
               "document.getElementById(#{g.object_id.to_s}).style.visibility = 'hidden'",
           })
-          if url.present?
+          if !url.nil?
             href = Element.new("a")
             href.add_attribute("xlink:href", url)
             href.add_element(mouseover)
@@ -570,7 +570,7 @@ module SVG
           else
             @foreground.add_element(mouseover)
           end
-        elsif url.present?
+        elsif !url.nil?
           # add a circle to catch the mouseover
           mouseover = Element.new( "circle" )
           mouseover.add_attributes({

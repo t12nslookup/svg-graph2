@@ -371,9 +371,7 @@ module SVG
         line = 1
 
         x_min = min_x_range
-        x_max = max_x_range
         y_min = min_y_range
-        y_max = max_y_range
 
         for data in @data
           x_points = data[:data][X]
@@ -411,7 +409,7 @@ module SVG
                 }
               end
               make_datapoint_text( c[:x], c[:y]-6, y_points[idx] )
-              url = data[:urls][idx] if data[:urls].present?
+              url = data[:urls][idx] if data.has_key? :urls
               add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]), "", url)
             }
           end
