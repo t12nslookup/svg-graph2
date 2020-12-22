@@ -164,6 +164,12 @@ module SVG
       #     :data => data_set2,
       #     :title => 'two points'
       #   })
+      # @param conf [Hash] with keys
+      #        :data [Array] of x,y pairs, one pair for each point
+      #        :title [String] name of the data series (for legend)
+      #        :description [Array] (optional) for each point a string description that gets added to popup
+      #        :shape [Array] (optional)
+      #        :url [Array] (optional)
       def add_data(conf)
 	      @data ||= []
         raise "No data provided by #{conf.inspect}" unless conf[:data] and
@@ -239,7 +245,7 @@ module SVG
         min_value = min_x_range
         range = max_value - min_value
         # add some padding on right
-        if range == 0 
+        if range == 0
           max_value += 10
         else
           max_value += range / 20.0

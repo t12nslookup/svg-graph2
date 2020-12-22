@@ -6,6 +6,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
 
   def setup
     DataPoint.reset_shape_criteria
+    @output_folder = File.expand_path("percy.io_staticpages", __dir__)
   end
 
   def teardown
@@ -66,7 +67,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out = graph.burn()
-    File.write(File.expand_path("../plot_axis_short.svg", __FILE__), out)
+    File.write(File.expand_path("plot_#{__method__}.html", @output_folder), out)
   end
 
   def test_default_plot_emits_polyline_connecting_data_points
@@ -136,7 +137,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
+    File.write(File.expand_path("plot_#{__method__}.html", @output_folder), out)
     assert_no_match(/\(0.1, 18\)/, out)
     assert_match(/\(0, 18\)/, out)
     assert_no_match(/\(8.55, 15.1234\)/, out)
@@ -167,7 +168,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
+    File.write(File.expand_path("plot_#{__method__}.html", @output_folder), out)
     assert_match(/\(0.1, 18\)/, out)
     assert_no_match(/\(0, 18\)/, out)
     assert_match(/\(8.55, 15.1234\)/, out)
@@ -202,7 +203,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
+    File.write(File.expand_path("plot_#{__method__}.html", @output_folder), out)
     assert_match(/\(8.55, 15.1234, first\)/, out)
     assert_no_match(/\(8.55, 15.1234\)/, out)
     assert_match(/\(9.09876765, 4, second\)/, out)
@@ -256,7 +257,7 @@ class TestSvgGraphPlot < Test::Unit::TestCase
     })
 
     out=graph.burn()
-    File.write(File.expand_path("plot_#{__method__}.svg", __dir__), out)
+    File.write(File.expand_path("plot_#{__method__}.html", @output_folder), out)
     assert_match(/polygon.*points/, out)
     assert_match(/line.*axis/, out)
   end

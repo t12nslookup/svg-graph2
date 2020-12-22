@@ -103,6 +103,7 @@ module SVG
       # [number_format] '%.2f'
       def initialize( config )
         @config = config
+        # array of Hash
         @data = []
         #self.top_align = self.top_font = 0
         #self.right_align = self.right_font = 0
@@ -180,6 +181,8 @@ module SVG
       #     :data => data_sales_02,
       #     :title => 'Sales 2002'
       #   })
+      # @param conf [Hash] with keys :data [Array], :title [String]
+      #
       def add_data conf
         @data = [] unless (defined? @data and !@data.nil?)
 
@@ -565,7 +568,7 @@ module SVG
               "document.getElementById(#{g.object_id.to_s}).style.visibility = 'hidden'",
           })
         end # if add_popups
-      end # add_popup
+      end # def add_popup
 
       # returns the longest label from an array of labels as string
       # each object in the array must support .to_s

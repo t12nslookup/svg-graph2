@@ -9,11 +9,11 @@ class DataPoint
         }]
       } unless defined? DEFAULT_SHAPE
   CRITERIA = [] unless defined? CRITERIA
-  
+
   # matchers are class scope. Once configured, each DataPoint instance will have
   # access to the same matchers
   # @param matchers [Array] multiple arrays of the following form:
-  #     [ regex , 
+  #     [ regex ,
   #       lambda taking three arguments (x,y, line_number for css)
   #         -> return value of the lambda must be an array: [svg tag name,  Hash with attributes for the svg tag, e.g. "points" and "class"]
   #     ]
@@ -28,8 +28,8 @@ class DataPoint
   def DataPoint.configure_shape_criteria(*matchers)
     CRITERIA.push(*matchers)
   end
-  
-  # 
+
+  #
   def DataPoint.reset_shape_criteria
     CRITERIA.clear
   end
@@ -43,7 +43,8 @@ class DataPoint
     @y = y
     @line = line
   end
-  
+
+  # Returns different shapes depending on datapoint descriptions, if shape criteria have been configured.
   # @return [Array<Array>] see example
   # @example Return value
   #   # two dimensional array, the splatted (*) inner array can be used as argument to REXML::add_element
@@ -54,7 +55,7 @@ class DataPoint
   #   dp.each {|s| @graph.add_element( *s )}
   #
   def shape(description=nil)
-    # select all criteria with size 2, and collect rendered lambdas in an array 
+    # select all criteria with size 2, and collect rendered lambdas in an array
     shapes = CRITERIA.select {|criteria|
       criteria.size == 2
     }.collect {|regexp, proc|
