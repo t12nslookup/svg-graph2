@@ -1,4 +1,4 @@
-require 'SVG/Graph/Line'
+# require 'SVG/Graph/Line'
 
 title = "Line"
 #data1 = []
@@ -16,7 +16,7 @@ data2 = [4, 18, 3, 7, 8, 15, 13, 2, 9, -4, 18, 14, 10, 2, 11, 6, 14, 12, 15, 6, 
 
 field = %w{jan feb mar apr may jun jul aug}
 
-graph = SVG::Graph::Line.new( {
+g = SVG::Graph::Line.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
@@ -42,15 +42,18 @@ graph = SVG::Graph::Line.new( {
   :x_axis_position   => 5,
   :y_axis_position   => 'apr',
 })
-graph.add_data(
+g.add_data(
   :data => data1,
   :title => "Dataset 1"
   )
-graph.add_data(
+g.add_data(
   :data => data2,
   :title => "Dataset 2"
   )
 #puts graph.burn
-File.open(File.expand_path("line.svg",__dir__), "w") {|fout|
-  fout.print( graph.burn )
-}
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end

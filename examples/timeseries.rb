@@ -1,4 +1,4 @@
-require 'SVG/Graph/TimeSeries'
+# require 'SVG/Graph/TimeSeries'
 
 title = "TimeSeries"
 #data1 = []
@@ -16,7 +16,7 @@ data2 = ["8/1/73", 18, "21/10/76", 15, "01/11/80", 4, "4/3/83", 14, "23/6/86", 6
 data3 = ["1/1/78", 5, "1/1/83", 13, "1/1/93", 10, "1/1/03", 5]
 
 
-graph = SVG::Graph::TimeSeries.new( {
+g = SVG::Graph::TimeSeries.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
@@ -41,22 +41,25 @@ graph = SVG::Graph::TimeSeries.new( {
   #:area_fill => true,
   :min_y_value => 0,
 })
-graph.add_data(
+g.add_data(
   :data => data1,
   :title => "Ice Cream",
   :template => '%d/%m/%y'
   )
-graph.add_data(
+g.add_data(
   :data => data2,
   :title => "Ice Cream Cones",
   :template => '%d/%m/%y'
 )
-graph.add_data(
+g.add_data(
   :data => data3,
   :title => "Sprinkles",
   :template => '%d/%m/%y'
 )
 #puts graph.burn
-File.open(File.expand_path("timeseries.svg",__dir__), "w") {|fout| 
-  fout.print( graph.burn )
-}
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end

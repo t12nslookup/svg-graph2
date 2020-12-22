@@ -6,13 +6,13 @@ title = "Pie"
 #  data1 << rand(20)
 #  data1 << rand(20)
 #}
-data1 = [3, 11.2, 2.2, 5.4, 18.5, 7.6, 3, 2.2,]
+data1 = [37, 0, 0, 0]
 #data2 = []
 #(rand(10)+5).times{
 #  data2 << rand(20)
 #  data2 << rand(20)
 #}
-data2 = [4, 18, 3, 7, 8, 13, 19, 1,]
+data2 = [4, 0, 0, 0]
 
 #data1 = [3]
 #data2 = [2]

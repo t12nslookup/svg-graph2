@@ -75,12 +75,27 @@
   font-weight: normal;
 }
 
-.dataPointLabel{
+.dataPointLabel, .dataPointLabelBackground, .dataPointPopup, .dataPointPopupMask{
   fill: #000000;
   text-anchor:middle;
   font-size: 10px;
   font-family: "Arial", sans-serif;
   font-weight: normal;
+}
+
+.dataPointLabelBackground{
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.dataPointPopupMask{
+  stroke: white;
+  stroke-width: 7;
+}
+
+.dataPointPopup{
+  fill: black;
+  stroke-width: 2;
 }
 
 .staggerGuideLine{
@@ -244,13 +259,13 @@ Feb
 <line x1='297.5' y1='133.7142857142857' x2='404.5' y2='133.7142857142857' style='stroke:rgb(0,0,0);stroke-width:1'/>
 <line x1='297.5' y1='59.428571428571416' x2='404.5' y2='59.428571428571416' style='stroke:rgb(0,0,0);stroke-width:1'/>
 <g>
-<text x='117.0' y='276.2857142857143' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+<text x='117.0' y='276.2857142857143' class='dataPointLabelBackground'>
 10.00
 </text>
 <text x='117.0' y='276.2857142857143' class='dataPointLabel'>
 10.00
 </text>
-<text x='351.0' y='90.57142857142856' class='dataPointLabel' style=' stroke: #fff; stroke-width: 2;'>
+<text x='351.0' y='90.57142857142856' class='dataPointLabelBackground'>
 20.00
 </text>
 <text x='351.0' y='90.57142857142856' class='dataPointLabel'>

@@ -1,4 +1,4 @@
-require 'SVG/Graph/Schedule'
+# require 'SVG/Graph/Schedule'
 
 title = "Billy's Schedule"
 data1 = [
@@ -8,7 +8,7 @@ data1 = [
   "Acting 105", "7/7/04", "8/16/04"
   ]
 
-graph = SVG::Graph::Schedule.new( {
+g = SVG::Graph::Schedule.new( {
   :width => 640,
   :height => 480,
   :graph_title => title,
@@ -33,13 +33,16 @@ graph = SVG::Graph::Schedule.new( {
   :min_y_value => 0,
 })
 
-graph.add_data(
+g.add_data(
   :data => data1,
   :title => "Data",
   :template => '%m/%d/%y'
   )
 
 #puts graph.burn
-File.open(File.expand_path("schedule.svg",__dir__), "w") {|fout| 
-  fout.print( graph.burn )
-}
+output_filename = File.basename(__FILE__, ".rb")
+if defined?(USE_FOR_TESTING)
+  File.open(File.join(OUTPUT_FOLDER, "#{output_filename}.html"), "w") {|f| f.write(g.burn)}
+else
+  File.open(File.expand_path("#{output_filename}.svg",__dir__), 'w') {|f| f.write(g.burn_svg_only)} # for inclusion into readme.md
+end

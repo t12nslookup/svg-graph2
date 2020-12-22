@@ -1,6 +1,7 @@
 *.html
 *.gem
 Gemfile.lock
+# simplecov
 coverage
 test/*.svg
 *.orig

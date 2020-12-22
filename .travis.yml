@@ -1,11 +1,32 @@
+# https://docs.travis-ci.com/user/languages/ruby/
 language: ruby
 rvm:
-  - 2.2
+  - 2.5
 cache: bundler
+node_js: 12
+before_install:
+  - nvm install v12.20
+
+# copy CC_TEST_REPORTER_ID from codeclimate.com -> repo settings -> test coverage
+# environment variables could also be defined in travis-ci.com  under repo settings.
+env:
+  global:
+    - CC_TEST_REPORTER_ID=2b1217f76367359d2f09a57cf3765ace4de7bd2f70deff064542c9f36975f559
+    - COVERAGE=1
 
 before_script:
+  # https://docs.codeclimate.com/docs/configuring-test-coverage
+  # https://docs.codeclimate.com/docs/travis-ci-test-coverage
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+
+# by default travis-ci will run
+# bundle exec rake   (in the root folder of the project)
+script:
+  - bundle exec rake
+
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  #https://docs.percy.io/docs/snapshot-cli-command  (no prerequisites are required)
+  - npx percy snapshot test/percy.io_staticpages/
