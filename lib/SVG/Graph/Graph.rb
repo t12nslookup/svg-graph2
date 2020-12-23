@@ -773,11 +773,13 @@ module SVG
             style << "text-anchor: end;"
           end
           # background for better readability
-          @foreground.add_element( "text", {
+          text = @foreground.add_element( "text", {
             "x" => x.to_s,
             "y" => y.to_s,
             "class" => "dataPointLabelBackground",
-          }).text = textStr
+          })
+          text.text = textStr
+          text.attributes["style"] = style if style.length > 0
           # actual label
           text = @foreground.add_element( "text", {
             "x" => x.to_s,
