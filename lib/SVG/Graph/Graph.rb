@@ -183,7 +183,7 @@ module SVG
       #   })
       # @param conf [Hash] with the following keys:
       #          :data [Array] mandatory
-      #          :title [String] (optional) name of data series for legend of graph
+      #          :title [String] mandatory name of data series for legend of graph
       #          :description [Array<String>] (optional) if given, description for each datapoint (shown in popups)
       #          :shape [Array<String>] (optional) if given, DataPoint shape is chosen based on this string instead of description
       #          :url [Array<String>] (optional)  if given, link will be added to each datapoint
