@@ -7,7 +7,7 @@ class DataPoint
           "cx" => x,
           "cy" => y,
           "r" => "2.5",
-          "class" => "fill#{line}"
+          "class" => "dataPoint#{line}"
         }]
       } unless defined? DEFAULT_SHAPE
   CRITERIA = [] unless defined? CRITERIA

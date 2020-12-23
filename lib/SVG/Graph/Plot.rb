@@ -392,7 +392,7 @@ module SVG
               c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
               if show_data_points
                 shape_selection_string = data[:description][idx].to_s
-                if !data[:shape][idx].to_s.empty?
+                if !data[:shape][idx].nil?
                   shape_selection_string = data[:shape][idx].to_s
                 end
                 DataPoint.new(c[:x], c[:y], line).shape(shape_selection_string).each{|s|

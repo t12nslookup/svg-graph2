@@ -13,7 +13,7 @@ class TestDataPoint < Test::Unit::TestCase
         "cx" => 100.0,
         "cy" => 100.0,
         "r" => "2.5",
-        "class" => "fill1"
+        "class" => "dataPoint1"
     }]], DataPoint.new(100.0, 100.0, 1).shape)
   end
   def test_default_shape_based_on_description_without_criteria_is_circle_with_2_point_5_radius
@@ -21,7 +21,7 @@ class TestDataPoint < Test::Unit::TestCase
         "cx" => 100.0,
         "cy" => 100.0,
         "r" => "2.5",
-        "class" => "fill1"
+        "class" => "dataPoint1"
     }]], DataPoint.new(100.0, 100.0, 1).shape("description"))
   end
   def test_shape_for_matching_regular_expression_is_lambda_value
@@ -59,7 +59,7 @@ class TestDataPoint < Test::Unit::TestCase
         "cx" => 100.0,
         "cy" => 50.0,
         "r" => "2.5",
-        "class" => "fill2"
+        "class" => "dataPoint2"
     }]
     assert_equal([default_circle, "three"], DataPoint.new(100.0, 50.0, 2).shape("1 3 2"))
   end

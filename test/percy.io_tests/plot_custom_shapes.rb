@@ -16,14 +16,14 @@ data2 = [0,18, -2,4, 8,-2, -4,4, 9,4, 18,14, 10,2, 11,6, 14,12, 15,6, 4,17, 2,12
 data2_desc = %w{jan feb mar apr may jun jul aug sep oct nov dez}
 
 data3 = [-2,1, -1,2, 0,3, 1,4, 2,5, 3,6, 4,7, 5,8, 6,9, 10,10, 11,11, 12,12]
-data3_desc = %w{jan feb mar apr may jun jul aug sep oct nov dec}
-data3_shapes = ["square", "", "strike"] * 4
+data3_desc = %w{strike square square apr may jun jul aug sep oct nov dec}
+data3_shapes = ["square", nil, "strike"] * 4
 data3_urls = ["https://github.com"] * 12
 
 DataPoint.configure_shape_criteria(
   [/square/, lambda{|x,y,line| ['polygon', {
-      "points" => "#{x-2.5},#{y+2.5} #{x+2.5},#{y+2.5} #{x+2.5},#{y-2.5} #{x-2.5},#{y-2.5}",
-      "class" => "fill#{line}"
+      "points" => "#{x-4},#{y+4} #{x+4},#{y+4} #{x+4},#{y-4} #{x-4},#{y-4}",
+      "class" => "dataPoint#{line}"
     }]
   }],
   [/strike/, lambda{|x,y,line| ['line', {
@@ -31,7 +31,7 @@ DataPoint.configure_shape_criteria(
       "y1" => y.to_s,
       "x2" => "#{x+4}",
       "y2" => y.to_s,
-      "class" => "fill#{line}"
+      "class" => "axis"
     }]
   },"OVERLAY"]
 )
