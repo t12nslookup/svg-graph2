@@ -181,13 +181,38 @@ module SVG
       #     :data => data_sales_02,
       #     :title => 'Sales 2002'
       #   })
+      # @param conf [Hash] with the following keys:
+      #          :data [Array] mandatory
+      #          :title [String] (optional) name of data series for legend of graph
+      #          :description [Array<String>] (optional) if given, description for each datapoint (shown in popups)
+      #          :shape [Array<String>] (optional) if given, DataPoint shape is chosen based on this string instead of description
+      #          :url [Array<String>] (optional)  if given, link will be added to each datapoint
       def add_data(conf)
+        @data ||= []
         raise "No data provided by #{conf.inspect}" unless conf[:data].is_a?(Array)
 
-        @data ||= []
+        add_data_init_or_check_optional_keys(conf, conf[:data].size)
         @data << conf
       end
 
+      # Checks all optional keys of the add_data method
+      def add_data_init_or_check_optional_keys(conf, datasize)
+        conf[:description] ||= Array.new(datasize)
+        conf[:shape] ||= Array.new(datasize)
+        conf[:url] ||= Array.new(datasize)
+
+        if conf[:description].size != datasize
+          raise "Description for popups does not have same size as provided data: #{conf[:description].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:shape].size != datasize
+          raise "Shapes for points do not have same size as provided data: #{conf[:shape].size} vs #{conf[:data].size/2}"
+        end
+
+        if conf[:url].size != datasize
+          raise "URLs for points do not have same size as provided data: #{conf[:url].size} vs #{conf[:data].size/2}"
+        end
+      end
 
       # This method removes all data from the object so that you can
       # reuse it to create a new graph but with the same config options.

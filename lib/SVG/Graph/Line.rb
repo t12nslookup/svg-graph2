@@ -249,17 +249,22 @@ module SVG
               next if cum_sum[i].nil?
               c = calc_coords(i, cum_sum[i], fieldwidth, fieldheight)
               if show_data_points
-                @graph.add_element( "circle", {
-                  "cx" => c[:x].to_s,
-                  "cy" => c[:y].to_s,
-                  "r" => "2.5",
-                  "class" => "dataPoint#{line}"
-                })
+                shape_selection_string = data[:description][i].to_s
+                if !data[:shape][i].to_s.empty?
+                  shape_selection_string = data[:shape][i].to_s
+                end
+                DataPoint.new(c[:x], c[:y], line).shape(shape_selection_string).each{|s|
+                  @graph.add_element( *s )
+                }
               end
 
               make_datapoint_text( c[:x], c[:y] - font_size/2, cum_sum[i] + minvalue)
               # number format shall not apply to popup (use .to_s conversion)
-              add_popup(c[:x], c[:y], (cum_sum[i] + minvalue).to_s)
+              descr = ""
+              if !data[:description][i].to_s.empty?
+                descr = ", #{data[:description][i].to_s}"
+              end
+              add_popup(c[:x], c[:y], (cum_sum[i] + minvalue).to_s + descr, "", data[:url][i].to_s)
             end
           end
 

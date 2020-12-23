@@ -165,15 +165,14 @@ module SVG
       #     :title => 'two points'
       #   })
       # @param conf [Hash] with keys
-      #        :data [Array] of x,y pairs, one pair for each point
-      #        :title [String] name of the data series (for legend)
-      #        :description [Array] (optional) for each point a string description that gets added to popup
-      #        :shape [Array] (optional)
-      #        :url [Array] (optional)
+      #          :data [Array] of x,y pairs, one pair for each point
+      #          :title [String] (optional) name of data series for legend of graph
+      #          :description [Array<String>] (optional) if given, description for each datapoint (shown in popups)
+      #          :shape [Array<String>] (optional) if given, DataPoint shape is chosen based on this string instead of description
+      #          :url [Array<String>] (optional)  if given, link will be added to each datapoint
       def add_data(conf)
         @data ||= []
-        raise "No data provided by #{conf.inspect}" unless conf[:data] and
-          conf[:data].kind_of? Array
+        raise "No data provided by #{conf.inspect}" unless conf[:data].is_a?(Array)
         # support array of arrays and flatten it
         conf[:data] = conf[:data].flatten
         # check that we have pairs of values
@@ -186,22 +185,7 @@ module SVG
 
         return if conf[:data].length.zero?
 
-        datasize = conf[:data].size / 2
-        conf[:description] ||= Array.new(datasize)
-        conf[:shape] ||= Array.new(datasize)
-        conf[:url] ||= Array.new(datasize)
-
-        if conf[:description].size != datasize
-          raise "Description for popups does not have same size as provided data: #{conf[:description].size} vs #{conf[:data].size/2}"
-        end
-
-        if conf[:shape].size != datasize
-          raise "Shapes for points do not have same size as provided data: #{conf[:shape].size} vs #{conf[:data].size/2}"
-        end
-
-        if conf[:url].size != datasize
-          raise "URLs for points do not have same size as provided data: #{conf[:url].size} vs #{conf[:data].size/2}"
-        end
+        add_data_init_or_check_optional_keys(conf, conf[:data].size / 2)
 
         x = []
         y = []
@@ -240,21 +224,21 @@ module SVG
       Y = 1
 
       def max_x_range
-        return @max_x_range if @max_x_range
-
+        # needs to be computed fresh when called, to cover the use-case:
+        # add_data -> burn -> add_data -> burn
+        # when values would be cached, the graph is not updated for second burning
         max_value = @data.collect{|x| x[:data][X][-1] }.max
         max_value = max_value > max_x_value ? max_value : max_x_value if max_x_value
-        @max_x_range = max_value
-        @max_x_range
+        return max_value
       end
 
       def min_x_range
-        return @min_x_range if @min_x_range
-
+        # needs to be computed fresh when called, to cover the use-case:
+        # add_data -> burn -> add_data -> burn
+        # when values would be cached, the graph is not updated for second burning
         min_value = @data.collect{|x| x[:data][X][0] }.min
         min_value = min_value < min_x_value ? min_value : min_x_value if min_x_value
-        @min_x_range = min_value
-        @min_x_range
+        return min_value
       end
 
       def x_label_range
@@ -297,21 +281,18 @@ module SVG
       end
 
       def max_y_range
-        return @max_y_range if @max_y_range
-
         max_value = @data.collect{|x| x[:data][Y].max }.max
         max_value = max_value > max_y_value ? max_value : max_y_value if max_y_value
-        @max_y_range = max_value
-        @max_y_range
+        return max_value
       end
 
       def min_y_range
-        return @min_y_range if @min_y_range
-
+        # needs to be computed fresh when called, to cover the use-case:
+        # add_data -> burn -> add_data -> burn
+        # when values would be cached, the graph is not updated for second burning
         min_value = @data.collect{|x| x[:data][Y].min }.min
         min_value = min_value < min_y_value ? min_value : min_y_value if min_y_value
-        @min_y_range = min_value
-        @min_y_range
+        return min_value
       end
 
       def y_label_range
@@ -410,13 +391,16 @@ module SVG
             x_points.each_index { |idx|
               c = calc_coords(x_points[idx] -  x_min, y_points[idx] -  y_min)
               if show_data_points
-                DataPoint.new(c[:x], c[:y], line).shape(data[:shape][idx]).each{|s|
+                shape_selection_string = data[:description][idx].to_s
+                if !data[:shape][idx].to_s.empty?
+                  shape_selection_string = data[:shape][idx].to_s
+                end
+                DataPoint.new(c[:x], c[:y], line).shape(shape_selection_string).each{|s|
                   @graph.add_element( *s )
                 }
               end
               make_datapoint_text( c[:x], c[:y]-6, y_points[idx] )
-              url = data[:urls][idx] if data.has_key? :urls
-              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx]), "", url)
+              add_popup(c[:x], c[:y], format( x_points[idx], y_points[idx], data[:description][idx].to_s), "", data[:url][idx].to_s)
             }
           end
           line += 1
@@ -428,7 +412,7 @@ module SVG
         info = []
         info << (round_popups ? x.round : @number_format % x )
         info << (round_popups ? y.round : @number_format % y )
-        info << desc
+        info << desc if !desc.empty?
         "(#{info.compact.join(', ')})"
       end
 

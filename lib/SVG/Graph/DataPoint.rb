@@ -1,21 +1,26 @@
 # Allows to customize datapoint shapes
 class DataPoint
-  OVERLAY = "OVERLAY" unless defined?(OVERLAY)
+  # magic string that defines if a shape is intented to be overlayed to a default.
+  # this allowes to have strike through of a circle etc.
+  OVERLAY = "OVERLAY"
   DEFAULT_SHAPE = lambda{|x,y,line| ["circle", {
           "cx" => x,
           "cy" => y,
           "r" => "2.5",
-          "class" => "dataPoint#{line}"
+          "class" => "fill#{line}"
         }]
       } unless defined? DEFAULT_SHAPE
   CRITERIA = [] unless defined? CRITERIA
 
   # matchers are class scope. Once configured, each DataPoint instance will have
   # access to the same matchers
-  # @param matchers [Array] multiple arrays of the following form:
+  # @param matchers [Array] multiple arrays of the following form 2 or 3 elements:
   #     [ regex ,
   #       lambda taking three arguments (x,y, line_number for css)
-  #         -> return value of the lambda must be an array: [svg tag name,  Hash with attributes for the svg tag, e.g. "points" and "class"]
+  #         -> return value of the lambda must be an array: [svg tag name,
+  #            Hash with attributes for the svg tag, e.g. "points" and "class",
+  #              make sure to check source code of you graph type for valid css class.],
+  #       "OVERLAY" (magic string, if specified, puts the shape on top of existing datapoint)
   #     ]
   # @example
   #   DataPoint.configure_shape_criteria(
@@ -48,6 +53,8 @@ class DataPoint
   end
 
   # Returns different shapes depending on datapoint descriptions, if shape criteria have been configured.
+  # The definded criteria are evaluated in two stages, first the ones, which are note defined as overlay.
+  # then the "OVERLAY"
   # @param datapoint_description [String] description or label of the current datapoint
   # @return [Array<Array>] see example
   # @example Return value
