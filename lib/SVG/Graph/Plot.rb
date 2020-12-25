@@ -180,6 +180,9 @@ module SVG
           "The data provided contained an odd set of "+
           "data points" unless conf[:data].length % 2 == 0
 
+        # clear the min/max x/y range caches
+        clear_cache
+
         # remove nil values
         conf[:data] = conf[:data].compact
 
@@ -223,22 +226,34 @@ module SVG
       X = 0
       Y = 1
 
+      # procedure to clear all the cached variables used in working out the
+      # max and min ranges for the chart
+      def clear_cache
+        @max_x_cache = @min_x_cache = @max_y_cache = @min_y_cache = nil
+      end
+
       def max_x_range
+        return @max_x_cache unless @max_x_cache.nil?
+
         # needs to be computed fresh when called, to cover the use-case:
         # add_data -> burn -> add_data -> burn
         # when values would be cached, the graph is not updated for second burning
         max_value = @data.collect{|x| x[:data][X][-1] }.max
         max_value = max_value > max_x_value ? max_value : max_x_value if max_x_value
-        return max_value
+        @max_x_cache = max_value
+        @max_x_cache
       end
 
       def min_x_range
+        return @min_x_cache unless @min_x_cache.nil?
+
         # needs to be computed fresh when called, to cover the use-case:
         # add_data -> burn -> add_data -> burn
         # when values would be cached, the graph is not updated for second burning
         min_value = @data.collect{|x| x[:data][X][0] }.min
         min_value = min_value < min_x_value ? min_value : min_x_value if min_x_value
-        return min_value
+        @min_x_cache = min_value
+        @min_x_cache
       end
 
       def x_label_range
@@ -281,18 +296,24 @@ module SVG
       end
 
       def max_y_range
+        return @max_y_cache unless @max_y_cache.nil?
+
         max_value = @data.collect{|x| x[:data][Y].max }.max
         max_value = max_value > max_y_value ? max_value : max_y_value if max_y_value
-        return max_value
+        @max_y_cache = max_value
+        @max_y_cache
       end
 
       def min_y_range
+        return @min_y_cache unless @min_y_cache.nil?
+
         # needs to be computed fresh when called, to cover the use-case:
         # add_data -> burn -> add_data -> burn
         # when values would be cached, the graph is not updated for second burning
         min_value = @data.collect{|x| x[:data][Y].min }.min
         min_value = min_value < min_y_value ? min_value : min_y_value if min_y_value
-        return min_value
+        @min_y_cache = min_value
+        @min_y_cache
       end
 
       def y_label_range
