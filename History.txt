@@ -8,6 +8,7 @@ TODO / Backlog
 * add & document  :shape and :url hash keys for `add_data` [thanks t12nslookup, PR #32]
 * add custom datapoint support to Line graphs
 * Add white text behind popup text so that the black text is more readable [thanks t12nslookup, PR #30]
+* fix #19 rotated lables should no longer be cropped or overlapping
 
 === 2.2.0 / 2019-11-26
 * on top of 2.2.0.beta adds the following
