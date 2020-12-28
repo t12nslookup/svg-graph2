@@ -57,6 +57,7 @@ g = SVG::Graph::Line.new( {
   :show_y_title => true,
   :y_title => "Ice Cream Cones",
   :y_title_text_direction => :bt,
+  :rotate_y_labels   => true,
   :show_lines => false,
   :add_popups => true,
   :round_popups => false,
