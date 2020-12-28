@@ -346,7 +346,7 @@ module SVG
       attr_accessor :rotate_x_labels
       #   This turns the Y axis labels by 90 degrees when true or by a custom
       #   amount when a numeric value is given.
-      #   Default is true, to turn on set to false.
+      #   Default is false, to turn on set to true or numeric value.
       attr_accessor :rotate_y_labels
       #   How many "steps" to use between displayed X axis labels,
       #   a step of one means display every label, a step of two results
@@ -491,12 +491,20 @@ module SVG
       # are not shown
       def max_y_label_width_px
         return 0 if !show_y_labels
-        if !rotate_y_labels
-          max_width = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.6
-        else
-          max_width = y_label_font_size + 3
+        base_width = y_label_font_size + 3
+        if rotate_y_labels == true
+          self.rotate_y_labels = 90
         end
-        max_width += 5 + y_label_font_size if stagger_y_labels
+        if rotate_y_labels == false
+          self.rotate_y_labels = 0
+        end
+        # don't change rotate_y_label, if neither true nor false
+        label_width = get_longest_label(get_y_labels).to_s.length * y_label_font_size * 0.5
+        rotated_width = label_width * Math.cos( rotate_y_labels * Math::PI / 180).abs()
+        max_width = base_width + rotated_width
+        if stagger_y_labels
+          max_width += 5 + y_label_font_size
+        end
         return max_width
       end
 
@@ -892,18 +900,20 @@ module SVG
       def draw_y_labels
         stagger = y_label_font_size + 5
         label_height = field_height
+        label_width = max_y_label_width_px
         count = 0
         y_offset = @graph_height + y_label_offset( label_height )
-        y_offset += font_size/1.2 unless rotate_y_labels
+        y_offset += font_size/3.0
         for label in get_y_labels
           if show_y_labels
+            # x = 0, y = 0 is top left right next to graph area
             y = y_offset - (label_height * count)
-            x = rotate_y_labels ? 0 : -3
+            x = -label_width/2.0 + y_label_font_size/2.0
 
             if stagger_y_labels and count % 2 == 1
               x -= stagger
               @graph.add_element( "path", {
-                "d" => "M#{x} #{y} h#{stagger}",
+                "d" => "M0 #{y} h#{-stagger}",
                 "class" => "staggerGuideLine"
               })
             end
@@ -918,18 +928,13 @@ module SVG
               textStr = @number_format % label
             end
             text.text = textStr
-            if rotate_y_labels
-              degrees = 90
-              if numeric? rotate_y_labels
-                degrees = rotate_y_labels
-              end
-              text.attributes["transform"] = "translate( -#{font_size} 0 ) "+
+            # note text-anchor is at bottom of textfield
+            text.attributes["style"] = "text-anchor: middle"
+            degrees = rotate_y_labels
+            text.attributes["transform"] = "translate( -#{font_size} 0 ) " +
                 "rotate( #{degrees} #{x} #{y} ) "
-              text.attributes["style"] = "text-anchor: middle"
-            else
-              text.attributes["y"] = (y - (y_label_font_size/2)).to_s
-              text.attributes["style"] = "text-anchor: end"
-            end
+            # text.attributes["y"] = (y - (y_label_font_size/2)).to_s
+
           end # if show_y_labels
           draw_y_guidelines( label_height, count ) if show_y_guidelines
           count += 1
