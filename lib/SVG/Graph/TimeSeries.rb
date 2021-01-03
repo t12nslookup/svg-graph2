@@ -249,12 +249,12 @@ module SVG
               step = amount
             end
             # only do this if division_units is not year or month. Those are done already above in the cases.
-            min.step( max, step ) {|v| rv << v} if step
+            min.step( max + (step/10), step ) {|v| rv << v} if step
             @x_scale_division = step if step
             return rv
           end
         end
-        min.step( max , @x_scale_division ) {|v| rv << v}
+        min.step( max + (@x_scale_division/10), @x_scale_division ) {|v| rv << v}
         return rv
       end # get_x_values
 
