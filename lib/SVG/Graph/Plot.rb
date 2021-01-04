@@ -282,8 +282,9 @@ module SVG
 
       def get_x_values
         min_value, max_value, @x_scale_division = x_label_range
+        x_times = ((max_value-min_value)/@x_scale_division).round + 1
         rv = []
-        min_value.step( max_value + (@x_scale_division/10), @x_scale_division ) {|v| rv << v}
+        x_times.times{|v| rv << (min_value + (v * @x_scale_division))}
         return rv
       end
       alias :get_x_labels :get_x_values
