@@ -83,9 +83,8 @@ module SVG
         end
 
         rv = []
-        if maxvalue%@y_scale_division != 0
-          maxvalue = maxvalue + @y_scale_division
-        end
+        maxvalue += @y_scale_division if maxvalue % @y_scale_division != 0
+
         minvalue.step( maxvalue, @y_scale_division ) {|v| rv << v}
         return rv
       end

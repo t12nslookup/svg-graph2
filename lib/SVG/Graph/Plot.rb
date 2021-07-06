@@ -180,7 +180,7 @@ module SVG
         # check that we have pairs of values
         raise "Data supplied must be x,y pairs!  "+
           "The data provided contained an odd set of "+
-          "data points" unless conf[:data].length % 2 == 0
+          "data points" unless conf[:data].length.even?
 
         # clear the min/max x/y range caches
         clear_cache
@@ -195,7 +195,7 @@ module SVG
         x = []
         y = []
         conf[:data].each_index {|i|
-          (i%2 == 0 ? x : y) << conf[:data][i]
+          (i.even? ? x : y) << conf[:data][i]
         }
         sort(x, y, conf[:description], conf[:shape], conf[:url])
         conf[:data] = [x, y]
@@ -280,9 +280,7 @@ module SVG
           end
         end
 
-        if scale_x_integers
-          min_value = min_value.floor
-        end
+        min_value = min_value.floor if scale_x_integers
 
         min_value
       end
